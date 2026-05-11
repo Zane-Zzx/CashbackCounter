@@ -7,11 +7,9 @@ struct CardImageProcessor {
     private static let cardAspectRatio: CGFloat = 1.586
 
     static func process(_ image: UIImage, targetWidth: CGFloat = 800) async -> Data? {
-        guard let cgImage = image.cgImage else { return nil }
+        guard let ciImage = CIImage(image: image) else { return nil }
 
         let result = await Task.detached(priority: .userInitiated) { () -> Data? in
-            let ciImage = CIImage(cgImage: cgImage)
-
             let corrected = CardImageProcessor.detectAndCorrect(ciImage) ?? ciImage
             let enhanced = CardImageProcessor.enhanceColors(corrected)
             guard let output = CardImageProcessor.cropAndResize(enhanced, targetWidth: targetWidth) else { return nil }

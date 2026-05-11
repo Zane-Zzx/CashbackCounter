@@ -5339,7 +5339,28 @@
         }
       }
     },
-    "每月 %lld 日": {},
+    "每月 %lld 日": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Day %1$lld of each month"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每月%1$lld日"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每月%1$lld日"
+          }
+        }
+      }
+    },
     "每月 %lld 日还款": {
       "localizations": {
         "en": {

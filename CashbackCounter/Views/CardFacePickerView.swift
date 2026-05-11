@@ -9,6 +9,7 @@ struct CardFacePickerView: View {
     @State private var showImagePicker = false
     @State private var showCamera = false
     @State private var pickedImage: UIImage?
+    @State private var processingTask: Task<Void, Never>?
 
     var body: some View {
         VStack(spacing: 16) {
@@ -54,7 +55,8 @@ struct CardFacePickerView: View {
         .onChange(of: pickedImage) { _, newImage in
             guard let image = newImage else { return }
             let source = showCamera ? CardFaceSource.camera : CardFaceSource.photo
-            Task {
+            processingTask?.cancel()
+            processingTask = Task {
                 if let data = await CardImageProcessor.process(image) {
                     cardImageData = data
                     cardFaceSource = source
