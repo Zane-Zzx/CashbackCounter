@@ -18,12 +18,16 @@ struct CreditCardView: View {
 
     var body: some View {
         ZStack(alignment: .leading) {
-            LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
+            if cardImageData != nil {
+                Color.black
+            } else {
+                LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
 
-            Circle()
-                .fill(Color.white.opacity(0.1))
-                .frame(width: renderHeight * 0.9, height: renderHeight)
-                .offset(x: renderHeight * 0.7, y: -renderHeight * 0.2)
+                Circle()
+                    .fill(Color.white.opacity(0.1))
+                    .frame(width: renderHeight * 0.9, height: renderHeight)
+                    .offset(x: renderHeight * 0.7, y: -renderHeight * 0.2)
+            }
 
             if let uiImage = decodedImage {
                 Image(uiImage: uiImage)
@@ -64,9 +68,7 @@ struct CreditCardView: View {
                     return UIImage(data: data)
                 }.value
                 await MainActor.run {
-                    withAnimation(.easeIn(duration: 0.2)) {
-                        self.decodedImage = image
-                    }
+                    self.decodedImage = image
                 }
             } else {
                 self.decodedImage = nil

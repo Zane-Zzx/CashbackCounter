@@ -23,8 +23,10 @@ struct CardFacePickerView: View {
             .padding(.bottom, 16)
 
             HStack(spacing: 12) {
-                faceButton(title: "拍照", icon: "camera.fill") {
-                    showCamera = true
+                if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                    faceButton(title: "拍照", icon: "camera.fill") {
+                        showCamera = true
+                    }
                 }
                 faceButton(title: "相册", icon: "photo.on.rectangle") {
                     showImagePicker = true
