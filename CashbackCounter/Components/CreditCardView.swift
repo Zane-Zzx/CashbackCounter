@@ -34,7 +34,6 @@ struct CreditCardView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .clipped()
-                    .overlay(Color.black.opacity(0.05))
             }
 
             VStack(alignment: .leading) {

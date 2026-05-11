@@ -53,10 +53,16 @@ struct CardFacePickerView: View {
         }
         .onChange(of: pickedImage) { _, newImage in
             guard let image = newImage else { return }
-            if let data = image.jpegData(compressionQuality: 0.9),
-               let resized = resizeCardImage(data) {
-                cardImageData = resized
-                cardFaceSource = showCamera ? .camera : .photo
+            let source = showCamera ? CardFaceSource.camera : CardFaceSource.photo
+            Task {
+                if let data = await CardImageProcessor.process(image) {
+                    cardImageData = data
+                    cardFaceSource = source
+                } else if let data = image.jpegData(compressionQuality: 0.9),
+                          let resized = resizeCardImage(data) {
+                    cardImageData = resized
+                    cardFaceSource = source
+                }
             }
             pickedImage = nil
         }
