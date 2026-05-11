@@ -8,10 +8,10 @@ enum CardKind: String, CaseIterable, Codable {
 
     var displayName: String {
         switch self {
-        case .credit: return "信用卡"
-        case .debit: return "储蓄卡"
-        case .prepaid: return "预付卡"
-        case .atm: return "提款卡"
+        case .credit: return String(localized: "card.kind.credit")
+        case .debit: return String(localized: "card.kind.debit")
+        case .prepaid: return String(localized: "card.kind.prepaid")
+        case .atm: return String(localized: "card.kind.atm")
         }
     }
 

@@ -93,7 +93,7 @@ struct BestCardView: View {
                 HStack(spacing: 8) {
                     ForEach(visibleRegions, id: \.self) { region in
                         Button { selectedRegion = region } label: {
-                            Text("\(region.icon) \(region.rawValue)")
+                            Text("\(region.icon) \(region.displayName)")
                                 .font(.caption)
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 6)

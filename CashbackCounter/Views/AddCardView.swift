@@ -413,7 +413,7 @@ struct AddCardView: View {
                     Section(header: Text(baseSectionTitle)) {
                         Picker(String(localized: "发行地区"), selection: $region) {
                             ForEach(Region.allCases, id: \.self) { r in
-                                Text("\(r.icon) \(r.rawValue)").tag(r)
+                                Text("\(r.icon) \(r.displayName)").tag(r)
                             }
                         }
 
@@ -447,7 +447,7 @@ struct AddCardView: View {
                             Text(foreignCapTitle)
                                 .font(.caption).foregroundColor(.secondary)
                             Spacer()
-                            TextField("无上限", text: $foreignBaseCapStr)
+                            TextField(String(localized: "无上限"), text: $foreignBaseCapStr)
                                 .keyboardType(.numberPad)
                                 .multilineTextAlignment(.trailing)
                                 .frame(width: 80)
@@ -499,7 +499,7 @@ struct AddCardView: View {
                                             .font(.caption)
                                             .foregroundColor(.secondary)
 
-                                        TextField("无", value: capBinding(for: method), format: .number)
+                                        TextField(String(localized: "无"), value: capBinding(for: method), format: .number)
                                             .keyboardType(.decimalPad)
                                             .multilineTextAlignment(.trailing)
                                             .frame(width: 60)

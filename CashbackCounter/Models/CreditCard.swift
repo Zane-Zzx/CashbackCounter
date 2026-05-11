@@ -24,9 +24,9 @@ enum RewardType: String, Codable, CaseIterable {
     var displayName: String {
         switch self {
         case .cashback:
-            return "返现"
+            return String(localized: "reward.type.cashback")
         case .points:
-            return "积分"
+            return String(localized: "reward.type.points")
         }
     }
 }

@@ -190,7 +190,7 @@ struct AddCardWizardView: View {
                     }
                     Picker(String(localized: "发卡地区"), selection: $draft.region) {
                         ForEach(Region.allCases, id: \.self) { r in
-                            Text("\(r.icon) \(r.rawValue)").tag(r)
+                            Text("\(r.icon) \(r.displayName)").tag(r)
                         }
                     }
                 }

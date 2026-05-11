@@ -73,7 +73,7 @@ struct CardDetailView: View {
                 if !card.cardNetwork.isEmpty {
                     row(String(localized: "卡组织"), value: card.cardNetwork)
                 }
-                row(String(localized: "发卡地区"), value: "\(card.issueRegion.icon) \(card.issueRegion.rawValue)")
+                row(String(localized: "发卡地区"), value: "\(card.issueRegion.icon) \(card.issueRegion.displayName)")
             }
             .padding()
             .background(Color(uiColor: .secondarySystemGroupedBackground))

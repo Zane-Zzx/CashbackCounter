@@ -68,7 +68,7 @@ struct SettingsView: View {
                             .font(.headline)
                             .fontWeight(.bold)
                         
-                        Text("Version \(appVersion)")
+                        Text(String(localized: "Version %@", defaultValue: "Version \(appVersion)"))
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -96,10 +96,10 @@ struct SettingsView: View {
                 // General Section
                 Section(header: Text(String(localized: "常规"))) {
                     Picker(selection: $mainCurrencyCode, label: Label(String(localized: "主货币"), systemImage: "banknote")) {
-                        Text("人民币 (CNY)").tag("CNY")
-                        Text("美元 (USD)").tag("USD")
-                        Text("港币 (HKD)").tag("HKD")
-                        Text("日元 (JPY)").tag("JPY")
+                        Text(String(localized: "人民币 (CNY)")).tag("CNY")
+                        Text(String(localized: "美元 (USD)")).tag("USD")
+                        Text(String(localized: "港币 (HKD)")).tag("HKD")
+                        Text(String(localized: "日元 (JPY)")).tag("JPY")
                     }
 
                     NavigationLink(destination: NotificationSettingsView()) {
@@ -134,7 +134,7 @@ struct SettingsView: View {
                     HStack {
                         Label(String(localized: "版本"), systemImage: "info.circle")
                         Spacer()
-                        Text("v\(appVersion)")
+                        Text(String(localized: "v%@", defaultValue: "v\(appVersion)"))
                             .foregroundColor(.secondary)
                     }
 

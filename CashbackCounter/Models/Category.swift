@@ -30,15 +30,14 @@ enum Category: String, CaseIterable, Codable {
         }
     }
     
-    // 计算属性：返回给人看的中文名
     var displayName: String {
         switch self {
-        case .dining: return "餐饮美食"
-        case .grocery: return "超市便利"
-        case .travel: return "交通出行"
-        case .digital: return "数码产品"
-        case .anime: return "二次元"
-        case .other: return "其他消费"
+        case .dining: return String(localized: "category.dining")
+        case .grocery: return String(localized: "category.grocery")
+        case .travel: return String(localized: "category.travel")
+        case .digital: return String(localized: "category.digital")
+        case .anime: return String(localized: "category.anime")
+        case .other: return String(localized: "category.other")
         }
     }
     var color: Color {

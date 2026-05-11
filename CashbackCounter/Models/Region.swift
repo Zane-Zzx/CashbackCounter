@@ -5,6 +5,7 @@
 //  Created by Junhao Huang on 11/24/25.
 //
 
+import Foundation
 import FoundationModels
 
 @Generable
@@ -19,6 +20,20 @@ enum Region: String, CaseIterable, Codable {
     case uk = "英国"
     case other = "欧盟"
     
+    var displayName: String {
+        switch self {
+        case .cn: return String(localized: "region.cn")
+        case .hk: return String(localized: "region.hk")
+        case .us: return String(localized: "region.us")
+        case .jp: return String(localized: "region.jp")
+        case .nz: return String(localized: "region.nz")
+        case .tw: return String(localized: "region.tw")
+        case .mo: return String(localized: "region.mo")
+        case .uk: return String(localized: "region.uk")
+        case .other: return String(localized: "region.other")
+        }
+    }
+
     var icon: String {
         switch self {
         case .cn: return "🇨🇳" // 直接用 Emoji，简单明了

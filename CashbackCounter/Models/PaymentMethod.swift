@@ -32,15 +32,14 @@ enum PaymentMethod: String, CaseIterable, Codable {
         }
     }
     
-    // 计算属性：返回给人看的名称
     var displayName: String {
         switch self {
         case .applePay: return "Apple Pay"
         case .qrCode: return "QR Code"
-        case .offline: return "线下消费"
-        case .online: return "线上消费"
-        case .pulse: return "Pulse信用卡的合资格消费"
-        case .gba: return "信银gba信用卡的合资格消费"
+        case .offline: return String(localized: "payment.method.offline")
+        case .online: return String(localized: "payment.method.online")
+        case .pulse: return String(localized: "payment.method.pulse")
+        case .gba: return String(localized: "payment.method.gba")
         }
     }
     
