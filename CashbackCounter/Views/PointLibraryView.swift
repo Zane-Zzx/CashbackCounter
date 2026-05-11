@@ -15,9 +15,9 @@ struct PointLibraryView: View {
             List {
                 if points.isEmpty {
                     ContentUnavailableView(
-                        String(localized: "暂无积分库"),
+                        "暂无积分库",
                         systemImage: "star.circle",
-                        description: Text(String(localized: "请添加积分计划以供卡片选择"))
+                        description: Text("请添加积分计划以供卡片选择")
                     )
                 } else {
                     ForEach(points) { point in
@@ -27,7 +27,7 @@ struct PointLibraryView: View {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(point.displayName)
                                     .font(.headline)
-                                Text(String(localized: "价值: \(String(format: "%.6f", point.pointValue)) \(point.valueCurrencyCode.currencyCode) / 点"))
+                                Text("价值: \(String(format: "%.6f", point.pointValue)) \(point.valueCurrencyCode.currencyCode) / 点")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
@@ -41,11 +41,11 @@ struct PointLibraryView: View {
                     }
                 }
             }
-            .navigationTitle(String(localized: "积分库"))
+            .navigationTitle("积分库")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "关闭")) { dismiss() }
+                    Button("关闭") { dismiss() }
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button {
@@ -94,20 +94,20 @@ struct PointEditorView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section(header: Text(String(localized: "基本信息"))) {
-                    TextField(String(localized: "银行"), text: $bankName)
-                    TextField(String(localized: "积分名称"), text: $pointName)
+                Section("基本信息") {
+                    TextField("银行", text: $bankName)
+                    TextField("积分名称", text: $pointName)
                 }
 
-                Section(header: Text(String(localized: "价值与币种"))) {
+                Section("价值与币种") {
                     HStack {
-                        Text(String(localized: "积分价值"))
+                        Text("积分价值")
                         Spacer()
                         TextField("0.01", text: $pointValueStr)
                             .keyboardType(.decimalPad)
                             .multilineTextAlignment(.trailing)
                     }
-                    Picker(String(localized: "币种"), selection: $currencyRegion) {
+                    Picker("币种", selection: $currencyRegion) {
                         ForEach(Region.allCases, id: \.self) { region in
                             Text("\(region.icon) \(region.currencyCode)")
                                 .tag(region)
@@ -115,14 +115,14 @@ struct PointEditorView: View {
                     }
                 }
             }
-            .navigationTitle(pointToEdit == nil ? String(localized: "新增积分计划") : String(localized: "编辑积分计划"))
+            .navigationTitle(pointToEdit == nil ? "新增积分计划" : "编辑积分计划")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "取消")) { dismiss() }
+                    Button("取消") { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(String(localized: "保存")) { savePoint() }
+                    Button("保存") { savePoint() }
                         .disabled(bankName.isEmpty || pointName.isEmpty)
                 }
             }

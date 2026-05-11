@@ -23,13 +23,13 @@ struct CardFacePickerView: View {
             .padding(.bottom, 16)
 
             HStack(spacing: 12) {
-                faceButton(title: String(localized: "拍照"), icon: "camera.fill") {
+                faceButton(title: "拍照", icon: "camera.fill") {
                     showCamera = true
                 }
-                faceButton(title: String(localized: "相册"), icon: "photo.on.rectangle") {
+                faceButton(title: "相册", icon: "photo.on.rectangle") {
                     showImagePicker = true
                 }
-                faceButton(title: String(localized: "渐变"), icon: "paintpalette.fill") {
+                faceButton(title: "渐变", icon: "paintpalette.fill") {
                     cardFaceSource = .gradient
                     cardImageData = nil
                 }
@@ -37,8 +37,8 @@ struct CardFacePickerView: View {
 
             if cardFaceSource == .gradient {
                 VStack(spacing: 8) {
-                    ColorPicker(String(localized: "渐变色 1"), selection: $color1)
-                    ColorPicker(String(localized: "渐变色 2"), selection: $color2)
+                    ColorPicker("渐变色 1", selection: $color1)
+                    ColorPicker("渐变色 2", selection: $color2)
                 }
                 .padding(.horizontal)
             }
@@ -60,7 +60,7 @@ struct CardFacePickerView: View {
         }
     }
 
-    private func faceButton(title: String, icon: String, action: @escaping () -> Void) -> some View {
+    private func faceButton(title: LocalizedStringKey, icon: String, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             VStack(spacing: 6) {
                 Image(systemName: icon)

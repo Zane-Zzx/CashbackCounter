@@ -49,7 +49,7 @@ struct BestCardView: View {
                 }
                 .padding()
             }
-            .navigationTitle(String(localized: "推荐"))
+            .navigationTitle("推荐")
             .onAppear {
                 if !visibleRegions.contains(selectedRegion) {
                     selectedRegion = visibleRegions.first ?? .cn
@@ -67,7 +67,7 @@ struct BestCardView: View {
 
     private var sceneSelectionSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(String(localized: "消费场景"))
+            Text("消费场景")
                 .font(.headline)
 
             // 类别 chips
@@ -126,7 +126,7 @@ struct BestCardView: View {
 
             // 金额输入
             HStack {
-                Text(String(localized: "消费金额"))
+                Text("消费金额")
                     .font(.subheadline)
                 Spacer()
                 TextField("100", text: $amountText)
@@ -146,10 +146,10 @@ struct BestCardView: View {
     private var recommendationListSection: some View {
         VStack(spacing: 0) {
             HStack {
-                Label(String(localized: "推荐结果"), systemImage: "list.number")
+                Label("推荐结果", systemImage: "list.number")
                     .font(.headline)
                 Spacer()
-                Text("\(recommendations.count) \(String(localized: "张卡片"))")
+                Text("\(recommendations.count) 张卡片")
                     .foregroundStyle(.secondary)
                     .font(.subheadline)
             }
@@ -178,7 +178,7 @@ struct BestCardView: View {
             Image(systemName: "creditcard.trianglebadge.exclamationmark")
                 .font(.largeTitle)
                 .foregroundStyle(.secondary)
-            Text(String(localized: "没有符合条件的卡片"))
+            Text("没有符合条件的卡片")
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)
@@ -212,23 +212,23 @@ struct BestCardView: View {
                     .lineLimit(1)
                 HStack(spacing: 4) {
                     if !rec.card.endNum.isEmpty {
-                        Text("\(String(localized: "尾号"))\(rec.card.endNum)")
+                        Text("尾号\(rec.card.endNum)")
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     }
                     if selectedRegion != rec.card.issueRegion {
                         if let fr = rec.card.foreignCurrencyRate, fr > 0 {
-                            Text("\(String(localized: "外币"))\(String(format: "%.2f%%", fr * 100))")
+                            Text("外币\(String(format: "%.2f%%", fr * 100))")
                                 .font(.caption2)
                                 .foregroundStyle(.green)
                         } else {
-                            Text(String(localized: "未设外币费率"))
+                            Text("未设外币费率")
                                 .font(.caption2)
                                 .foregroundStyle(.orange)
                         }
                     }
                     if rec.isPoints {
-                        Text(String(localized: "积分"))
+                        Text("积分")
                             .font(.caption2)
                             .foregroundStyle(.orange)
                     }

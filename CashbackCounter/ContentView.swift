@@ -10,28 +10,28 @@ struct ContentView: View {
             CardStackHomeView()
                 .tabItem {
                     Image(systemName: selectedTab == 0 ? "creditcard.fill" : "creditcard")
-                    Text(String(localized: "卡包"))
+                    Text("卡包")
                 }
                 .tag(0)
 
             BestCardView()
                 .tabItem {
                     Image(systemName: selectedTab == 1 ? "star.fill" : "star")
-                    Text(String(localized: "推荐"))
+                    Text("推荐")
                 }
                 .tag(1)
 
             ReminderCenterView()
                 .tabItem {
                     Image(systemName: selectedTab == 2 ? "bell.fill" : "bell")
-                    Text(String(localized: "提醒"))
+                    Text("提醒")
                 }
                 .tag(2)
 
             LibraryView()
                 .tabItem {
                     Image(systemName: selectedTab == 3 ? "square.grid.2x2.fill" : "square.grid.2x2")
-                    Text(String(localized: "更多"))
+                    Text("更多")
                 }
                 .tag(3)
         }

@@ -78,11 +78,11 @@ struct AddCardWizardView: View {
                 }
                 navigationBar
             }
-            .navigationTitle(String(localized: "添加卡片"))
+            .navigationTitle("添加卡片")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "取消")) { dismiss() }
+                    Button("取消") { dismiss() }
                 }
             }
         }
@@ -106,18 +106,18 @@ struct AddCardWizardView: View {
     private var navigationBar: some View {
         HStack {
             if currentStepIndex > 0 {
-                Button(String(localized: "上一步")) {
+                Button("上一步") {
                     withAnimation { step = steps[currentStepIndex - 1] }
                 }
             }
             Spacer()
             if currentStepIndex < steps.count - 1 {
-                Button(String(localized: "下一步")) {
+                Button("下一步") {
                     withAnimation { step = steps[currentStepIndex + 1] }
                 }
                 .disabled(step == .face && (draft.bankName.isEmpty || draft.cardType.isEmpty))
             } else {
-                Button(String(localized: "保存")) { saveCard() }
+                Button("保存") { saveCard() }
                     .disabled(draft.bankName.isEmpty || draft.cardType.isEmpty)
             }
         }
@@ -129,7 +129,7 @@ struct AddCardWizardView: View {
 
     private var kindStep: some View {
         VStack(spacing: 16) {
-            Text(String(localized: "选择卡类型"))
+            Text("选择卡类型")
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -170,25 +170,25 @@ struct AddCardWizardView: View {
                 cardFaceSource: $draft.cardFaceSource
             )
 
-            GroupBox(String(localized: "基本信息")) {
+            GroupBox("基本信息") {
                 VStack(spacing: 10) {
-                    TextField(String(localized: "银行 (如: 招商银行)"), text: $draft.bankName)
-                    TextField(String(localized: "卡种 (如: 运通白金)"), text: $draft.cardType)
-                    TextField(String(localized: "尾号 (后四位)"), text: $draft.endNum)
+                    TextField("银行 (如: 招商银行)", text: $draft.bankName)
+                    TextField("卡种 (如: 运通白金)", text: $draft.cardType)
+                    TextField("尾号 (后四位)", text: $draft.endNum)
                         .keyboardType(.numberPad)
                         .onChange(of: draft.endNum) { _, newValue in
                             if newValue.count > 4 { draft.endNum = String(newValue.prefix(4)) }
                         }
-                    Picker(String(localized: "卡组织"), selection: $draft.cardNetwork) {
-                        Text(String(localized: "未选择")).tag("")
+                    Picker("卡组织", selection: $draft.cardNetwork) {
+                        Text("未选择").tag("")
                         Text("Visa").tag("Visa")
                         Text("Mastercard").tag("Mastercard")
-                        Text(String(localized: "银联")).tag("UnionPay")
+                        Text("银联").tag("UnionPay")
                         Text("Amex").tag("Amex")
                         Text("JCB").tag("JCB")
-                        Text(String(localized: "其他")).tag("Other")
+                        Text("其他").tag("Other")
                     }
-                    Picker(String(localized: "发卡地区"), selection: $draft.region) {
+                    Picker("发卡地区", selection: $draft.region) {
                         ForEach(Region.allCases, id: \.self) { r in
                             Text("\(r.icon) \(r.displayName)").tag(r)
                         }
@@ -202,43 +202,43 @@ struct AddCardWizardView: View {
 
     private var billingStep: some View {
         VStack(spacing: 16) {
-            GroupBox(String(localized: "账单与还款")) {
+            GroupBox("账单与还款") {
                 VStack(spacing: 10) {
                     HStack {
-                        Text(String(localized: "账单日"))
+                        Text("账单日")
                         Spacer()
-                        TextField(String(localized: "无"), value: $draft.statementDay, format: .number)
+                        TextField("无", value: $draft.statementDay, format: .number)
                             .keyboardType(.numberPad)
                             .multilineTextAlignment(.trailing)
                             .frame(width: 60)
-                        Text(String(localized: "日")).foregroundColor(.secondary)
+                        Text("日").foregroundColor(.secondary)
                     }
                     HStack {
-                        Text(String(localized: "还款日"))
+                        Text("还款日")
                         Spacer()
-                        TextField(String(localized: "无"), value: $draft.repaymentDay, format: .number)
+                        TextField("无", value: $draft.repaymentDay, format: .number)
                             .keyboardType(.numberPad)
                             .multilineTextAlignment(.trailing)
                             .frame(width: 60)
-                        Text(String(localized: "日")).foregroundColor(.secondary)
+                        Text("日").foregroundColor(.secondary)
                     }
                 }
             }
 
             if draft.cardKind.supportsAnnualFee {
-                GroupBox(String(localized: "年费")) {
+                GroupBox("年费") {
                     VStack(spacing: 10) {
                         HStack {
-                            Text(String(localized: "年费"))
+                            Text("年费")
                             Spacer()
                             TextField("0", value: $draft.annualFee, format: .number)
                                 .keyboardType(.decimalPad)
                                 .multilineTextAlignment(.trailing)
                                 .frame(width: 80)
                         }
-                        TextField(String(localized: "年费减免条件（选填）"), text: $draft.annualFeeWaiver)
+                        TextField("年费减免条件（选填）", text: $draft.annualFeeWaiver)
                         HStack {
-                            DatePicker(String(localized: "权益到期日"), selection: Binding(
+                            DatePicker("权益到期日", selection: Binding(
                                 get: { draft.benefitExpiryDate ?? Date() },
                                 set: { draft.benefitExpiryDate = $0 }
                             ), displayedComponents: .date)
@@ -261,10 +261,10 @@ struct AddCardWizardView: View {
 
     private var rewardsStep: some View {
         VStack(spacing: 16) {
-            GroupBox(String(localized: "基础费率")) {
+            GroupBox("基础费率") {
                 VStack(spacing: 10) {
                     HStack {
-                        Text(draft.rewardType == .points ? String(localized: "基础积分率 (%)") : String(localized: "基础返现率 (%)"))
+                        Text(draft.rewardType == .points ? "基础积分率 (%)" : "基础返现率 (%)")
                         Spacer()
                         TextField("1.0", value: $draft.defaultRate, format: .number)
                             .keyboardType(.decimalPad)
@@ -272,9 +272,9 @@ struct AddCardWizardView: View {
                             .frame(width: 60)
                     }
                     HStack {
-                        Text(draft.rewardType == .points ? String(localized: "外币积分率 (%)") : String(localized: "外币返现率 (%)"))
+                        Text(draft.rewardType == .points ? "外币积分率 (%)" : "外币返现率 (%)")
                         Spacer()
-                        TextField(String(localized: "同本币"), value: $draft.foreignRate, format: .number)
+                        TextField("同本币", value: $draft.foreignRate, format: .number)
                             .keyboardType(.decimalPad)
                             .multilineTextAlignment(.trailing)
                             .frame(width: 60)
@@ -283,8 +283,8 @@ struct AddCardWizardView: View {
             }
 
             if draft.cardKind.supportsFullRewards {
-                GroupBox(String(localized: "奖励类型")) {
-                    Picker(String(localized: "奖励类型"), selection: $draft.rewardType) {
+                GroupBox("奖励类型") {
+                    Picker("奖励类型", selection: $draft.rewardType) {
                         ForEach(RewardType.allCases, id: \.self) { t in
                             Text(t.displayName).tag(t)
                         }
@@ -292,8 +292,8 @@ struct AddCardWizardView: View {
                     .pickerStyle(.segmented)
 
                     if draft.rewardType == .points {
-                        Picker(String(localized: "选择积分计划"), selection: $selectedPointID) {
-                            Text(String(localized: "未选择")).tag(UUID?.none)
+                        Picker("选择积分计划", selection: $selectedPointID) {
+                            Text("未选择").tag(UUID?.none)
                             ForEach(points) { point in
                                 Text(point.displayName).tag(Optional(point.id))
                             }
@@ -308,10 +308,10 @@ struct AddCardWizardView: View {
 
     private var prepaidInfoStep: some View {
         VStack(spacing: 16) {
-            GroupBox(String(localized: "卡片信息")) {
+            GroupBox("卡片信息") {
                 VStack(spacing: 10) {
                     HStack {
-                        Text(String(localized: "当前余额"))
+                        Text("当前余额")
                         Spacer()
                         TextField("0", value: $draft.balance, format: .number)
                             .keyboardType(.decimalPad)
@@ -319,7 +319,7 @@ struct AddCardWizardView: View {
                             .frame(width: 100)
                     }
                     HStack {
-                        DatePicker(String(localized: "到期日"), selection: Binding(
+                        DatePicker("到期日", selection: Binding(
                             get: { draft.cardExpiryDate ?? Date() },
                             set: { draft.cardExpiryDate = $0 }
                         ), displayedComponents: .date)

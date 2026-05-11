@@ -3,15 +3,15 @@ import SwiftData
 
 struct NotificationSettingsView: View {
     @Query var cards: [CreditCard]
-    
+
     var body: some View {
         List {
-            Section(footer: Text(String(localized: "开启后，将在每月还款日上午 9:00 推送提醒。"))) {
+            Section(footer: Text("开启后，将在每月还款日上午 9:00 推送提醒。")) {
                 if cards.isEmpty {
-                    Text(String(localized: "暂无卡片，请先添加信用卡"))
+                    Text("暂无卡片，请先添加信用卡")
                         .foregroundColor(.secondary)
                 }
-                
+
                 ForEach(cards) { card in
                     HStack {
                         // 左侧信息
@@ -19,24 +19,24 @@ struct NotificationSettingsView: View {
                             Text("\(card.bankName) \(card.type)")
                                 .font(.headline)
                             if card.repaymentDay > 0 {
-                                Text(String(localized: "每月 \(card.repaymentDay) 日还款"))
+                                Text("每月 \(card.repaymentDay) 日还款")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             } else {
-                                Text(String(localized: "未设置还款日"))
+                                Text("未设置还款日")
                                     .font(.caption)
                                     .foregroundColor(.orange)
                             }
                         }
-                        
+
                         Spacer()
-                        
+
                         // 右侧开关
                         Toggle("", isOn: Binding(
                             get: { card.isRemindOpen },
                             set: { newValue in
                                 card.isRemindOpen = newValue
-                                // 👇 核心：开关变动时，立刻刷新通知状态
+                                // 核心：开关变动时，立刻刷新通知状态
                                 if newValue {
                                     NotificationManager.shared.scheduleNotification(for: card)
                                 } else {
@@ -50,7 +50,7 @@ struct NotificationSettingsView: View {
                 }
             }
         }
-        .navigationTitle(String(localized: "还款提醒"))
+        .navigationTitle("还款提醒")
         .onAppear {
             // 进页面时检查一下权限
             NotificationManager.shared.requestAuthorization()

@@ -38,19 +38,19 @@ struct PointSystemView: View {
                     .padding(.bottom, 24)
                 }
             }
-            .navigationTitle(String(localized: "积分"))
+            .navigationTitle("积分")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
                         Button(action: { showPointLibrary = true }) {
-                            Label(String(localized: "积分库"), systemImage: "star.circle")
+                            Label("积分库", systemImage: "star.circle")
                         }
                         Button(action: { showPointAdjustment = true }) {
-                            Label(String(localized: "手动添加积分"), systemImage: "plus")
+                            Label("手动添加积分", systemImage: "plus")
                         }
                         Button(action: { showPointRemoval = true }) {
-                            Label(String(localized: "手动移除积分"), systemImage: "minus")
+                            Label("手动移除积分", systemImage: "minus")
                         }
                     } label: {
                         Image(systemName: "ellipsis.circle.fill")
@@ -80,7 +80,7 @@ struct PointSystemView: View {
     private func dashboardHeader(totalValue: Double) -> some View {
         HStack(alignment: .top, spacing: 16) {
             VStack(alignment: .leading, spacing: 6) {
-                Text(String(localized: "总等值价值（预估）"))
+                Text("总等值价值（预估）")
                     .font(.caption)
                     .foregroundColor(.secondary)
 
@@ -88,7 +88,7 @@ struct PointSystemView: View {
                     .font(.system(size: 42, weight: .bold, design: .rounded))
                     .minimumScaleFactor(0.6)
 
-                Text(isRatesReady ? String(localized: "约合 \(formattedCurrency(totalValue))") : String(localized: "约合 ..."))
+                Text(isRatesReady ? "约合 \(formattedCurrency(totalValue))" : "约合 ...")
                     .font(.footnote)
                     .foregroundColor(.secondary)
             }
@@ -105,15 +105,15 @@ struct PointSystemView: View {
     @ViewBuilder
     private func pointCardSection(summaries: [PointProgramSummary]) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(String(localized: "积分卡片"))
+            Text("积分卡片")
                 .font(.headline)
                 .padding(.horizontal, 4)
 
             if summaries.isEmpty {
                 ContentUnavailableView(
-                    String(localized: "暂无积分记录"),
+                    "暂无积分记录",
                     systemImage: "star.circle",
-                    description: Text(String(localized: "新增积分返现交易后，这里会显示累计积分"))
+                    description: Text("新增积分返现交易后，这里会显示累计积分")
                 )
                 .padding(.top, 24)
             } else {
@@ -297,7 +297,7 @@ private struct PointSummaryCard: View {
                 Text(pointsText)
                     .font(.title3.weight(.bold))
                     .foregroundColor(.primary)
-                Text(String(localized: "积分"))
+                Text("积分")
                     .font(.caption2)
                     .foregroundColor(.secondary)
             }
@@ -380,7 +380,7 @@ private struct PointDetailView: View {
             }
             .padding()
         }
-        .navigationTitle(String(localized: "积分明细"))
+        .navigationTitle("积分明细")
         .navigationBarTitleDisplayMode(.inline)
     }
 
@@ -407,7 +407,7 @@ private struct PointDetailView: View {
 
             HStack(alignment: .firstTextBaseline) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(String(localized: "当前积分"))
+                    Text("当前积分")
                         .font(.caption)
                         .foregroundColor(.secondary)
                     Text(formattedPoints(totalPoints))
@@ -417,7 +417,7 @@ private struct PointDetailView: View {
                 Spacer()
 
                 VStack(alignment: .trailing, spacing: 4) {
-                    Text(String(localized: "估算价值"))
+                    Text("估算价值")
                         .font(.caption)
                         .foregroundColor(.secondary)
                     Text(isRatesReady ? formattedCurrency(estimatedValue, code: mainCurrencyCode) : "...")
@@ -434,24 +434,24 @@ private struct PointDetailView: View {
 
     private var chartCard: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(String(localized: "近6个月积分变化"))
+            Text("近6个月积分变化")
                 .font(.headline)
-            Text(String(localized: "净变化：\(formattedPoints(netPoints)) 积分"))
+            Text("净变化：\(formattedPoints(netPoints)) 积分")
                 .font(.caption)
                 .foregroundColor(.secondary)
 
             Chart(chartData) { item in
                 LineMark(
-                    x: .value(String(localized: "月份"), item.date, unit: .month),
-                    y: .value(String(localized: "积分"), item.points)
+                    x: .value("月份", item.date, unit: .month),
+                    y: .value("积分", item.points)
                 )
                 .interpolationMethod(.catmullRom)
                 .foregroundStyle(accentColor)
                 .lineStyle(StrokeStyle(lineWidth: 3))
 
                 AreaMark(
-                    x: .value(String(localized: "月份"), item.date, unit: .month),
-                    y: .value(String(localized: "积分"), item.points)
+                    x: .value("月份", item.date, unit: .month),
+                    y: .value("积分", item.points)
                 )
                 .foregroundStyle(
                     LinearGradient(
@@ -462,8 +462,8 @@ private struct PointDetailView: View {
                 )
 
                 PointMark(
-                    x: .value(String(localized: "月份"), item.date, unit: .month),
-                    y: .value(String(localized: "积分"), item.points)
+                    x: .value("月份", item.date, unit: .month),
+                    y: .value("积分", item.points)
                 )
                 .foregroundStyle(accentColor)
                 .symbolSize(40)
@@ -594,14 +594,14 @@ private struct PointAdjustmentEntryView: View {
             Group {
                 if points.isEmpty {
                     ContentUnavailableView(
-                        String(localized: "暂无积分计划"),
+                        "暂无积分计划",
                         systemImage: "star.circle",
-                        description: Text(String(localized: "请先在积分库添加积分计划"))
+                        description: Text("请先在积分库添加积分计划")
                     )
                 } else {
                     Form {
-                        Section(header: Text(String(localized: "积分计划"))) {
-                            Picker(String(localized: "积分计划"), selection: $selectedPointID) {
+                        Section("积分计划") {
+                            Picker("积分计划", selection: $selectedPointID) {
                                 ForEach(points) { point in
                                     Text(point.displayName)
                                         .tag(Optional(point.id))
@@ -609,9 +609,9 @@ private struct PointAdjustmentEntryView: View {
                             }
                         }
 
-                        Section(header: Text(String(localized: "积分数量"))) {
+                        Section("积分数量") {
                             HStack {
-                                Text(String(localized: "积分"))
+                                Text("积分")
                                 Spacer()
                                 TextField("0", text: $pointsText)
                                     .keyboardType(.numberPad)
@@ -619,20 +619,20 @@ private struct PointAdjustmentEntryView: View {
                             }
                         }
 
-                        Section(header: Text(String(localized: "日期"))) {
-                            DatePicker(String(localized: "入账日期"), selection: $date, in: ...Date(), displayedComponents: .date)
+                        Section("日期") {
+                            DatePicker("入账日期", selection: $date, in: ...Date(), displayedComponents: .date)
                         }
                     }
                 }
             }
-            .navigationTitle(String(localized: "手动添加积分"))
+            .navigationTitle("手动添加积分")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "取消")) { dismiss() }
+                    Button("取消") { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(String(localized: "保存")) { save() }
+                    Button("保存") { save() }
                         .disabled(!canSave)
                 }
             }
@@ -686,14 +686,14 @@ private struct PointRemovalEntryView: View {
             Group {
                 if points.isEmpty {
                     ContentUnavailableView(
-                        String(localized: "暂无积分计划"),
+                        "暂无积分计划",
                         systemImage: "star.circle",
-                        description: Text(String(localized: "请先在积分库添加积分计划"))
+                        description: Text("请先在积分库添加积分计划")
                     )
                 } else {
                     Form {
-                        Section(header: Text(String(localized: "积分计划"))) {
-                            Picker(String(localized: "积分计划"), selection: $selectedPointID) {
+                        Section("积分计划") {
+                            Picker("积分计划", selection: $selectedPointID) {
                                 ForEach(points) { point in
                                     Text(point.displayName)
                                         .tag(Optional(point.id))
@@ -701,9 +701,9 @@ private struct PointRemovalEntryView: View {
                             }
                         }
 
-                        Section(header: Text(String(localized: "移除积分数量"))) {
+                        Section("移除积分数量") {
                             HStack {
-                                Text(String(localized: "积分"))
+                                Text("积分")
                                 Spacer()
                                 TextField("0", text: $pointsText)
                                     .keyboardType(.numberPad)
@@ -711,20 +711,20 @@ private struct PointRemovalEntryView: View {
                             }
                         }
 
-                        Section(header: Text(String(localized: "日期"))) {
-                            DatePicker(String(localized: "入账日期"), selection: $date, in: ...Date(), displayedComponents: .date)
+                        Section("日期") {
+                            DatePicker("入账日期", selection: $date, in: ...Date(), displayedComponents: .date)
                         }
                     }
                 }
             }
-            .navigationTitle(String(localized: "手动移除积分"))
+            .navigationTitle("手动移除积分")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "取消")) { dismiss() }
+                    Button("取消") { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(String(localized: "保存")) { save() }
+                    Button("保存") { save() }
                         .disabled(!canSave)
                 }
             }

@@ -53,13 +53,13 @@ struct CardDetailView: View {
         .sheet(isPresented: $showEditSheet) {
             AddCardView(cardToEdit: card)
         }
-        .confirmationDialog(String(localized: "确定要删除这张卡片吗？"), isPresented: $showDeleteConfirm, titleVisibility: .visible) {
-            Button(String(localized: "删除"), role: .destructive) {
+        .confirmationDialog("确定要删除这张卡片吗？", isPresented: $showDeleteConfirm, titleVisibility: .visible) {
+            Button("删除", role: .destructive) {
                 NotificationManager.shared.cancelNotification(for: card)
                 modelContext.delete(card)
                 dismiss()
             }
-            Button(String(localized: "取消"), role: .cancel) {}
+            Button("取消", role: .cancel) {}
         }
     }
 
@@ -79,7 +79,7 @@ struct CardDetailView: View {
             .background(Color(uiColor: .secondarySystemGroupedBackground))
             .cornerRadius(12)
         } header: {
-            sectionHeader(String(localized: "基本信息"))
+            sectionHeader("基本信息")
         }
     }
 
@@ -105,7 +105,7 @@ struct CardDetailView: View {
                     .background(Color(uiColor: .secondarySystemGroupedBackground))
                     .cornerRadius(12)
                 } header: {
-                    sectionHeader(String(localized: "标签"))
+                    sectionHeader("标签")
                 }
             }
         }
@@ -128,7 +128,7 @@ struct CardDetailView: View {
             .background(Color(uiColor: .secondarySystemGroupedBackground))
             .cornerRadius(12)
         } header: {
-            sectionHeader(String(localized: "关键日期"))
+            sectionHeader("关键日期")
         }
     }
 
@@ -148,7 +148,7 @@ struct CardDetailView: View {
                     .background(Color(uiColor: .secondarySystemGroupedBackground))
                     .cornerRadius(12)
                 } header: {
-                    sectionHeader(String(localized: "年费"))
+                    sectionHeader("年费")
                 }
             }
         }
@@ -165,7 +165,7 @@ struct CardDetailView: View {
 
                 if !card.specialRates.isEmpty {
                     Divider()
-                    Text(String(localized: "类别加成")).font(.caption).foregroundColor(.secondary)
+                    Text("类别加成").font(.caption).foregroundColor(.secondary)
                     ForEach(Array(card.specialRates.sorted { $0.key.rawValue < $1.key.rawValue }), id: \.key) { cat, rate in
                         HStack {
                             Label(cat.displayName, systemImage: cat.iconName)
@@ -184,7 +184,7 @@ struct CardDetailView: View {
 
                 if !card.paymentMethodRates.isEmpty {
                     Divider()
-                    Text(String(localized: "支付方式加成")).font(.caption).foregroundColor(.secondary)
+                    Text("支付方式加成").font(.caption).foregroundColor(.secondary)
                     ForEach(Array(card.paymentMethodRates.sorted { $0.key.rawValue < $1.key.rawValue }), id: \.key) { method, rate in
                         HStack {
                             Label(method.displayName, systemImage: method.iconName)
@@ -217,7 +217,7 @@ struct CardDetailView: View {
             .background(Color(uiColor: .secondarySystemGroupedBackground))
             .cornerRadius(12)
         } header: {
-            sectionHeader(String(localized: "权益规则"))
+            sectionHeader("权益规则")
         }
     }
 
@@ -234,7 +234,7 @@ struct CardDetailView: View {
                 .background(Color(uiColor: .secondarySystemGroupedBackground))
                 .cornerRadius(12)
             } header: {
-                sectionHeader(String(localized: "积分计划"))
+                sectionHeader("积分计划")
             }
         }
     }
@@ -255,7 +255,7 @@ struct CardDetailView: View {
                     .background(Color(uiColor: .secondarySystemGroupedBackground))
                     .cornerRadius(12)
                 } header: {
-                    sectionHeader(String(localized: "卡片信息"))
+                    sectionHeader("卡片信息")
                 }
             }
         }
@@ -272,7 +272,7 @@ struct CardDetailView: View {
                         .background(Color(uiColor: .secondarySystemGroupedBackground))
                         .cornerRadius(12)
                 } header: {
-                    sectionHeader(String(localized: "备注"))
+                    sectionHeader("备注")
                 }
             }
         }
@@ -286,7 +286,7 @@ struct CardDetailView: View {
         }
     }
 
-    private func sectionHeader(_ title: String) -> some View {
+    private func sectionHeader(_ title: LocalizedStringKey) -> some View {
         Text(title)
             .font(.headline)
             .frame(maxWidth: .infinity, alignment: .leading)

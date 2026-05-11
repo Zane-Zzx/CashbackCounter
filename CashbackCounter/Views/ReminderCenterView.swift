@@ -127,21 +127,21 @@ struct ReminderCenterView: View {
             Group {
                 if cards.isEmpty {
                     ContentUnavailableView(
-                        String(localized: "暂无卡片"),
+                        "暂无卡片",
                         systemImage: "creditcard",
-                        description: Text(String(localized: "添加卡片后即可管理提醒"))
+                        description: Text("添加卡片后即可管理提醒")
                     )
                 } else if activeEvents.isEmpty && disabledEvents.isEmpty {
                     ContentUnavailableView(
-                        String(localized: "暂无提醒"),
+                        "暂无提醒",
                         systemImage: "bell.slash",
-                        description: Text(String(localized: "为卡片设置还款日、账单日等信息后，提醒将自动出现"))
+                        description: Text("为卡片设置还款日、账单日等信息后，提醒将自动出现")
                     )
                 } else {
                     listContent
                 }
             }
-            .navigationTitle(String(localized: "提醒"))
+            .navigationTitle("提醒")
         }
     }
 
@@ -169,7 +169,7 @@ struct ReminderCenterView: View {
                         disabledEventRow(event)
                     }
                 } header: {
-                    Text(String(localized: "已关闭提醒"))
+                    Text("已关闭提醒")
                 }
             }
         }
@@ -225,7 +225,7 @@ struct ReminderCenterView: View {
                 }
             }
         } header: {
-            Text(String(localized: "卡片提醒总览"))
+            Text("卡片提醒总览")
         }
     }
 

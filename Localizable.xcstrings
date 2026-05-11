@@ -136,6 +136,12 @@
             "state": "new",
             "value": "%1$@ %2$@ %3$@"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@ %3$@"
+          }
         }
       }
     },
@@ -169,6 +175,12 @@
             "state": "new",
             "value": "%1$@ %2$lld%3$@"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$lld%3$@"
+          }
         }
       }
     },
@@ -190,6 +202,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@%@"
+          }
+        }
+      }
+    },
+    "%@v%@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@v%2$@"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@v%2$@"
           }
         }
       }
@@ -240,6 +268,12 @@
             "state": "new",
             "value": "%1$lld %2$@"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld %2$@"
+          }
         }
       }
     },
@@ -250,6 +284,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld cards"
+          }
+        }
+      }
+    },
+    "%lld年": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld年"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld年"
+          }
+        }
+      }
+    },
+    "%lld月": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld月"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld月"
           }
         }
       }
@@ -564,6 +642,12 @@
             "state": "translated",
             "value": "提款卡"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提款卡"
+          }
         }
       }
     },
@@ -576,6 +660,12 @@
           }
         },
         "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "信用卡"
+          }
+        },
+        "zh-Hant": {
           "stringUnit": {
             "state": "translated",
             "value": "信用卡"
@@ -596,6 +686,12 @@
             "state": "translated",
             "value": "储蓄卡"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "儲蓄卡"
+          }
         }
       }
     },
@@ -612,6 +708,12 @@
             "state": "translated",
             "value": "预付卡"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "預付卡"
+          }
         }
       }
     },
@@ -627,6 +729,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "CardPick 仓库"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CardPick 倉庫"
           }
         }
       }
@@ -684,6 +792,12 @@
             "state": "translated",
             "value": "二次元"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "二次元"
+          }
         }
       }
     },
@@ -699,6 +813,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "数码产品"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "數碼產品"
           }
         }
       }
@@ -716,6 +836,12 @@
             "state": "translated",
             "value": "餐饮美食"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "餐飲美食"
+          }
         }
       }
     },
@@ -728,6 +854,12 @@
           }
         },
         "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "超市便利"
+          }
+        },
+        "zh-Hant": {
           "stringUnit": {
             "state": "translated",
             "value": "超市便利"
@@ -748,6 +880,12 @@
             "state": "translated",
             "value": "其他消费"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他消費"
+          }
         }
       }
     },
@@ -760,6 +898,12 @@
           }
         },
         "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "交通出行"
+          }
+        },
+        "zh-Hant": {
           "stringUnit": {
             "state": "translated",
             "value": "交通出行"
@@ -780,6 +924,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "卡择"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卡擇"
           }
         }
       }
@@ -863,28 +1013,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mastercard"
-          }
-        }
-      }
-    },
-    "Other": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Other"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "其他"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "其他"
           }
         }
       }
@@ -1043,6 +1171,29 @@
         }
       }
     },
+    "Other": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他"
+          }
+        }
+      }
+    },
     "payment.method.gba": {
       "localizations": {
         "en": {
@@ -1055,6 +1206,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "信银gba信用卡的合资格消费"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "信銀gba信用卡的合資格消費"
           }
         }
       }
@@ -1072,6 +1229,12 @@
             "state": "translated",
             "value": "线下消费"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "線下消費"
+          }
         }
       }
     },
@@ -1087,6 +1250,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "线上消费"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "線上消費"
           }
         }
       }
@@ -1104,6 +1273,12 @@
             "state": "translated",
             "value": "Pulse信用卡的合资格消费"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pulse信用卡的合資格消費"
+          }
         }
       }
     },
@@ -1120,6 +1295,12 @@
             "state": "translated",
             "value": "中国大陆"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中國大陸"
+          }
         }
       }
     },
@@ -1132,6 +1313,12 @@
           }
         },
         "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "香港"
+          }
+        },
+        "zh-Hant": {
           "stringUnit": {
             "state": "translated",
             "value": "香港"
@@ -1152,6 +1339,12 @@
             "state": "translated",
             "value": "日本"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日本"
+          }
         }
       }
     },
@@ -1167,6 +1360,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "澳门"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "澳門"
           }
         }
       }
@@ -1184,6 +1383,12 @@
             "state": "translated",
             "value": "新西兰"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "紐西蘭"
+          }
         }
       }
     },
@@ -1199,6 +1404,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "欧盟"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "歐盟"
           }
         }
       }
@@ -1216,6 +1427,12 @@
             "state": "translated",
             "value": "台湾"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "台灣"
+          }
         }
       }
     },
@@ -1231,6 +1448,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "英国"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "英國"
           }
         }
       }
@@ -1248,6 +1471,12 @@
             "state": "translated",
             "value": "美国"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "美國"
+          }
         }
       }
     },
@@ -1264,6 +1493,12 @@
             "state": "translated",
             "value": "返现"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "回饋"
+          }
         }
       }
     },
@@ -1279,6 +1514,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "积分"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "積分"
           }
         }
       }
@@ -1365,6 +1606,29 @@
           "stringUnit": {
             "state": "translated",
             "value": "支出分析"
+          }
+        }
+      }
+    },
+    "UnionPay": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UnionPay"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "银联"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "銀聯"
           }
         }
       }
@@ -1574,7 +1838,6 @@
         }
       }
     },
-    "上限: ": {},
     "上限: %@": {
       "extractionState": "stale",
       "localizations": {
@@ -1608,6 +1871,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "为卡片设置还款日、账单日等信息后，提醒将自动出现"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "為卡片設定還款日、帳單日等信息後，提醒將自動出現"
           }
         }
       }
@@ -1749,6 +2018,12 @@
             "state": "translated",
             "value": "今天是这张卡的账单日，请查看账单明细。"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今天是這張卡的帳單日，請查看帳單明細。"
+          }
         }
       }
     },
@@ -1764,6 +2039,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "今天是这张卡的还款日，别忘了处理账单哦！"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今天是這張卡的還款日，別忘了處理帳單哦！"
           }
         }
       }
@@ -2108,6 +2389,12 @@
             "state": "translated",
             "value": "关于 卡择"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "關於 卡擇"
+          }
         }
       }
     },
@@ -2213,6 +2500,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "减免:"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "減免:"
           }
         }
       }
@@ -2410,6 +2703,12 @@
             "state": "translated",
             "value": "卡择"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卡擇"
+          }
         }
       }
     },
@@ -2434,6 +2733,12 @@
           }
         },
         "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卡片到期提醒"
+          }
+        },
+        "zh-Hant": {
           "stringUnit": {
             "state": "translated",
             "value": "卡片到期提醒"
@@ -2638,6 +2943,12 @@
             "state": "translated",
             "value": "基于 CashbackCounter (Junhao Huang) 开发"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "基於 CashbackCounter (Junhao Huang) 開發"
+          }
         }
       }
     },
@@ -2685,6 +2996,28 @@
         }
       }
     },
+    "基础积分率 (%)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Base Points Rate (%)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "基础积分率 (%)"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "基礎積分率 (%)"
+          }
+        }
+      }
+    },
     "基础费率": {
       "localizations": {
         "en": {
@@ -2723,28 +3056,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Base Cashback Rate (%)"
-          }
-        }
-      }
-    },
-    "基础积分率 (%)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Base Points Rate (%)"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "基础积分率 (%)"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "基礎積分率 (%)"
           }
         }
       }
@@ -3259,6 +3570,12 @@
             "state": "translated",
             "value": "已关闭提醒"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已關閉提醒"
+          }
         }
       }
     },
@@ -3386,6 +3703,12 @@
             "state": "translated",
             "value": "年费减免条件（选填）"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "年費減免條件（選填）"
+          }
         }
       }
     },
@@ -3402,6 +3725,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "年费提醒"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "年費提醒"
           }
         }
       }
@@ -3465,6 +3794,7 @@
         }
       }
     },
+    "当前版本：": {},
     "当前版本：v": {
       "extractionState": "stale",
       "localizations": {
@@ -3479,10 +3809,17 @@
             "state": "translated",
             "value": "当前版本：v"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "當前版本：v"
+          }
         }
       }
     },
     "当前版本：v%@": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3682,6 +4019,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "拍一筆"
+          }
+        }
+      }
+    },
+    "拍照": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拍照"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拍照"
           }
         }
       }
@@ -4325,6 +4684,28 @@
         }
       }
     },
+    "未分配": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unassigned"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未分配"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未分配"
+          }
+        }
+      }
+    },
     "未找到结果": {
       "extractionState": "stale",
       "localizations": {
@@ -4610,6 +4991,12 @@
             "state": "translated",
             "value": "标签（逗号分隔）"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "標籤（逗號分隔）"
+          }
         }
       }
     },
@@ -4725,6 +5112,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "没有符合条件的卡片"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "沒有符合條件的卡片"
           }
         }
       }
@@ -4955,6 +5348,12 @@
             "state": "translated",
             "value": "添加卡片后即可管理提醒"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新增卡片後即可管理提醒"
+          }
         }
       }
     },
@@ -4987,6 +5386,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "清除"
+          }
+        }
+      }
+    },
+    "渐变": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gradient"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "渐变"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "漸變"
           }
         }
       }
@@ -5064,6 +5485,12 @@
             "state": "translated",
             "value": "点击右上角 + 添加你的第一张银行卡"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "點擊右上角 + 新增你的第一張銀行卡"
+          }
         }
       }
     },
@@ -5085,6 +5512,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "版本"
+          }
+        }
+      }
+    },
+    "相册": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photo Library"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "相册"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "相簿"
           }
         }
       }
@@ -5953,6 +6402,12 @@
             "state": "translated",
             "value": "试试其他筛选条件或添加新卡片"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "試試其他篩選條件或新增新卡片"
+          }
         }
       }
     },
@@ -6210,6 +6665,12 @@
             "state": "translated",
             "value": "账单日提醒"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "帳單日提醒"
+          }
         }
       }
     },
@@ -6420,6 +6881,12 @@
             "state": "translated",
             "value": "这张卡的权益即将到期，年费 %@ 元。"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "這張卡的權益即將到期，年費 %@ 元。"
+          }
         }
       }
     },
@@ -6435,6 +6902,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "这张卡的权益将在 7 天后到期，年费 %@ 元。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "這張卡的權益將在 7 天後到期，年費 %@ 元。"
           }
         }
       }
@@ -6452,6 +6925,12 @@
             "state": "translated",
             "value": "这张预付卡即将到期，请及时处理余额。"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "這張預付卡即將到期，請及時處理餘額。"
+          }
         }
       }
     },
@@ -6467,6 +6946,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "这张预付卡将在 7 天后到期，请及时处理余额。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "這張預付卡將在 7 天後到期，請及時處理餘額。"
           }
         }
       }
@@ -6687,28 +7172,6 @@
         }
       }
     },
-    "UnionPay": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "UnionPay"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "银联"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "銀聯"
-          }
-        }
-      }
-    },
     "银行": {
       "localizations": {
         "en": {
@@ -6790,6 +7253,28 @@
         }
       }
     },
+    "预览": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预览"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "預覽"
+          }
+        }
+      }
+    },
     "预计积分价值": {
       "extractionState": "stale",
       "localizations": {
@@ -6836,161 +7321,7 @@
         }
       }
     },
-    "餐饮": {},
-    "预览": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "预览"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Preview"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "預覽"
-          }
-        }
-      }
-    },
-    "拍照": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "拍照"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Camera"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "拍照"
-          }
-        }
-      }
-    },
-    "相册": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "相册"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Photo Library"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "相簿"
-          }
-        }
-      }
-    },
-    "渐变": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "渐变"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gradient"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "漸變"
-          }
-        }
-      }
-    },
-    "未分配": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "未分配"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unassigned"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "未分配"
-          }
-        }
-      }
-    },
-    "%lld年": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld年"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld年"
-          }
-        }
-      }
-    },
-    "%lld月": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld月"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld月"
-          }
-        }
-      }
-    }
+    "餐饮": {}
   },
   "version": "1.1"
 }

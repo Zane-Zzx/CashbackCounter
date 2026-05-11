@@ -7,21 +7,21 @@ struct LibraryView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section(String(localized: "管理")) {
+                Section("管理") {
                     NavigationLink(destination: CardTemplateListView(rootSheet: $rootSheet)) {
-                        Label(String(localized: "卡片模板"), systemImage: "square.grid.2x2")
+                        Label("卡片模板", systemImage: "square.grid.2x2")
                     }
                     NavigationLink(destination: PointSystemView()) {
-                        Label(String(localized: "积分管理"), systemImage: "star.circle")
+                        Label("积分管理", systemImage: "star.circle")
                     }
                 }
                 Section {
                     NavigationLink(destination: SettingsView()) {
-                        Label(String(localized: "设置"), systemImage: "gearshape")
+                        Label("设置", systemImage: "gearshape")
                     }
                 }
             }
-            .navigationTitle(String(localized: "规则库"))
+            .navigationTitle("规则库")
         }
     }
 }
