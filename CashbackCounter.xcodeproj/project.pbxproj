@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F842143B2EDC9BE7007B75D5 /* CashbackShortcutsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F842143A2EDC9BE7007B75D5 /* CashbackShortcutsProvider.swift */; };
 		F8B31CD62EEC750E00F1FB86 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = F8B31CD52EEC750E00F1FB86 /* ZIPFoundation */; };
 		F8E14D652EDA0AE3007C22B0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F8E14D642EDA0AE3007C22B0 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F842143A2EDC9BE7007B75D5 /* CashbackShortcutsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashbackShortcutsProvider.swift; sourceTree = "<group>"; };
 		F8B569D62ED2E4A400CCC7D6 /* CashbackCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CashbackCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8E14D642EDA0AE3007C22B0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,7 +135,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F842143B2EDC9BE7007B75D5 /* CashbackShortcutsProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

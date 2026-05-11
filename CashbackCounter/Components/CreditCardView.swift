@@ -1,10 +1,3 @@
-//
-//  CreditCardView.swift
-//  CashbackCounter
-//
-//  Created by Junhao Huang on 11/23/25.
-//
-
 import SwiftUI
 
 struct CreditCardView: View {
@@ -13,73 +6,63 @@ struct CreditCardView: View {
     var endNum: String
     var colors: [Color]
     var cardImageData: Data? = nil
-    
-    // ✅ 新增：用于存储解码后图片的 State
+    var displayHeight: CGFloat? = nil
+    var displayWidth: CGFloat? = nil
+
     @State private var decodedImage: UIImage? = nil
-    
+
+    private var renderHeight: CGFloat {
+        if let displayWidth { return displayWidth / 1.586 }
+        return displayHeight ?? 200
+    }
+
     var body: some View {
-        GeometryReader { proxy in
-            ZStack(alignment: .leading) {
-                // 1. 背景渐变
-                LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
-                
-                // 2. 装饰纹理
-                Circle()
-                    .fill(Color.white.opacity(0.1))
-                    .frame(width: 200, height: 220)
-                    .offset(x: 150, y: -50)
-                
-                // 3. 图片层（✅ 修改：使用异步解码后的 State）
-                if let uiImage = decodedImage {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(height: 220)
-                        // ✅ 关键修复：限制图片最大宽度，防止宽图撑爆布局导致 GeometryReader 坐标错乱
-                        .frame(maxWidth: proxy.size.width)
-                        .clipped()
-                        // 加一层极淡的黑罩，确保白色卡号稍微清晰点，又不影响卡面美观
-                        .overlay(Color.black.opacity(0.05))
-                }
-                
-                // 4. 文字信息层
-                VStack(alignment: .leading) {
-                    if cardImageData == nil {
-                        HStack {
-                            Image(systemName: "wave.3.right") // 非接触支付图标
-                                .font(.title2)
-                            Spacer()
-                            Text(bankName + " " + type)
-                                .font(.caption)
-                                .fontWeight(.bold)
-                                .padding(6)
-                                .background(.ultraThinMaterial)
-                                .cornerRadius(5)
-                        }
-                    }
-                    Spacer()
-                    HStack {
-                        Text("**** **** **** \(endNum)")
-                            .font(.subheadline)
-                    }
-                }
-                .padding(25)
-                .foregroundColor(.white)
+        ZStack(alignment: .leading) {
+            LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
+
+            Circle()
+                .fill(Color.white.opacity(0.1))
+                .frame(width: renderHeight * 0.9, height: renderHeight)
+                .offset(x: renderHeight * 0.7, y: -renderHeight * 0.2)
+
+            if let uiImage = decodedImage {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .clipped()
+                    .overlay(Color.black.opacity(0.05))
             }
+
+            VStack(alignment: .leading) {
+                if cardImageData == nil {
+                    HStack {
+                        Image(systemName: "wave.3.right")
+                            .font(.system(size: renderHeight * 0.1))
+                        Spacer()
+                        Text(bankName + " " + type)
+                            .font(.system(size: renderHeight * 0.06, weight: .bold))
+                            .padding(6)
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(5)
+                    }
+                }
+                Spacer()
+                HStack {
+                    Text("**** **** **** \(endNum)")
+                        .font(.system(size: renderHeight * 0.09))
+                }
+            }
+            .padding(renderHeight * 0.12)
+            .foregroundColor(.white)
         }
-        .frame(height: 220)
-        .cornerRadius(20)
+        .modifier(CardFrameModifier(displayWidth: displayWidth, displayHeight: displayHeight))
+        .cornerRadius(renderHeight * 0.09)
         .shadow(color: .black.opacity(0.15), radius: 10, y: 5)
-        .padding(.horizontal)
-        // ✅ 核心修复：在后台线程处理图片解码，避免阻塞主线程
         .task(id: cardImageData) {
             if let data = cardImageData {
-                // 使用 detached 任务避免继承当前上下文的优先级，确保不卡顿 UI
                 let image = await Task.detached(priority: .userInitiated) {
                     return UIImage(data: data)
                 }.value
-                
-                // 回到主线程更新 UI
                 await MainActor.run {
                     withAnimation(.easeIn(duration: 0.2)) {
                         self.decodedImage = image
@@ -88,6 +71,20 @@ struct CreditCardView: View {
             } else {
                 self.decodedImage = nil
             }
+        }
+    }
+}
+
+private struct CardFrameModifier: ViewModifier {
+    let displayWidth: CGFloat?
+    let displayHeight: CGFloat?
+
+    func body(content: Content) -> some View {
+        if let displayWidth {
+            content.frame(width: displayWidth, height: displayWidth / 1.586)
+        } else {
+            content.aspectRatio(1.586, contentMode: .fit)
+                .frame(height: displayHeight ?? 200)
         }
     }
 }

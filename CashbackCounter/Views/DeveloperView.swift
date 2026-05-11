@@ -10,7 +10,7 @@ import SwiftUI
 struct DeveloperView: View {
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section {
                     HStack(spacing: 16) {

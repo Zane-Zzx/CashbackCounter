@@ -34,32 +34,33 @@ struct FrankfurterLatestResponse: Decodable {
 struct CurrencyService {
 
     // --- 缓存配置 ---
-    private static let kRatesKey = "cached_exchange_rates" // 存汇率数据的 Key
-    private static let kDateKey = "last_fetch_date"        // 存上次更新时间的 Key
-    private static let kBaseKey = "last_rates_base"        // 存上次汇率基准币种
-    
+    private static let kRatesKey = "cached_exchange_rates"
+    private static let kDateKey = "last_fetch_date"
+    private static let kBaseKey = "last_rates_base"
+
+    private struct CachedRates: Codable {
+        let base: String
+        let rates: [String: Double]
+    }
+
     // --- 🚀 智能入口：获取汇率 ---
-    // View 层只调用这个方法，不需要关心内部逻辑
     static func getRates(base: String = "CNY") async -> [String: Double] {
         print(base)
-        // 1. 检查：今天是不是已经更新过了？并且基准币种一致？
         if
             let lastDate = UserDefaults.standard.object(forKey: kDateKey) as? Date,
             let lastBase = UserDefaults.standard.string(forKey: kBaseKey),
             lastBase == base,
             Calendar.current.isDateInToday(lastDate)
         {
-            // 如果最后更新时间是“今天”，并且基准币种一致，直接读缓存
             if let cachedRates = loadLocalRates() {
                 print("✅ 汇率无需更新，使用本地缓存 (\(base))")
-                return cachedRates
+                return cachedRates.rates
             }
         }
 
         print("🌍 正在联网更新汇率 (base: \(base))...")
         do {
             let rates = try await fetchRemoteRates(base: base)
-            // 下载成功后，立刻存入本地
             saveRatesLocally(rates, base: base)
             return rates
         } catch {
@@ -69,6 +70,26 @@ struct CurrencyService {
             }
             return [base: 1.0]
         }
+    }
+
+    /// 同步转换（仅用缓存，无缓存返回原值）
+    static func convertSync(_ amount: Double, from fromCurrency: String, to toCurrency: String) -> Double {
+        if fromCurrency == toCurrency { return amount }
+        guard let cached = loadLocalRates(),
+              cached.base.caseInsensitiveCompare(fromCurrency) == .orderedSame else { return amount }
+        let key = toCurrency.lowercased()
+        guard let rate = cached.rates[key] else { return amount }
+        return amount * rate
+    }
+
+    /// 将 amount 从 fromCurrency 转换为 toCurrency
+    static func convert(_ amount: Double, from fromCurrency: String, to toCurrency: String) async -> Double {
+        if fromCurrency == toCurrency { return amount }
+        let rates = await getRates(base: fromCurrency)
+        if let rate = rates[toCurrency.lowercased()] {
+            return amount * rate
+        }
+        return amount
     }
 
     // --- 内部方法：联网下载 (私有) ---
@@ -83,13 +104,11 @@ struct CurrencyService {
 
     // --- 内部方法：存入 UserDefaults ---
     private static func saveRatesLocally(_ rates: [String: Double], base: String) {
-        // 1. 存汇率 (字典自动转 Data)
-        if let data = try? JSONEncoder().encode(rates) {
+        let cached = CachedRates(base: base, rates: rates)
+        if let data = try? JSONEncoder().encode(cached) {
             UserDefaults.standard.set(data, forKey: kRatesKey)
         }
-        // 2. 存时间 (存当前时间)
         UserDefaults.standard.set(Date(), forKey: kDateKey)
-        // 3. 存当前基准币种
         UserDefaults.standard.set(base, forKey: kBaseKey)
     }
 
@@ -98,5 +117,5 @@ struct CurrencyService {
         guard let data = UserDefaults.standard.data(forKey: kRatesKey) else { return nil }
         return try? JSONDecoder().decode(CachedRates.self, from: data)
     }
-    
+
 }

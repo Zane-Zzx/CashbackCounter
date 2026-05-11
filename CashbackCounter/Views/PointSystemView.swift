@@ -22,7 +22,7 @@ struct PointSystemView: View {
         let summaries = pointSummaries
         let totalValue = totalEstimatedValue(for: summaries)
 
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Color(uiColor: .systemGroupedBackground)
                     .ignoresSafeArea()
@@ -590,7 +590,7 @@ private struct PointAdjustmentEntryView: View {
     @State private var date: Date = Date()
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Group {
                 if points.isEmpty {
                     ContentUnavailableView(
@@ -682,7 +682,7 @@ private struct PointRemovalEntryView: View {
     @State private var date: Date = Date()
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Group {
                 if points.isEmpty {
                     ContentUnavailableView(

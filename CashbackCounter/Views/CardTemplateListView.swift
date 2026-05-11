@@ -8,6 +8,12 @@
 import SwiftUI
 import SwiftData
 
+enum SheetType: Identifiable {
+    case template
+    case custom
+    var id: Int { hashValue }
+}
+
 struct CardTemplateListView: View {
     @Environment(\.modelContext) var context
     @Environment(\.dismiss) var dismiss
@@ -21,7 +27,7 @@ struct CardTemplateListView: View {
     @Binding var rootSheet: SheetType?
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List(templates) { item in
                 Button(action: {
                     // 👇 点击后，不直接保存，而是记录选了谁

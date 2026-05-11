@@ -11,7 +11,7 @@ struct PointLibraryView: View {
     @State private var showAddSheet = false
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 if points.isEmpty {
                     ContentUnavailableView(
@@ -92,7 +92,7 @@ struct PointEditorView: View {
     }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section(header: Text("基本信息")) {
                     TextField("银行", text: $bankName)

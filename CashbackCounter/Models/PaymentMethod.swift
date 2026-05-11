@@ -44,6 +44,13 @@ enum PaymentMethod: String, CaseIterable, Codable {
         }
     }
     
+    var isGeneral: Bool {
+        switch self {
+        case .applePay, .qrCode, .offline, .online: return true
+        case .pulse, .gba: return false
+        }
+    }
+
     // 计算属性：对应的颜色 (用于图表或标签背景)
     var color: Color {
         switch self {

@@ -30,13 +30,7 @@ struct SettingsView: View {
     
     // 获取数据库数据
     @Query var cards: [CreditCard]
-    @Query(
-        sort: [
-            SortDescriptor(\Transaction.date, order: .reverse),
-            SortDescriptor(\Transaction.merchant, order: .forward)
-        ]
-    )
-    var transactions: [Transaction]
+    @Query var points: [Point]
     
     // MARK: - Export State
     // 2. 修改：使用 item 形式的状态来控制 Sheet
@@ -119,20 +113,16 @@ struct SettingsView: View {
                         startExportProcess()
                     } label: {
                         HStack {
-                            Label("全部数据导出", systemImage: "square.and.arrow.up")
+                            Label("导出卡片与积分数据", systemImage: "square.and.arrow.up")
                             Spacer()
-                            
+
                             if isExporting {
                                 ProgressView()
                                     .padding(.leading, 5)
-                            } else {
-                                Text("导出卡片与账单")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
                             }
                         }
                     }
-                    .disabled(isExporting) // 导出过程中禁止重复点击
+                    .disabled(isExporting)
 
                     NavigationLink(destination: PrivacyPolicyView()) {
                         Label("隐私政策", systemImage: "hand.raised")
@@ -216,27 +206,53 @@ struct SettingsView: View {
         }
     }
     
-    /// 生成导出文件 (CSV + ZIP)
+    /// 生成导出文件 (CSV)
     private func generateExportItems() -> [Any] {
         var items: [Any] = []
-        
-        // A. 导出卡片 CSV
+
         if let cardCSV = cards.exportCSVFile() {
             items.append(cardCSV)
         }
-        
-        // B. 导出账单+收据 ZIP
-        if let backupZip = transactions.exportReceiptsZip() {
-            items.append(backupZip)
+
+        if !points.isEmpty, let pointsCSV = exportPointsCSV() {
+            items.append(pointsCSV)
         }
-        
+
         return items
+    }
+
+    private func exportPointsCSV() -> URL? {
+        let bom = "\u{FEFF}"
+        var csv = bom + "银行名称,积分名称,积分价值,币种代码\n"
+        for p in points {
+            let bank = p.bankName.replacingOccurrences(of: ",", with: "，")
+            let name = p.pointName.replacingOccurrences(of: ",", with: "，")
+            let value = String(format: "%.6f", p.pointValue)
+            let currency = p.valueCurrencyCode.currencyCode
+            csv += "\(bank),\(name),\(value),\(currency)\n"
+        }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        let fileName = "Points_Backup_\(formatter.string(from: Date())).csv"
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
+        do {
+            try csv.write(to: url, atomically: true, encoding: .utf8)
+            return url
+        } catch {
+            print("积分导出失败: \(error)")
+            return nil
+        }
     }
     
     private func clearAllData() {
+        // 先取消所有卡片的待发通知，防止孤立提醒
+        for card in cards {
+            NotificationManager.shared.cancelNotification(for: card)
+        }
         do {
             try deleteAll(of: Transaction.self)
             try deleteAll(of: CreditCard.self)
+            try deleteAll(of: Point.self)
             try context.save()
             print("✅ All data cleared")
         } catch {
@@ -294,7 +310,7 @@ private struct UpdateNotesView: View {
                 Text("当前版本：v\(appVersion)")
                     .foregroundColor(.secondary)
 
-                Text("• 更新前建议使用“全部数据导出”进行备份！！！（重要）。")
+                Text("• 更新前建议使用“导出卡片与积分数据”进行备份！！！（重要）。")
                 Text("• 更新后首次打开可能需要短暂时间完成数据整理。")
                 Text("• 若更新后出现应用闪退或异常的情况请删除应用，重新下载并导入之前备份的数据")
                 Text("• 若问题仍存在，请联系开发者协助排查。")
