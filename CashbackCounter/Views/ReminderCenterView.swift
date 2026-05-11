@@ -7,12 +7,12 @@ enum ReminderEventType: String {
     case annualFee = "年费到期"
     case prepaidExpiry = "卡片到期"
 
-    var localizedRawValue: String {
+    var localizedRawValue: LocalizedStringKey {
         switch self {
-        case .repayment: return String(localized: "还款日")
-        case .statement: return String(localized: "账单日")
-        case .annualFee: return String(localized: "年费到期")
-        case .prepaidExpiry: return String(localized: "卡片到期")
+        case .repayment: return "还款日"
+        case .statement: return "账单日"
+        case .annualFee: return "年费到期"
+        case .prepaidExpiry: return "卡片到期"
         }
     }
 
@@ -65,14 +65,14 @@ struct ReminderEvent: Identifiable {
         return .distantFuture
     }
 
-    var dateLabel: String {
+    var dateLabel: Text {
         if let date = date {
-            return date.formatted(.dateTime.year().month().day())
+            return Text(date, format: .dateTime.year().month().day())
         }
         if let day = dayOfMonth {
-            return "\(String(localized: "每月")) \(day) \(String(localized: "日"))"
+            return Text("每月 \(day) 日")
         }
-        return ""
+        return Text("")
     }
 }
 
@@ -159,7 +159,7 @@ struct ReminderCenterView: View {
                         eventRow(event)
                     }
                 } header: {
-                    Text(sectionHeader(for: date))
+                    sectionHeader(for: date)
                 }
             }
 
@@ -198,7 +198,7 @@ struct ReminderCenterView: View {
                             HStack(spacing: 8) {
                                 ForEach(cardEvents) { event in
                                     Label {
-                                        Text(event.dateLabel)
+                                        event.dateLabel
                                             .font(.caption2)
                                     } icon: {
                                         Image(systemName: event.type.icon)
@@ -237,9 +237,9 @@ struct ReminderCenterView: View {
                 .frame(width: 28)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text("\(event.card.bankName) \(event.card.type) \(event.type.localizedRawValue)")
+                Text(event.card.bankName) + Text(" ") + Text(event.card.type) + Text(" ") + Text(event.type.localizedRawValue)
                     .font(.subheadline)
-                Text(event.dateLabel)
+                event.dateLabel
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -267,10 +267,10 @@ struct ReminderCenterView: View {
                 .frame(width: 28)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text("\(event.card.bankName) \(event.card.type) \(event.type.localizedRawValue)")
+                Text(event.card.bankName) + Text(" ") + Text(event.card.type) + Text(" ") + Text(event.type.localizedRawValue)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
-                Text(event.dateLabel)
+                event.dateLabel
                     .font(.caption)
                     .foregroundStyle(.tertiary)
             }
@@ -290,12 +290,12 @@ struct ReminderCenterView: View {
         .padding(.vertical, 2)
     }
 
-    private func sectionHeader(for date: Date) -> String {
+    private func sectionHeader(for date: Date) -> Text {
         let cal = Calendar.current
         let now = cal.startOfDay(for: Date())
-        if date == now { return String(localized: "今天") }
-        if let tomorrow = cal.date(byAdding: .day, value: 1, to: now), date == tomorrow { return String(localized: "明天") }
-        return date.formatted(.dateTime.month().day())
+        if date == now { return Text("今天") }
+        if let tomorrow = cal.date(byAdding: .day, value: 1, to: now), date == tomorrow { return Text("明天") }
+        return Text(date, format: .dateTime.month().day())
     }
 
     private func toggleReminders(for card: CreditCard, on: Bool) {

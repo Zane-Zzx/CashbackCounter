@@ -41,11 +41,6 @@ struct DeveloperView: View {
                 }
 
                 Section("致谢") {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("GeekMr").font(.subheadline)
-                        Text("RayTracingON").font(.subheadline)
-                    }
-                    .padding(.vertical, 4)
                     Link(destination: URL(string: "https://github.com/raytracingon/cashbackcounter")!) {
                         Label("CashbackCounter 原项目", systemImage: "shippingbox")
                     }

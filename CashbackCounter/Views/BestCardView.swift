@@ -73,7 +73,7 @@ struct BestCardView: View {
             // 类别 chips
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
-                    ForEach(Category.allCases, id: \.self) { cat in
+                    ForEach(Category.uiCases, id: \.self) { cat in
                         Button { selectedCategory = cat } label: {
                             Label { Text(LocalizedStringKey(cat.displayName)) } icon: { Image(systemName: cat.iconName) }
                                 .font(.caption)
@@ -212,7 +212,7 @@ struct BestCardView: View {
                     .lineLimit(1)
                 HStack(spacing: 4) {
                     if !rec.card.endNum.isEmpty {
-                        Text("尾号\(rec.card.endNum)")
+                        Text(rec.card.endNum)
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     }

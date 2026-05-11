@@ -39,7 +39,6 @@ struct AddCardView: View {
     @State private var groceryRateStr: String = ""
     @State private var travelRateStr: String = ""
     @State private var digitalRateStr: String = ""
-    @State private var animeRateStr: String = ""
     @State private var otherRateStr: String = ""
 
     // 基础上限
@@ -51,7 +50,6 @@ struct AddCardView: View {
     @State private var groceryCapStr: String = ""
     @State private var travelCapStr: String = ""
     @State private var digitalCapStr: String = ""
-    @State private var animeCapStr: String = ""
     @State private var otherCapStr: String = ""
 
     // 还款日
@@ -115,7 +113,6 @@ struct AddCardView: View {
             if let rate = card.specialRates[.grocery] { _groceryRateStr = State(initialValue: String(rate * 100)) }
             if let rate = card.specialRates[.travel] { _travelRateStr = State(initialValue: String(rate * 100)) }
             if let rate = card.specialRates[.digital] { _digitalRateStr = State(initialValue: String(rate * 100)) }
-            if let rate = card.specialRates[.anime] { _animeRateStr = State(initialValue: String(rate * 100)) }
             if let rate = card.specialRates[.other] { _otherRateStr = State(initialValue: String(rate * 100)) }
 
             if card.localBaseCap > 0 { _localBaseCapStr = State(initialValue: String(format: "%.0f", card.localBaseCap)) }
@@ -125,7 +122,6 @@ struct AddCardView: View {
             if let cap = card.categoryCaps[.grocery], cap > 0 { _groceryCapStr = State(initialValue: String(format: "%.0f", cap)) }
             if let cap = card.categoryCaps[.travel], cap > 0 { _travelCapStr = State(initialValue: String(format: "%.0f", cap)) }
             if let cap = card.categoryCaps[.digital], cap > 0 { _digitalCapStr = State(initialValue: String(format: "%.0f", cap)) }
-            if let cap = card.categoryCaps[.anime], cap > 0 { _animeCapStr = State(initialValue: String(format: "%.0f", cap)) }
             if let cap = card.categoryCaps[.other], cap > 0 { _otherCapStr = State(initialValue: String(format: "%.0f", cap)) }
 
             let ratesForUI = card.paymentMethodRates.mapValues { $0 * 100}
@@ -179,7 +175,6 @@ struct AddCardView: View {
             if let cap = template.categoryCaps[.grocery], cap > 0 { _groceryCapStr = State(initialValue: String(format: "%.0f", cap)) }
             if let cap = template.categoryCaps[.travel], cap > 0 { _travelCapStr = State(initialValue: String(format: "%.0f", cap)) }
             if let cap = template.categoryCaps[.digital], cap > 0 { _digitalCapStr = State(initialValue: String(format: "%.0f", cap)) }
-            if let cap = template.categoryCaps[.anime], cap > 0 { _animeCapStr = State(initialValue: String(format: "%.0f", cap)) }
             if let cap = template.categoryCaps[.other], cap > 0 { _otherCapStr = State(initialValue: String(format: "%.0f", cap)) }
 
             _region = State(initialValue: template.region)
@@ -210,10 +205,6 @@ struct AddCardView: View {
             if let digital = template.specialRate[.digital] {
                 let s = String(format: "%.1f", digital).replacingOccurrences(of: ".0", with: "")
                 _digitalRateStr = State(initialValue: s)
-            }
-            if let anime = template.specialRate[.anime] {
-                let s = String(format: "%.1f", anime).replacingOccurrences(of: ".0", with: "")
-                _animeRateStr = State(initialValue: s)
             }
             if let other = template.specialRate[.other] {
                 let s = String(format: "%.1f", other).replacingOccurrences(of: ".0", with: "")
@@ -457,12 +448,11 @@ struct AddCardView: View {
                     // 5. 规则设置 - 类别
                     if cardKind.supportsFullRewards {
                         Section("类别加成 (额外叠加)") {
-                            CategoryInputRow(name: "餐饮", rate: $diningRateStr, cap: $diningCapStr, capUnit: rewardLabel)
-                            CategoryInputRow(name: "超市", rate: $groceryRateStr, cap: $groceryCapStr, capUnit: rewardLabel)
-                            CategoryInputRow(name: "出行", rate: $travelRateStr, cap: $travelCapStr, capUnit: rewardLabel)
-                            CategoryInputRow(name: "数码", rate: $digitalRateStr, cap: $digitalCapStr, capUnit: rewardLabel)
-                            CategoryInputRow(name: "二次元", rate: $animeRateStr, cap: $animeCapStr, capUnit: rewardLabel)
-                            CategoryInputRow(name: "其他", rate: $otherRateStr, cap: $otherCapStr, capUnit: rewardLabel)
+                            CategoryInputRow(name: "餐饮", rate: $diningRateStr, cap: $diningCapStr, capUnit: rewardLabel, isPoints: rewardType == .points)
+                            CategoryInputRow(name: "超市", rate: $groceryRateStr, cap: $groceryCapStr, capUnit: rewardLabel, isPoints: rewardType == .points)
+                            CategoryInputRow(name: "出行", rate: $travelRateStr, cap: $travelCapStr, capUnit: rewardLabel, isPoints: rewardType == .points)
+                            CategoryInputRow(name: "数码", rate: $digitalRateStr, cap: $digitalCapStr, capUnit: rewardLabel, isPoints: rewardType == .points)
+                            CategoryInputRow(name: "其他", rate: $otherRateStr, cap: $otherCapStr, capUnit: rewardLabel, isPoints: rewardType == .points)
                         }
                     }
 
@@ -627,7 +617,6 @@ struct AddCardView: View {
             if let rate = Double(groceryRateStr), rate > 0 { specialRates[.grocery] = rate / 100.0 }
             if let rate = Double(travelRateStr), rate > 0 { specialRates[.travel] = rate / 100.0 }
             if let rate = Double(digitalRateStr), rate > 0 { specialRates[.digital] = rate / 100.0 }
-            if let rate = Double(animeRateStr), rate > 0 { specialRates[.anime] = rate / 100.0 }
             if let rate = Double(otherRateStr), rate > 0 { specialRates[.other] = rate / 100.0 }
         }
 
@@ -640,7 +629,6 @@ struct AddCardView: View {
             if let cap = Double(groceryCapStr), cap > 0 { catCaps[.grocery] = cap }
             if let cap = Double(travelCapStr), cap > 0 { catCaps[.travel] = cap }
             if let cap = Double(digitalCapStr), cap > 0 { catCaps[.digital] = cap }
-            if let cap = Double(animeCapStr), cap > 0 { catCaps[.anime] = cap }
             if let cap = Double(otherCapStr), cap > 0 { catCaps[.other] = cap }
         }
 
@@ -732,45 +720,46 @@ struct AddCardView: View {
         onSaved?()
     }
 
-    private var rewardLabel: String {
-        rewardType == .points ? String(localized: "积分") : String(localized: "返现")
+    private var rewardLabel: LocalizedStringKey {
+        rewardType == .points ? "积分" : "返现"
     }
 
-    private var capPeriodTitle: String {
-        rewardType == .points ? String(localized: "积分上限周期") : String(localized: "返现上限周期")
+    private var capPeriodTitle: LocalizedStringKey {
+        rewardType == .points ? "积分上限周期" : "返现上限周期"
     }
 
-    private var baseSectionTitle: String {
-        rewardType == .points ? String(localized: "基础积分 (所有消费)") : String(localized: "基础返现 (所有消费)")
+    private var baseSectionTitle: LocalizedStringKey {
+        rewardType == .points ? "基础积分 (所有消费)" : "基础返现 (所有消费)"
     }
 
-    private var localRateTitle: String {
-        rewardType == .points ? String(localized: "本币积分率 (%)") : String(localized: "本币返现率 (%)")
+    private var localRateTitle: LocalizedStringKey {
+        rewardType == .points ? "本币积分率 (%)" : "本币返现率 (%)"
     }
 
-    private var foreignRateTitle: String {
-        rewardType == .points ? String(localized: "外币积分率 (%)") : String(localized: "外币返现率 (%)")
+    private var foreignRateTitle: LocalizedStringKey {
+        rewardType == .points ? "外币积分率 (%)" : "外币返现率 (%)"
     }
 
-    private var localCapTitle: String {
+    private var localCapTitle: LocalizedStringKey {
         if rewardType == .points {
-            return capPeriod == .monthly ? String(localized: "本币月积分上限") : String(localized: "本币年积分上限")
+            return capPeriod == .monthly ? "本币月积分上限" : "本币年积分上限"
         }
-        return capPeriod == .monthly ? String(localized: "本币月上限") : String(localized: "本币年上限")
+        return capPeriod == .monthly ? "本币月上限" : "本币年上限"
     }
 
-    private var foreignCapTitle: String {
+    private var foreignCapTitle: LocalizedStringKey {
         if rewardType == .points {
-            return capPeriod == .monthly ? String(localized: "外币月积分上限") : String(localized: "外币年积分上限")
+            return capPeriod == .monthly ? "外币月积分上限" : "外币年积分上限"
         }
-        return capPeriod == .monthly ? String(localized: "外币月上限") : String(localized: "外币年上限")
+        return capPeriod == .monthly ? "外币月上限" : "外币年上限"
     }
 
     struct CategoryInputRow: View {
         let name: String
         @Binding var rate: String
         @Binding var cap: String
-        let capUnit: String
+        let capUnit: LocalizedStringKey
+        let isPoints: Bool
 
         var body: some View {
             VStack(spacing: 8) {
@@ -788,7 +777,7 @@ struct AddCardView: View {
                         .background(Color(uiColor: .secondarySystemBackground))
                         .cornerRadius(5)
 
-                    Text(capUnit == String(localized: "积分") ? "积分上限" : "上限")
+                    Text(isPoints ? "积分上限" : "上限")
                         .font(.caption).foregroundColor(.gray)
                     TextField("无", text: $cap)
                         .keyboardType(.numberPad)

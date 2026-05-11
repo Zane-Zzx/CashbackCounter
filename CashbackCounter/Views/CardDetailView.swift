@@ -69,7 +69,6 @@ struct CardDetailView: View {
                 row("卡类型", localizedValue: LocalizedStringKey(card.cardKind.displayName))
                 row("银行", value: card.bankName)
                 row("卡种", value: card.type)
-                row("尾号", value: "**** \(card.endNum)")
                 if !card.cardNetwork.isEmpty {
                     row("卡组织", localizedValue: LocalizedStringKey(card.cardNetwork))
                 }

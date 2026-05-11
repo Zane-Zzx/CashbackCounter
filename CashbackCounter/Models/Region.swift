@@ -6,9 +6,7 @@
 //
 
 import Foundation
-import FoundationModels
 
-@Generable
 enum Region: String, CaseIterable, Codable {
     case cn = "中国大陆"
     case hk = "香港"

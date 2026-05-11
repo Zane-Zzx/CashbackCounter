@@ -315,7 +315,7 @@ struct CardStackHomeView: View {
                 }
                 Spacer()
                 if !card.endNum.isEmpty {
-                    Text("尾号") + Text(card.endNum)
+                    Text(card.endNum)
                         .foregroundStyle(.secondary)
                 }
             }

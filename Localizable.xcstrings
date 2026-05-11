@@ -1021,7 +1021,6 @@
         }
       }
     },
-    "Junhao Huang": {},
     "Mastercard": {
       "localizations": {
         "en": {
@@ -7632,6 +7631,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "預計返現"
+          }
+        }
+      }
+    },
+    "全部": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部"
           }
         }
       }

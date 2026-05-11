@@ -5,11 +5,9 @@
 //  Created by CashbackCounter Assistant.
 //
 
-import FoundationModels
 import Foundation
 import SwiftUI
 
-@Generable
 enum PaymentMethod: String, CaseIterable, Codable {
     // 定义所有的消费方式 (Key)
     case applePay       // Apple Pay

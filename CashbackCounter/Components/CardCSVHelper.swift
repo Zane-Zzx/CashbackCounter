@@ -6,8 +6,8 @@ import SwiftData
 
 struct CardCSVHelper {
 
-    // Header includes anime category + extended fields
-    static let header = "银行名称,卡种名称,尾号,颜色1(Hex),颜色2(Hex),地区(Code),本币返现率(%),外币返现率(%),本币上限,外币上限,餐饮加成(%),超市加成(%),出行加成(%),数码加成(%),二次元加成(%),其他加成(%),餐饮上限,超市上限,出行上限,数码上限,二次元上限,其他上限,上限周期(monthly/yearly),还款日,支付方式加成(代码:rate),支付方式上限(代码:cap),奖励类型,积分名称,积分银行,积分价值,积分币种,卡类型(cardKind),卡组织,账单日,年费,年费减免,标签,备注,余额,权益到期日,卡片到期日,卡面来源"
+    // Header includes extended fields
+    static let header = "银行名称,卡种名称,尾号,颜色1(Hex),颜色2(Hex),地区(Code),本币返现率(%),外币返现率(%),本币上限,外币上限,餐饮加成(%),超市加成(%),出行加成(%),数码加成(%),其他加成(%),餐饮上限,超市上限,出行上限,数码上限,其他上限,上限周期(monthly/yearly),还款日,支付方式加成(代码:rate),支付方式上限(代码:cap),奖励类型,积分名称,积分银行,积分价值,积分币种,卡类型(cardKind),卡组织,账单日,年费,年费减免,标签,备注,余额,权益到期日,卡片到期日,卡面来源"
 
     // Points CSV header
     static let pointsHeader = "银行名称,积分名称,积分价值,币种代码"
@@ -40,14 +40,12 @@ struct CardCSVHelper {
             let groceryRate = fmtRate(card.specialRates[.grocery])
             let travelRate = fmtRate(card.specialRates[.travel])
             let digitalRate = fmtRate(card.specialRates[.digital])
-            let animeRate = fmtRate(card.specialRates[.anime])
             let otherRate = fmtRate(card.specialRates[.other])
 
             let diningCap = fmtCap(card.categoryCaps[.dining])
             let groceryCap = fmtCap(card.categoryCaps[.grocery])
             let travelCap = fmtCap(card.categoryCaps[.travel])
             let digitalCap = fmtCap(card.categoryCaps[.digital])
-            let animeCap = fmtCap(card.categoryCaps[.anime])
             let otherCap = fmtCap(card.categoryCaps[.other])
 
             let rDay = card.repaymentDay > 0 ? String(card.repaymentDay) : ""
@@ -84,7 +82,7 @@ struct CardCSVHelper {
             let cardExpiryStr = card.cardExpiryDate.map { isoFormatter.string(from: $0) } ?? ""
             let cardFaceSourceStr = card.cardFaceSource.rawValue
 
-            let row = "\(bank),\(type),\(endNum),\(c1),\(c2),\(region),\(defRate),\(forRate),\(locCap),\(forCap),\(diningRate),\(groceryRate),\(travelRate),\(digitalRate),\(animeRate),\(otherRate),\(diningCap),\(groceryCap),\(travelCap),\(digitalCap),\(animeCap),\(otherCap),\(capPeriodStr),\(rDay),\(quoteField(pmRatesStr)),\(quoteField(pmCapsStr)),\(rewardTypeStr),\(pointName),\(pointBank),\(pointValue),\(pointCurrency),\(cardKindStr),\(cardNetworkStr),\(statementDayStr),\(annualFeeStr),\(quoteField(annualFeeWaiverStr)),\(quoteField(tagsStr)),\(quoteField(notesStr)),\(balanceStr),\(benefitExpiryStr),\(cardExpiryStr),\(cardFaceSourceStr)\n"
+            let row = "\(bank),\(type),\(endNum),\(c1),\(c2),\(region),\(defRate),\(forRate),\(locCap),\(forCap),\(diningRate),\(groceryRate),\(travelRate),\(digitalRate),\(otherRate),\(diningCap),\(groceryCap),\(travelCap),\(digitalCap),\(otherCap),\(capPeriodStr),\(rDay),\(quoteField(pmRatesStr)),\(quoteField(pmCapsStr)),\(rewardTypeStr),\(pointName),\(pointBank),\(pointValue),\(pointCurrency),\(cardKindStr),\(cardNetworkStr),\(statementDayStr),\(annualFeeStr),\(quoteField(annualFeeWaiverStr)),\(quoteField(tagsStr)),\(quoteField(notesStr)),\(balanceStr),\(benefitExpiryStr),\(cardExpiryStr),\(cardFaceSourceStr)\n"
             csvString.append(row)
         }
         return csvString
@@ -143,11 +141,11 @@ struct CardCSVHelper {
 
             let rateColumns: [(Category, String)] = [
                 (.dining, "餐饮加成(%)"), (.grocery, "超市加成(%)"), (.travel, "出行加成(%)"),
-                (.digital, "数码加成(%)"), (.anime, "二次元加成(%)"), (.other, "其他加成(%)")
+                (.digital, "数码加成(%)"), (.other, "其他加成(%)")
             ]
             let capColumns: [(Category, String)] = [
                 (.dining, "餐饮上限"), (.grocery, "超市上限"), (.travel, "出行上限"),
-                (.digital, "数码上限"), (.anime, "二次元上限"), (.other, "其他上限")
+                (.digital, "数码上限"), (.other, "其他上限")
             ]
 
             for (cat, colName) in rateColumns {
@@ -157,6 +155,18 @@ struct CardCSVHelper {
             for (cat, colName) in capColumns {
                 let val = col(columns, colMap, colName, default: "")
                 if let c = Double(val), c > 0 { categoryCaps[cat] = c }
+            }
+
+            // 兼容旧 CSV：将二次元列合并到 .other
+            let animeRateVal = col(columns, colMap, "二次元加成(%)", default: "")
+            if let r = Double(animeRateVal), r > 0 {
+                let existing = specialRates[.other] ?? 0
+                specialRates[.other] = max(existing, r / 100.0)
+            }
+            let animeCapVal = col(columns, colMap, "二次元上限", default: "")
+            if let c = Double(animeCapVal), c > 0 {
+                let existing = categoryCaps[.other] ?? 0
+                categoryCaps[.other] = max(existing, c)
             }
 
             let capPeriod: CapPeriod
