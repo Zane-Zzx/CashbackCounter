@@ -41,7 +41,7 @@ struct PointLibraryView: View {
                     }
                 }
             }
-            .navigationTitle("积分库")
+            .navigationTitle(Text("积分库"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -115,7 +115,7 @@ struct PointEditorView: View {
                     }
                 }
             }
-            .navigationTitle(pointToEdit == nil ? "新增积分计划" : "编辑积分计划")
+            .navigationTitle(pointToEdit == nil ? Text("新增积分计划") : Text("编辑积分计划"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

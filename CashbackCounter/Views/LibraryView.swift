@@ -21,7 +21,7 @@ struct LibraryView: View {
                     }
                 }
             }
-            .navigationTitle("规则库")
+            .navigationTitle(Text("规则库"))
         }
     }
 }

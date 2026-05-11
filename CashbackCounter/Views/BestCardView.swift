@@ -49,7 +49,7 @@ struct BestCardView: View {
                 }
                 .padding()
             }
-            .navigationTitle("推荐")
+            .navigationTitle(Text("推荐"))
             .onAppear {
                 if !visibleRegions.contains(selectedRegion) {
                     selectedRegion = visibleRegions.first ?? .cn

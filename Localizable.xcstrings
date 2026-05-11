@@ -18,7 +18,6 @@
       }
     },
     " ": {
-      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -132,6 +131,7 @@
       }
     },
     "%@ %@ %@": {
+      "extractionState": "stale",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
@@ -981,7 +981,6 @@
         }
       }
     },
-    "GeekMr": {},
     "iCloud 同步 (功能正在开发中)": {
       "extractionState": "stale",
       "localizations": {
@@ -1312,7 +1311,6 @@
         }
       }
     },
-    "RayTracingON": {},
     "region.cn": {
       "extractionState": "stale",
       "localizations": {
@@ -2390,6 +2388,29 @@
           "stringUnit": {
             "state": "translated",
             "value": "全年"
+          }
+        }
+      }
+    },
+    "全部": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部"
           }
         }
       }
@@ -3669,6 +3690,7 @@
       }
     },
     "尾号": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3701,6 +3723,7 @@
       }
     },
     "尾号%@": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -5316,6 +5339,7 @@
         }
       }
     },
+    "每月 %lld 日": {},
     "每月 %lld 日还款": {
       "localizations": {
         "en": {
@@ -5442,7 +5466,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Spending Scenario"
+            "value": "Scenario"
           }
         }
       }
@@ -7631,28 +7655,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "預計返現"
-          }
-        }
-      }
-    },
-    "全部": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "All"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "全部"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "全部"
           }
         }
       }

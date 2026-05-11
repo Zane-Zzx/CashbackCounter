@@ -163,7 +163,7 @@ struct SettingsView: View {
                 }
             }
         }
-        .navigationTitle("设置")
+        .navigationTitle(Text("设置"))
         .listStyle(.insetGrouped)
     }
     
@@ -262,7 +262,7 @@ private struct PrivacyPolicyView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
         }
-        .navigationTitle("隐私政策")
+        .navigationTitle(Text("隐私政策"))
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -288,7 +288,7 @@ private struct UpdateNotesView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
         }
-        .navigationTitle("更新注意事项")
+        .navigationTitle(Text("更新注意事项"))
         .navigationBarTitleDisplayMode(.inline)
     }
 }

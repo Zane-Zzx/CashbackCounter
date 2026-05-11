@@ -38,7 +38,7 @@ struct PointSystemView: View {
                     .padding(.bottom, 24)
                 }
             }
-            .navigationTitle("积分")
+            .navigationTitle(Text("积分"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -380,7 +380,7 @@ private struct PointDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("积分明细")
+        .navigationTitle(Text("积分明细"))
         .navigationBarTitleDisplayMode(.inline)
     }
 
@@ -625,7 +625,7 @@ private struct PointAdjustmentEntryView: View {
                     }
                 }
             }
-            .navigationTitle("手动添加积分")
+            .navigationTitle(Text("手动添加积分"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -717,7 +717,7 @@ private struct PointRemovalEntryView: View {
                     }
                 }
             }
-            .navigationTitle("手动移除积分")
+            .navigationTitle(Text("手动移除积分"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

@@ -84,7 +84,7 @@ struct CardTemplateListView: View {
                     }
                 }
             }
-            .navigationTitle("选择卡片模板")
+            .navigationTitle(Text("选择卡片模板"))
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("取消") { dismiss() }

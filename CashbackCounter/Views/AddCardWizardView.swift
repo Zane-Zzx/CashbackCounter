@@ -78,7 +78,7 @@ struct AddCardWizardView: View {
                 }
                 navigationBar
             }
-            .navigationTitle("添加卡片")
+            .navigationTitle(Text("添加卡片"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

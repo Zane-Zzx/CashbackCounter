@@ -141,7 +141,7 @@ struct ReminderCenterView: View {
                     listContent
                 }
             }
-            .navigationTitle("提醒")
+            .navigationTitle(Text("提醒"))
         }
     }
 

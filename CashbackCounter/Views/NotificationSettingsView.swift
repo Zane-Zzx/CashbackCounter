@@ -50,7 +50,7 @@ struct NotificationSettingsView: View {
                 }
             }
         }
-        .navigationTitle("还款提醒")
+        .navigationTitle(Text("还款提醒"))
         .onAppear {
             // 进页面时检查一下权限
             NotificationManager.shared.requestAuthorization()
