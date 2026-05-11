@@ -91,10 +91,10 @@ struct CardTemplateListView: View {
                     }
                 }
             }
-            .navigationTitle("选择卡片模板")
+            .navigationTitle(String(localized: "选择卡片模板"))
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("取消") { dismiss() }
+                    Button(String(localized: "取消")) { dismiss() }
                 }
             }
             // 👇 2. 核心跳转逻辑

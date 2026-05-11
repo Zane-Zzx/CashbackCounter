@@ -183,10 +183,10 @@ struct AddCardWizardView: View {
                         Text(String(localized: "未选择")).tag("")
                         Text("Visa").tag("Visa")
                         Text("Mastercard").tag("Mastercard")
-                        Text(String(localized: "银联")).tag("银联")
+                        Text(String(localized: "银联")).tag("UnionPay")
                         Text("Amex").tag("Amex")
                         Text("JCB").tag("JCB")
-                        Text(String(localized: "其他")).tag("其他")
+                        Text(String(localized: "其他")).tag("Other")
                     }
                     Picker(String(localized: "发卡地区"), selection: $draft.region) {
                         ForEach(Region.allCases, id: \.self) { r in
@@ -264,7 +264,7 @@ struct AddCardWizardView: View {
             GroupBox(String(localized: "基础费率")) {
                 VStack(spacing: 10) {
                     HStack {
-                        Text(String(localized: "基础返现率 (%)"))
+                        Text(draft.rewardType == .points ? String(localized: "基础积分率 (%)") : String(localized: "基础返现率 (%)"))
                         Spacer()
                         TextField("1.0", value: $draft.defaultRate, format: .number)
                             .keyboardType(.decimalPad)
@@ -272,7 +272,7 @@ struct AddCardWizardView: View {
                             .frame(width: 60)
                     }
                     HStack {
-                        Text(String(localized: "外币返现率 (%)"))
+                        Text(draft.rewardType == .points ? String(localized: "外币积分率 (%)") : String(localized: "外币返现率 (%)"))
                         Spacer()
                         TextField(String(localized: "同本币"), value: $draft.foreignRate, format: .number)
                             .keyboardType(.decimalPad)

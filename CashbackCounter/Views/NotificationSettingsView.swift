@@ -6,9 +6,9 @@ struct NotificationSettingsView: View {
     
     var body: some View {
         List {
-            Section(footer: Text("开启后，将在每月还款日上午 9:00 推送提醒。")) {
+            Section(footer: Text(String(localized: "开启后，将在每月还款日上午 9:00 推送提醒。"))) {
                 if cards.isEmpty {
-                    Text("暂无卡片，请先添加信用卡")
+                    Text(String(localized: "暂无卡片，请先添加信用卡"))
                         .foregroundColor(.secondary)
                 }
                 
@@ -19,11 +19,11 @@ struct NotificationSettingsView: View {
                             Text("\(card.bankName) \(card.type)")
                                 .font(.headline)
                             if card.repaymentDay > 0 {
-                                Text("每月 \(card.repaymentDay) 日还款")
+                                Text(String(localized: "每月 \(card.repaymentDay) 日还款"))
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             } else {
-                                Text("未设置还款日")
+                                Text(String(localized: "未设置还款日"))
                                     .font(.caption)
                                     .foregroundColor(.orange)
                             }
@@ -50,7 +50,7 @@ struct NotificationSettingsView: View {
                 }
             }
         }
-        .navigationTitle("还款提醒")
+        .navigationTitle(String(localized: "还款提醒"))
         .onAppear {
             // 进页面时检查一下权限
             NotificationManager.shared.requestAuthorization()

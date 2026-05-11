@@ -311,10 +311,10 @@ struct AddCardView: View {
                         Text(String(localized: "未选择")).tag("")
                         Text("Visa").tag("Visa")
                         Text("Mastercard").tag("Mastercard")
-                        Text(String(localized: "银联")).tag("银联")
+                        Text(String(localized: "银联")).tag("UnionPay")
                         Text("Amex").tag("Amex")
                         Text("JCB").tag("JCB")
-                        Text(String(localized: "其他")).tag("其他")
+                        Text(String(localized: "其他")).tag("Other")
                     }
 
                     if cardKind.supportsBillingCycle {

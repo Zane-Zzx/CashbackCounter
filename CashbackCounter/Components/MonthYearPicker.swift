@@ -33,12 +33,12 @@ struct MonthYearPicker: View {
         VStack {
             // 顶部工具栏
             HStack {
-                Button("取消") { dismiss() }
+                Button(String(localized: "取消")) { dismiss() }
                     .foregroundColor(.secondary)
                 Spacer()
-                Text("选择时间").font(.headline)
+                Text(String(localized: "选择时间")).font(.headline)
                 Spacer()
-                Button("确定") {
+                Button(String(localized: "确定")) {
                     saveSelection()
                     dismiss()
                 }
@@ -52,7 +52,7 @@ struct MonthYearPicker: View {
                 // 年份
                 Picker("Year", selection: $selectedYear) {
                     ForEach(years, id: \.self) { year in
-                        Text(String(format: "%d年", year)).tag(year)
+                        Text(String(localized: "\(year)年")).tag(year)
                     }
                 }
                 .pickerStyle(.wheel)
@@ -62,9 +62,9 @@ struct MonthYearPicker: View {
                 Picker("Month", selection: $selectedMonth) {
                     ForEach(months, id: \.self) { month in
                         if month == 0 {
-                            Text("全年").tag(0) // 👈 特殊选项
+                            Text(String(localized: "全年")).tag(0)
                         } else {
-                            Text(String(format: "%d月", month)).tag(month)
+                            Text(String(localized: "\(month)月")).tag(month)
                         }
                     }
                 }

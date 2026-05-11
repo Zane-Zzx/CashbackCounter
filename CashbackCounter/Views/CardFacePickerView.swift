@@ -13,7 +13,7 @@ struct CardFacePickerView: View {
     var body: some View {
         VStack(spacing: 16) {
             CreditCardView(
-                bankName: "预览",
+                bankName: String(localized: "预览"),
                 type: "",
                 endNum: "8888",
                 colors: [color1, color2],
@@ -23,13 +23,13 @@ struct CardFacePickerView: View {
             .padding(.bottom, 16)
 
             HStack(spacing: 12) {
-                faceButton(title: "拍照", icon: "camera.fill") {
+                faceButton(title: String(localized: "拍照"), icon: "camera.fill") {
                     showCamera = true
                 }
-                faceButton(title: "相册", icon: "photo.on.rectangle") {
+                faceButton(title: String(localized: "相册"), icon: "photo.on.rectangle") {
                     showImagePicker = true
                 }
-                faceButton(title: "渐变", icon: "paintpalette.fill") {
+                faceButton(title: String(localized: "渐变"), icon: "paintpalette.fill") {
                     cardFaceSource = .gradient
                     cardImageData = nil
                 }
@@ -37,8 +37,8 @@ struct CardFacePickerView: View {
 
             if cardFaceSource == .gradient {
                 VStack(spacing: 8) {
-                    ColorPicker("渐变色 1", selection: $color1)
-                    ColorPicker("渐变色 2", selection: $color2)
+                    ColorPicker(String(localized: "渐变色 1"), selection: $color1)
+                    ColorPicker(String(localized: "渐变色 2"), selection: $color2)
                 }
                 .padding(.horizontal)
             }

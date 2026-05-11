@@ -68,7 +68,7 @@ struct SettingsView: View {
                             .font(.headline)
                             .fontWeight(.bold)
                         
-                        Text(String(localized: "Version %@", defaultValue: "Version \(appVersion)"))
+                        Text("Version \(appVersion)")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -134,7 +134,7 @@ struct SettingsView: View {
                     HStack {
                         Label(String(localized: "版本"), systemImage: "info.circle")
                         Spacer()
-                        Text(String(localized: "v%@", defaultValue: "v\(appVersion)"))
+                        Text("v\(appVersion)")
                             .foregroundColor(.secondary)
                     }
 
@@ -307,7 +307,7 @@ private struct UpdateNotesView: View {
                     .font(.title2.weight(.semibold))
                     .padding(.bottom, 4)
 
-                Text(String(localized: "当前版本：v\(appVersion)"))
+                Text("\(String(localized: "当前版本："))v\(appVersion)")
                     .foregroundColor(.secondary)
 
                 Text(String(localized: "• 更新前建议使用\u{201C}导出卡片与积分数据\u{201D}进行备份！！！（重要）。"))

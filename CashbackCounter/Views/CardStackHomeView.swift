@@ -310,7 +310,7 @@ struct CardStackHomeView: View {
                     .font(.subheadline)
                 if !card.cardNetwork.isEmpty {
                     Text("·")
-                    Text(card.cardNetwork)
+                    Text(String(localized: LocalizedStringResource(stringLiteral: card.cardNetwork)))
                 }
                 Spacer()
                 if !card.endNum.isEmpty {

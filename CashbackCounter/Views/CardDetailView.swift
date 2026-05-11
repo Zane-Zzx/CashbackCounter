@@ -71,7 +71,7 @@ struct CardDetailView: View {
                 row(String(localized: "卡种"), value: card.type)
                 row(String(localized: "尾号"), value: "**** \(card.endNum)")
                 if !card.cardNetwork.isEmpty {
-                    row(String(localized: "卡组织"), value: card.cardNetwork)
+                    row(String(localized: "卡组织"), value: String(localized: LocalizedStringResource(stringLiteral: card.cardNetwork)))
                 }
                 row(String(localized: "发卡地区"), value: "\(card.issueRegion.icon) \(card.issueRegion.displayName)")
             }
@@ -175,7 +175,7 @@ struct CardDetailView: View {
                                 .foregroundColor(.green)
                         }
                         if let cap = card.categoryCaps[cat], cap > 0 {
-                            Text("\(String(localized: "上限: "))\(String(format: "%.0f", cap))")
+                            Text("\(String(localized: "上限:"))\(String(format: "%.0f", cap))")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -194,7 +194,7 @@ struct CardDetailView: View {
                                 .foregroundColor(.green)
                         }
                         if let cap = card.paymentCaps[method], cap > 0 {
-                            Text("\(String(localized: "上限: "))\(String(format: "%.0f", cap))")
+                            Text("\(String(localized: "上限:"))\(String(format: "%.0f", cap))")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }

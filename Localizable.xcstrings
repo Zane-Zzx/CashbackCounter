@@ -162,8 +162,17 @@
         }
       }
     },
+    "%@ %lld%@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ %2$lld%3$@"
+          }
+        }
+      }
+    },
     "%@%@": {
-      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -224,7 +233,18 @@
         }
       }
     },
+    "%lld %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$lld %2$@"
+          }
+        }
+      }
+    },
     "%lld 张卡片": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -509,8 +529,110 @@
         }
       }
     },
-    "Amex": {},
+    "Amex": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amex"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amex"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amex"
+          }
+        }
+      }
+    },
+    "card.kind.atm": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ATM Card"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提款卡"
+          }
+        }
+      }
+    },
+    "card.kind.credit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Credit Card"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "信用卡"
+          }
+        }
+      }
+    },
+    "card.kind.debit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Debit Card"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "储蓄卡"
+          }
+        }
+      }
+    },
+    "card.kind.prepaid": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prepaid Card"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预付卡"
+          }
+        }
+      }
+    },
+    "CardPick 仓库": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CardPick Repository"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CardPick 仓库"
+          }
+        }
+      }
+    },
     "Cashback Counter": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -533,6 +655,7 @@
       }
     },
     "Cashback Counter 仓库": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -544,6 +667,119 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cashback Counter 倉庫"
+          }
+        }
+      }
+    },
+    "category.anime": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anime & Games"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "二次元"
+          }
+        }
+      }
+    },
+    "category.digital": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Electronics"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "数码产品"
+          }
+        }
+      }
+    },
+    "category.dining": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dining"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "餐饮美食"
+          }
+        }
+      }
+    },
+    "category.grocery": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grocery"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "超市便利"
+          }
+        }
+      }
+    },
+    "category.other": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他消费"
+          }
+        }
+      }
+    },
+    "category.travel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Travel"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "交通出行"
+          }
+        }
+      }
+    },
+    "CFBundleDisplayName": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CardPick"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卡择"
           }
         }
       }
@@ -587,8 +823,72 @@
         }
       }
     },
-    "JCB": {},
-    "Mastercard": {},
+    "JCB": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "JCB"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "JCB"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "JCB"
+          }
+        }
+      }
+    },
+    "Mastercard": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mastercard"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mastercard"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mastercard"
+          }
+        }
+      }
+    },
+    "Other": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他"
+          }
+        }
+      }
+    },
     "Matched: %lld items": {
       "extractionState": "stale",
       "localizations": {
@@ -681,6 +981,7 @@
       }
     },
     "Mr.": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -742,7 +1043,248 @@
         }
       }
     },
+    "payment.method.gba": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CITIC GBA Card Eligible Spending"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "信银gba信用卡的合资格消费"
+          }
+        }
+      }
+    },
+    "payment.method.offline": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Offline"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "线下消费"
+          }
+        }
+      }
+    },
+    "payment.method.online": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Online"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "线上消费"
+          }
+        }
+      }
+    },
+    "payment.method.pulse": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pulse Card Eligible Spending"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pulse信用卡的合资格消费"
+          }
+        }
+      }
+    },
+    "region.cn": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mainland China"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中国大陆"
+          }
+        }
+      }
+    },
+    "region.hk": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hong Kong"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "香港"
+          }
+        }
+      }
+    },
+    "region.jp": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Japan"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日本"
+          }
+        }
+      }
+    },
+    "region.mo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Macau"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "澳门"
+          }
+        }
+      }
+    },
+    "region.nz": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New Zealand"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新西兰"
+          }
+        }
+      }
+    },
+    "region.other": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "European Union"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "欧盟"
+          }
+        }
+      }
+    },
+    "region.tw": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taiwan"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "台湾"
+          }
+        }
+      }
+    },
+    "region.uk": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "United Kingdom"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "英国"
+          }
+        }
+      }
+    },
+    "region.us": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "United States"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "美国"
+          }
+        }
+      }
+    },
+    "reward.type.cashback": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cashback"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "返现"
+          }
+        }
+      }
+    },
+    "reward.type.points": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Points"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "积分"
+          }
+        }
+      }
+    },
     "RTXON": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -871,8 +1413,30 @@
         }
       }
     },
-    "Visa": {},
+    "Visa": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Visa"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Visa"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Visa"
+          }
+        }
+      }
+    },
     "xunzihao": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -910,6 +1474,7 @@
         }
       }
     },
+    "Zane": {},
     "上一步": {
       "localizations": {
         "en": {
@@ -1009,7 +1574,9 @@
         }
       }
     },
+    "上限: ": {},
     "上限: %@": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -1083,6 +1650,7 @@
         }
       }
     },
+    "二次元": {},
     "交易内容": {
       "extractionState": "stale",
       "localizations": {
@@ -1163,6 +1731,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "人民幣 (CNY)"
+          }
+        }
+      }
+    },
+    "今天": {},
+    "今天是这张卡的账单日，请查看账单明细。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today is this card's statement day. Please check your statement."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今天是这张卡的账单日，请查看账单明细。"
+          }
+        }
+      }
+    },
+    "今天是这张卡的还款日，别忘了处理账单哦！": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today is this card's payment day. Don't forget to pay!"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今天是这张卡的还款日，别忘了处理账单哦！"
           }
         }
       }
@@ -1283,6 +1884,7 @@
         }
       }
     },
+    "余额": {},
     "保存": {
       "localizations": {
         "en": {
@@ -1452,6 +2054,7 @@
         }
       }
     },
+    "全部": {},
     "全部种类": {
       "extractionState": "stale",
       "localizations": {
@@ -1470,6 +2073,7 @@
       }
     },
     "关于 Cashback Counter": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -1491,6 +2095,22 @@
         }
       }
     },
+    "关于 卡择": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About CardPick"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关于 卡择"
+          }
+        }
+      }
+    },
     "关联交易": {
       "extractionState": "stale",
       "localizations": {
@@ -1508,6 +2128,7 @@
         }
       }
     },
+    "关键日期": {},
     "关闭": {
       "localizations": {
         "en": {
@@ -1579,7 +2200,26 @@
         }
       }
     },
+    "减免:": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waiver:"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "减免:"
+          }
+        }
+      }
+    },
+    "减免: ": {},
     "减免: %@": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -1589,6 +2229,7 @@
         }
       }
     },
+    "减免条件": {},
     "凭证": {
       "extractionState": "stale",
       "localizations": {
@@ -1606,6 +2247,7 @@
         }
       }
     },
+    "出行": {},
     "删除": {
       "localizations": {
         "en": {
@@ -1755,12 +2397,46 @@
         }
       }
     },
+    "卡择": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CardPick"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卡择"
+          }
+        }
+      }
+    },
+    "卡片": {},
     "卡片信息": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Card Info"
+          }
+        }
+      }
+    },
+    "卡片到期": {},
+    "卡片到期提醒": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Card Expiry Reminder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卡片到期提醒"
           }
         }
       }
@@ -1785,6 +2461,7 @@
         }
       }
     },
+    "卡种": {},
     "卡种 (如: 运通白金)": {
       "localizations": {
         "en": {
@@ -1948,6 +2625,22 @@
         }
       }
     },
+    "基于 CashbackCounter (Junhao Huang) 开发": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Based on CashbackCounter by Junhao Huang"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "基于 CashbackCounter (Junhao Huang) 开发"
+          }
+        }
+      }
+    },
     "基本信息": {
       "localizations": {
         "en": {
@@ -1971,7 +2664,6 @@
       }
     },
     "基础积分 (所有消费)": {
-      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -2004,7 +2696,6 @@
       }
     },
     "基础返现 (所有消费)": {
-      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -2031,7 +2722,29 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Base Rate (%)"
+            "value": "Base Cashback Rate (%)"
+          }
+        }
+      }
+    },
+    "基础积分率 (%)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Base Points Rate (%)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "基础积分率 (%)"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "基礎積分率 (%)"
           }
         }
       }
@@ -2046,7 +2759,9 @@
         }
       }
     },
+    "外币": {},
     "外币%@": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -2073,8 +2788,9 @@
         }
       }
     },
+    "外币上限": {},
+    "外币年上限": {},
     "外币年积分上限": {
-      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -2096,8 +2812,8 @@
         }
       }
     },
+    "外币月上限": {},
     "外币月积分上限": {
-      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -2120,7 +2836,6 @@
       }
     },
     "外币积分率 (%)": {
-      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -2281,6 +2996,8 @@
         }
       }
     },
+    "导入失败：无法识别的 CSV 格式。请使用应用导出的卡片或积分 CSV 文件。": {},
+    "导入失败：格式错误或文件损坏。\n%@": {},
     "导入结单": {
       "extractionState": "stale",
       "localizations": {
@@ -2495,6 +3212,7 @@
         }
       }
     },
+    "尾号": {},
     "尾号 (后四位)": {
       "localizations": {
         "en": {
@@ -2518,6 +3236,7 @@
       }
     },
     "尾号%@": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -2670,6 +3389,23 @@
         }
       }
     },
+    "年费到期": {},
+    "年费提醒": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annual Fee Reminder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "年费提醒"
+          }
+        }
+      }
+    },
     "开发者": {
       "localizations": {
         "en": {
@@ -2718,12 +3454,30 @@
         }
       }
     },
+    "张卡片": {},
     "当前余额": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Current Balance"
+          }
+        }
+      }
+    },
+    "当前版本：v": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current version: v"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前版本：v"
           }
         }
       }
@@ -2843,6 +3597,7 @@
         }
       }
     },
+    "我的卡包": {},
     "所有卡片汇总": {
       "extractionState": "stale",
       "localizations": {
@@ -3206,6 +3961,7 @@
         }
       }
     },
+    "数码": {},
     "新增积分计划": {
       "localizations": {
         "en": {
@@ -3353,6 +4109,7 @@
         }
       }
     },
+    "明天": {},
     "暂无卡片": {
       "localizations": {
         "en": {
@@ -3585,6 +4342,7 @@
         }
       }
     },
+    "未知错误": {},
     "未设外币费率": {
       "localizations": {
         "en": {
@@ -3650,8 +4408,9 @@
         }
       }
     },
+    "本币上限": {},
+    "本币年上限": {},
     "本币年积分上限": {
-      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3673,8 +4432,8 @@
         }
       }
     },
+    "本币月上限": {},
     "本币月积分上限": {
-      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3697,7 +4456,6 @@
       }
     },
     "本币积分率 (%)": {
-      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3720,7 +4478,6 @@
       }
     },
     "本币返现率 (%)": {
-      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3810,6 +4567,7 @@
         }
       }
     },
+    "权益到期": {},
     "权益到期日": {
       "localizations": {
         "en": {
@@ -3820,6 +4578,7 @@
         }
       }
     },
+    "权益规则": {},
     "松手导入图片": {
       "extractionState": "stale",
       "localizations": {
@@ -3837,6 +4596,7 @@
         }
       }
     },
+    "标签": {},
     "标签（逗号分隔）": {
       "localizations": {
         "en": {
@@ -3909,6 +4669,7 @@
         }
       }
     },
+    "每月": {},
     "每月 %lld 日还款": {
       "localizations": {
         "en": {
@@ -4136,7 +4897,9 @@
         }
       }
     },
+    "添加": {},
     "添加%@": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -4458,7 +5221,6 @@
       }
     },
     "积分上限周期": {
-      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -4643,6 +5405,7 @@
         }
       }
     },
+    "积分银行": {},
     "移除积分数量": {
       "localizations": {
         "en": {
@@ -5364,6 +6127,7 @@
       }
     },
     "贡献者": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -5423,11 +6187,28 @@
       }
     },
     "账单日 %lld日": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Statement %lldth"
+          }
+        }
+      }
+    },
+    "账单日提醒": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statement Reminder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "账单日提醒"
           }
         }
       }
@@ -5449,6 +6230,7 @@
         }
       }
     },
+    "超市": {},
     "跟随系统": {
       "localizations": {
         "en": {
@@ -5521,8 +6303,8 @@
         }
       }
     },
+    "返现": {},
     "返现上限周期": {
-      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -5555,6 +6337,7 @@
         }
       }
     },
+    "返现类型": {},
     "还款提醒": {
       "localizations": {
         "en": {
@@ -5563,16 +6346,16 @@
             "value": "Payment Reminder"
           }
         },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "還款提醒"
-          }
-        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "还款提醒"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "還款提醒"
           }
         }
       }
@@ -5588,6 +6371,7 @@
       }
     },
     "还款日 %lld日": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -5619,6 +6403,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "No Cards Yet"
+          }
+        }
+      }
+    },
+    "这张卡的权益即将到期，年费 %@ 元。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This card's benefits expire soon. Annual fee: %@."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这张卡的权益即将到期，年费 %@ 元。"
+          }
+        }
+      }
+    },
+    "这张卡的权益将在 7 天后到期，年费 %@ 元。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This card's benefits expire in 7 days. Annual fee: %@."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这张卡的权益将在 7 天后到期，年费 %@ 元。"
+          }
+        }
+      }
+    },
+    "这张预付卡即将到期，请及时处理余额。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This prepaid card expires soon. Please use the remaining balance."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这张预付卡即将到期，请及时处理余额。"
+          }
+        }
+      }
+    },
+    "这张预付卡将在 7 天后到期，请及时处理余额。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This prepaid card expires in 7 days. Please use the remaining balance."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这张预付卡将在 7 天后到期，请及时处理余额。"
           }
         }
       }
@@ -5839,6 +6687,28 @@
         }
       }
     },
+    "UnionPay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UnionPay"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "银联"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "銀聯"
+          }
+        }
+      }
+    },
     "银行": {
       "localizations": {
         "en": {
@@ -5877,6 +6747,7 @@
         }
       }
     },
+    "银行名称": {},
     "隐私政策": {
       "localizations": {
         "en": {
@@ -5965,702 +6836,160 @@
         }
       }
     },
-    "卡择": {
+    "餐饮": {},
+    "预览": {
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "CardPick"
-          }
-        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "卡择"
+            "value": "预览"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "預覽"
           }
         }
-      },
-      "version": 1
+      }
     },
-    "关于 卡择": {
+    "拍照": {
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "About CardPick"
-          }
-        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "关于 卡择"
+            "value": "拍照"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拍照"
           }
         }
-      },
-      "version": 1
+      }
     },
-    "CardPick 仓库": {
+    "相册": {
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "CardPick Repository"
-          }
-        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "CardPick 仓库"
+            "value": "相册"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photo Library"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "相簿"
           }
         }
-      },
-      "version": 1
+      }
     },
-    "基于 CashbackCounter (Junhao Huang) 开发": {
+    "渐变": {
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Based on CashbackCounter by Junhao Huang"
-          }
-        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "基于 CashbackCounter (Junhao Huang) 开发"
+            "value": "渐变"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gradient"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "漸變"
           }
         }
-      },
-      "version": 1
+      }
     },
-    "CFBundleDisplayName": {
+    "未分配": {
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "CardPick"
-          }
-        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "卡择"
+            "value": "未分配"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unassigned"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未分配"
           }
         }
-      },
-      "version": 1
+      }
     },
-    "账单日提醒": {
+    "%lld年": {
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Statement Reminder"
-          }
-        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "账单日提醒"
+            "value": "%lld年"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld年"
           }
         }
-      },
-      "version": 1
+      }
     },
-    "年费提醒": {
+    "%lld月": {
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Annual Fee Reminder"
-          }
-        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "年费提醒"
+            "value": "%lld月"
           }
-        }
-      },
-      "version": 1
-    },
-    "卡片到期提醒": {
-      "localizations": {
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Card Expiry Reminder"
+            "value": "%lld"
           }
         },
-        "zh-Hans": {
+        "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "卡片到期提醒"
+            "value": "%lld月"
           }
         }
-      },
-      "version": 1
-    },
-    "今天是这张卡的还款日，别忘了处理账单哦！": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Today is this card's payment day. Don't forget to pay!"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "今天是这张卡的还款日，别忘了处理账单哦！"
-          }
-        }
-      },
-      "version": 1
-    },
-    "今天是这张卡的账单日，请查看账单明细。": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Today is this card's statement day. Please check your statement."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "今天是这张卡的账单日，请查看账单明细。"
-          }
-        }
-      },
-      "version": 1
-    },
-    "这张卡的权益即将到期，年费 %@ 元。": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This card's benefits expire soon. Annual fee: %@."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "这张卡的权益即将到期，年费 %@ 元。"
-          }
-        }
-      },
-      "version": 1
-    },
-    "这张卡的权益将在 7 天后到期，年费 %@ 元。": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This card's benefits expire in 7 days. Annual fee: %@."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "这张卡的权益将在 7 天后到期，年费 %@ 元。"
-          }
-        }
-      },
-      "version": 1
-    },
-    "这张预付卡即将到期，请及时处理余额。": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This prepaid card expires soon. Please use the remaining balance."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "这张预付卡即将到期，请及时处理余额。"
-          }
-        }
-      },
-      "version": 1
-    },
-    "这张预付卡将在 7 天后到期，请及时处理余额。": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This prepaid card expires in 7 days. Please use the remaining balance."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "这张预付卡将在 7 天后到期，请及时处理余额。"
-          }
-        }
-      },
-      "version": 1
-    },
-    "减免:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Waiver:"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "减免:"
-          }
-        }
-      },
-      "version": 1
-    },
-    "当前版本：v": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Current version: v"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "当前版本：v"
-          }
-        }
-      },
-      "version": 1
-    },
-    "card.kind.credit": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Credit Card"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "信用卡"
-          }
-        }
-      },
-      "version": 1
-    },
-    "card.kind.debit": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Debit Card"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "储蓄卡"
-          }
-        }
-      },
-      "version": 1
-    },
-    "card.kind.prepaid": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prepaid Card"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "预付卡"
-          }
-        }
-      },
-      "version": 1
-    },
-    "card.kind.atm": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ATM Card"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "提款卡"
-          }
-        }
-      },
-      "version": 1
-    },
-    "reward.type.cashback": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cashback"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "返现"
-          }
-        }
-      },
-      "version": 1
-    },
-    "reward.type.points": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Points"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "积分"
-          }
-        }
-      },
-      "version": 1
-    },
-    "category.dining": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dining"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "餐饮美食"
-          }
-        }
-      },
-      "version": 1
-    },
-    "category.grocery": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Grocery"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "超市便利"
-          }
-        }
-      },
-      "version": 1
-    },
-    "category.travel": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Travel"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "交通出行"
-          }
-        }
-      },
-      "version": 1
-    },
-    "category.digital": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Electronics"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "数码产品"
-          }
-        }
-      },
-      "version": 1
-    },
-    "category.anime": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anime & Games"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "二次元"
-          }
-        }
-      },
-      "version": 1
-    },
-    "category.other": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Other"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "其他消费"
-          }
-        }
-      },
-      "version": 1
-    },
-    "payment.method.offline": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Offline"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "线下消费"
-          }
-        }
-      },
-      "version": 1
-    },
-    "payment.method.online": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Online"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "线上消费"
-          }
-        }
-      },
-      "version": 1
-    },
-    "payment.method.pulse": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pulse Card Eligible Spending"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pulse信用卡的合资格消费"
-          }
-        }
-      },
-      "version": 1
-    },
-    "payment.method.gba": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "CITIC GBA Card Eligible Spending"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "信银gba信用卡的合资格消费"
-          }
-        }
-      },
-      "version": 1
-    },
-    "region.cn": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mainland China"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "中国大陆"
-          }
-        }
-      },
-      "version": 1
-    },
-    "region.hk": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hong Kong"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "香港"
-          }
-        }
-      },
-      "version": 1
-    },
-    "region.us": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "United States"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "美国"
-          }
-        }
-      },
-      "version": 1
-    },
-    "region.jp": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Japan"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "日本"
-          }
-        }
-      },
-      "version": 1
-    },
-    "region.nz": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New Zealand"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "新西兰"
-          }
-        }
-      },
-      "version": 1
-    },
-    "region.tw": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Taiwan"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "台湾"
-          }
-        }
-      },
-      "version": 1
-    },
-    "region.mo": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Macau"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "澳门"
-          }
-        }
-      },
-      "version": 1
-    },
-    "region.uk": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "United Kingdom"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "英国"
-          }
-        }
-      },
-      "version": 1
-    },
-    "region.other": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "European Union"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "欧盟"
-          }
-        }
-      },
-      "version": 1
+      }
     }
   },
   "version": "1.1"
