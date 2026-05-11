@@ -71,7 +71,7 @@ struct CardStackHomeView: View {
                         filterChips
                         if filteredCards.isEmpty {
                             ContentUnavailableView {
-                                Label { Text("没有"); Text(LocalizedStringKey(filterKind?.displayName ?? "卡片")) } icon: { Image(systemName: "creditcard") }
+                                Label { Text("没有") + Text(LocalizedStringKey(filterKind?.displayName ?? "卡片")) } icon: { Image(systemName: "creditcard") }
                             } description: {
                                 Text("试试其他筛选条件或添加新卡片")
                             }

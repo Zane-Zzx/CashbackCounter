@@ -64,12 +64,7 @@ struct CreditCardView: View {
         .shadow(color: .black.opacity(0.15), radius: 10, y: 5)
         .task(id: cardImageData) {
             if let data = cardImageData {
-                let image = await Task.detached(priority: .userInitiated) {
-                    return UIImage(data: data)
-                }.value
-                await MainActor.run {
-                    self.decodedImage = image
-                }
+                self.decodedImage = UIImage(data: data)
             } else {
                 self.decodedImage = nil
             }
