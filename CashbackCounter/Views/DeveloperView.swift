@@ -42,7 +42,6 @@ struct DeveloperView: View {
 
                 Section("致谢") {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Junhao Huang").font(.subheadline.weight(.medium))
                         Text("GeekMr").font(.subheadline)
                         Text("RayTracingON").font(.subheadline)
                     }
