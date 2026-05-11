@@ -66,14 +66,18 @@ struct CardDetailView: View {
     private var basicInfoSection: some View {
         Section {
             VStack(spacing: 10) {
-                row("卡类型", value: card.cardKind.displayName)
+                row("卡类型", localizedValue: LocalizedStringKey(card.cardKind.displayName))
                 row("银行", value: card.bankName)
                 row("卡种", value: card.type)
                 row("尾号", value: "**** \(card.endNum)")
                 if !card.cardNetwork.isEmpty {
-                    row("卡组织", value: String(localized: LocalizedStringResource(stringLiteral: card.cardNetwork)))
+                    row("卡组织", localizedValue: LocalizedStringKey(card.cardNetwork))
                 }
-                row("发卡地区", value: "\(card.issueRegion.icon) \(card.issueRegion.displayName)")
+                HStack {
+                    Text("发卡地区").foregroundColor(.secondary)
+                    Spacer()
+                    Text(card.issueRegion.icon + " ") + Text(LocalizedStringKey(card.issueRegion.displayName))
+                }
             }
             .padding()
             .background(Color(uiColor: .secondarySystemGroupedBackground))
@@ -115,10 +119,18 @@ struct CardDetailView: View {
         Section {
             VStack(spacing: 10) {
                 if card.statementDay > 0 {
-                    row("账单日", value: "\(String(localized: "每月")) \(card.statementDay) \(String(localized: "日"))")
+                    HStack {
+                        Text("账单日").foregroundColor(.secondary)
+                        Spacer()
+                        Text("每月") + Text(" \(card.statementDay) ") + Text("日")
+                    }
                 }
                 if card.repaymentDay > 0 {
-                    row("还款日", value: "\(String(localized: "每月")) \(card.repaymentDay) \(String(localized: "日"))")
+                    HStack {
+                        Text("还款日").foregroundColor(.secondary)
+                        Spacer()
+                        Text("每月") + Text(" \(card.repaymentDay) ") + Text("日")
+                    }
                 }
                 if let expiry = card.benefitExpiryDate {
                     row("权益到期", value: expiry.formatted(date: .abbreviated, time: .omitted))
@@ -175,7 +187,7 @@ struct CardDetailView: View {
                                 .foregroundColor(.green)
                         }
                         if let cap = card.categoryCaps[cat], cap > 0 {
-                            Text("\(String(localized: "上限:"))\(String(format: "%.0f", cap))")
+                            Text("上限:") + Text(String(format: "%.0f", cap))
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -194,7 +206,7 @@ struct CardDetailView: View {
                                 .foregroundColor(.green)
                         }
                         if let cap = card.paymentCaps[method], cap > 0 {
-                            Text("\(String(localized: "上限:"))\(String(format: "%.0f", cap))")
+                            Text("上限:") + Text(String(format: "%.0f", cap))
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -211,7 +223,7 @@ struct CardDetailView: View {
                     }
                 }
 
-                row("返现类型", value: card.rewardType.displayName)
+                row("返现类型", localizedValue: LocalizedStringKey(card.rewardType.displayName))
             }
             .padding()
             .background(Color(uiColor: .secondarySystemGroupedBackground))
@@ -283,6 +295,14 @@ struct CardDetailView: View {
             Text(label).foregroundColor(.secondary)
             Spacer()
             Text(value).multilineTextAlignment(.trailing)
+        }
+    }
+
+    private func row(_ label: LocalizedStringKey, localizedValue: LocalizedStringKey) -> some View {
+        HStack {
+            Text(label).foregroundColor(.secondary)
+            Spacer()
+            Text(localizedValue).multilineTextAlignment(.trailing)
         }
     }
 

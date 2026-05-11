@@ -35,7 +35,7 @@ struct DeveloperView: View {
                     .padding(.vertical, 4)
                 }
                 Section("项目") {
-                    Link(destination: URL(string: "https://github.com/raytracingon/cashbackcounter")!) {
+                    Link(destination: URL(string: "https://github.com/Zane-Zzx/CashbackCounter")!) {
                         Label("CardPick 仓库", systemImage: "shippingbox")
                     }
                 }
@@ -47,6 +47,9 @@ struct DeveloperView: View {
                         Text("RayTracingON").font(.subheadline)
                     }
                     .padding(.vertical, 4)
+                    Link(destination: URL(string: "https://github.com/raytracingon/cashbackcounter")!) {
+                        Label("CashbackCounter 原项目", systemImage: "shippingbox")
+                    }
                     Link(destination: URL(string: "https://github.com/HarukaKinen/Cardentify")!) {
                         Label("调用卡面库 Cardentify", systemImage: "shippingbox")
                     }

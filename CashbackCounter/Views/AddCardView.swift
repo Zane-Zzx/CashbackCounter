@@ -542,7 +542,7 @@ struct AddCardView: View {
                 }
 
             }
-            .navigationTitle(cardToEdit == nil ? "\("添加")\(cardKind.displayName)" : "编辑卡片")
+            .navigationTitle(cardToEdit == nil ? Text("添加") + Text(LocalizedStringKey(cardKind.displayName)) : Text("编辑卡片"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

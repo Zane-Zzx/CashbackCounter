@@ -307,15 +307,15 @@ struct CardStackHomeView: View {
 
             // 基本信息
             HStack {
-                Label(card.cardKind.displayName, systemImage: card.cardKind.iconName)
+                Label { Text(LocalizedStringKey(card.cardKind.displayName)) } icon: { Image(systemName: card.cardKind.iconName) }
                     .font(.subheadline)
                 if !card.cardNetwork.isEmpty {
                     Text("·")
-                    Text(String(localized: LocalizedStringResource(stringLiteral: card.cardNetwork)))
+                    Text(LocalizedStringKey(card.cardNetwork))
                 }
                 Spacer()
                 if !card.endNum.isEmpty {
-                    Text("\(String(localized: "尾号"))\(card.endNum)")
+                    Text("尾号") + Text(card.endNum)
                         .foregroundStyle(.secondary)
                 }
             }
@@ -358,7 +358,7 @@ struct CardStackHomeView: View {
                     Text("奖励类型")
                         .foregroundStyle(.secondary)
                     Spacer()
-                    Text(card.rewardType.displayName)
+                    Text(LocalizedStringKey(card.rewardType.displayName))
                 }
             }
 
@@ -368,12 +368,12 @@ struct CardStackHomeView: View {
                     Divider()
                     HStack {
                         if card.statementDay > 0 {
-                            Text("\(String(localized: "账单日")) \(card.statementDay)\(String(localized: "日"))")
+                            Text("账单日") + Text(" \(card.statementDay)") + Text("日")
                                 .foregroundStyle(.secondary)
                         }
                         Spacer()
                         if card.repaymentDay > 0 {
-                            Text("\(String(localized: "还款日")) \(card.repaymentDay)\(String(localized: "日"))")
+                            Text("还款日") + Text(" \(card.repaymentDay)") + Text("日")
                                 .foregroundStyle(.secondary)
                         }
                     }
@@ -391,7 +391,7 @@ struct CardStackHomeView: View {
                     }
                 }
                 if !card.annualFeeWaiver.isEmpty {
-                    Text("\(String(localized: "减免: "))\(card.annualFeeWaiver)")
+                    Text("减免: ") + Text(card.annualFeeWaiver)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -427,7 +427,7 @@ struct CardStackHomeView: View {
     private var filterChips: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) {
-                filterChip(label: String(localized: "全部"), isSelected: filterKind == nil) {
+                filterChip(label: "全部", isSelected: filterKind == nil) {
                     filterKind = nil
                 }
                 ForEach(CardKind.allCases, id: \.self) { kind in
