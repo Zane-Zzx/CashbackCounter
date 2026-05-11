@@ -36,10 +36,10 @@ enum PaymentMethod: String, CaseIterable, Codable {
         switch self {
         case .applePay: return "Apple Pay"
         case .qrCode: return "QR Code"
-        case .offline: return String(localized: "payment.method.offline")
-        case .online: return String(localized: "payment.method.online")
-        case .pulse: return String(localized: "payment.method.pulse")
-        case .gba: return String(localized: "payment.method.gba")
+        case .offline: return "payment.method.offline"
+        case .online: return "payment.method.online"
+        case .pulse: return "payment.method.pulse"
+        case .gba: return "payment.method.gba"
         }
     }
     

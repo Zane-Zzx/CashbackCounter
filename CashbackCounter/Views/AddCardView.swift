@@ -280,7 +280,7 @@ struct AddCardView: View {
                 Section("基本信息") {
                     Picker("卡类型", selection: $cardKind) {
                         ForEach(CardKind.allCases, id: \.self) { kind in
-                            Label(kind.displayName, systemImage: kind.iconName).tag(kind)
+                            Label { Text(LocalizedStringKey(kind.displayName)) } icon: { Image(systemName: kind.iconName) }.tag(kind)
                         }
                     }
                     .pickerStyle(.segmented)
@@ -370,7 +370,7 @@ struct AddCardView: View {
                     Section("奖励类型") {
                         Picker("奖励类型", selection: $rewardType) {
                             ForEach(RewardType.allCases, id: \.self) { type in
-                                Text(type.displayName).tag(type)
+                                Text(LocalizedStringKey(type.displayName)).tag(type)
                             }
                         }
                         .pickerStyle(.segmented)
@@ -413,7 +413,7 @@ struct AddCardView: View {
                     Section(baseSectionTitle) {
                         Picker("发行地区", selection: $region) {
                             ForEach(Region.allCases, id: \.self) { r in
-                                Text("\(r.icon) \(r.displayName)").tag(r)
+                                (Text(r.icon + " ") + Text(LocalizedStringKey(r.displayName))).tag(r)
                             }
                         }
 
@@ -472,7 +472,7 @@ struct AddCardView: View {
                             ForEach(PaymentMethod.allCases, id: \.self) { method in
                                 VStack(alignment: .leading, spacing: 6) {
                                     HStack {
-                                        Label(method.displayName, systemImage: method.iconName)
+                                        Label { Text(LocalizedStringKey(method.displayName)) } icon: { Image(systemName: method.iconName) }
                                             .foregroundColor(method.color)
                                         Spacer()
                                     }

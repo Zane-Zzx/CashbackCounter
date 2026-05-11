@@ -42,8 +42,9 @@ struct DeveloperView: View {
 
                 Section("致谢") {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("基于 CashbackCounter (Junhao Huang) 开发")
-                            .font(.subheadline)
+                        Text("Junhao Huang").font(.subheadline.weight(.medium))
+                        Text("GeekMr").font(.subheadline)
+                        Text("RayTracingON").font(.subheadline)
                     }
                     .padding(.vertical, 4)
                     Link(destination: URL(string: "https://github.com/HarukaKinen/Cardentify")!) {

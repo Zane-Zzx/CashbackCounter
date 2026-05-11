@@ -71,7 +71,7 @@ struct CardStackHomeView: View {
                         filterChips
                         if filteredCards.isEmpty {
                             ContentUnavailableView {
-                                Label("没有\(filterKind?.displayName ?? String(localized: "卡片"))", systemImage: "creditcard")
+                                Label { Text("没有"); Text(LocalizedStringKey(filterKind?.displayName ?? "卡片")) } icon: { Image(systemName: "creditcard") }
                             } description: {
                                 Text("试试其他筛选条件或添加新卡片")
                             }
@@ -80,18 +80,19 @@ struct CardStackHomeView: View {
                         }
                     }
                     .navigationTitle(isDetailMode
-                        ? (filteredCards.first(where: { $0.id == selectedCardID })?.bankName ?? "我的卡包")
-                        : "我的卡包")
+                        ? Text(filteredCards.first(where: { $0.id == selectedCardID })?.bankName ?? "我的卡包")
+                        : Text("我的卡包"))
                 }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        showFileImporter = true
-                    } label: {
-                        Image(systemName: "square.and.arrow.down")
+                    if !isDetailMode {
+                        Button {
+                            showFileImporter = true
+                        } label: {
+                            Image(systemName: "square.and.arrow.down")
+                        }
                     }
-                    .opacity(isDetailMode ? 0 : 1)
                 }
                 ToolbarItem(placement: .primaryAction) {
                     if isDetailMode, let card = filteredCards.first(where: { $0.id == selectedCardID }) {
@@ -124,7 +125,7 @@ struct CardStackHomeView: View {
                                 }
                             }
                         } label: {
-                            Image(systemName: "plus.circle.fill")
+                            Image(systemName: "plus.circle")
                         }
                     }
                 }
@@ -344,7 +345,7 @@ struct CardStackHomeView: View {
                     Divider()
                     ForEach(Array(card.specialRates.sorted { $0.key.rawValue < $1.key.rawValue }), id: \.key) { cat, rate in
                         HStack {
-                            Label(cat.displayName, systemImage: cat.iconName)
+                            Label { Text(LocalizedStringKey(cat.displayName)) } icon: { Image(systemName: cat.iconName) }
                                 .foregroundStyle(cat.color)
                             Spacer()
                             Text(String(format: "+%.2f%%", rate * 100))
@@ -452,7 +453,7 @@ struct CardStackHomeView: View {
                     Image(systemName: icon)
                         .font(.caption)
                 }
-                Text(label)
+                Text(LocalizedStringKey(label))
                     .font(.subheadline)
             }
             .padding(.horizontal, 14)

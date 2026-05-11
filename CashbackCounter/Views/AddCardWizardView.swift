@@ -141,7 +141,7 @@ struct AddCardWizardView: View {
                         VStack(spacing: 8) {
                             Image(systemName: kind.iconName)
                                 .font(.title)
-                            Text(kind.displayName)
+                            Text(LocalizedStringKey(kind.displayName))
                                 .font(.subheadline)
                         }
                         .frame(maxWidth: .infinity)
@@ -190,7 +190,7 @@ struct AddCardWizardView: View {
                     }
                     Picker("发卡地区", selection: $draft.region) {
                         ForEach(Region.allCases, id: \.self) { r in
-                            Text("\(r.icon) \(r.displayName)").tag(r)
+                            (Text(r.icon + " ") + Text(LocalizedStringKey(r.displayName))).tag(r)
                         }
                     }
                 }
@@ -286,7 +286,7 @@ struct AddCardWizardView: View {
                 GroupBox("奖励类型") {
                     Picker("奖励类型", selection: $draft.rewardType) {
                         ForEach(RewardType.allCases, id: \.self) { t in
-                            Text(t.displayName).tag(t)
+                            Text(LocalizedStringKey(t.displayName)).tag(t)
                         }
                     }
                     .pickerStyle(.segmented)

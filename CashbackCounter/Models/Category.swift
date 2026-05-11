@@ -32,12 +32,12 @@ enum Category: String, CaseIterable, Codable {
     
     var displayName: String {
         switch self {
-        case .dining: return String(localized: "category.dining")
-        case .grocery: return String(localized: "category.grocery")
-        case .travel: return String(localized: "category.travel")
-        case .digital: return String(localized: "category.digital")
-        case .anime: return String(localized: "category.anime")
-        case .other: return String(localized: "category.other")
+        case .dining: return "category.dining"
+        case .grocery: return "category.grocery"
+        case .travel: return "category.travel"
+        case .digital: return "category.digital"
+        case .anime: return "category.anime"
+        case .other: return "category.other"
         }
     }
     var color: Color {

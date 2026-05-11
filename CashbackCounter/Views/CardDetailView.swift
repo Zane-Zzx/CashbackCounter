@@ -168,7 +168,7 @@ struct CardDetailView: View {
                     Text("类别加成").font(.caption).foregroundColor(.secondary)
                     ForEach(Array(card.specialRates.sorted { $0.key.rawValue < $1.key.rawValue }), id: \.key) { cat, rate in
                         HStack {
-                            Label(cat.displayName, systemImage: cat.iconName)
+                            Label { Text(LocalizedStringKey(cat.displayName)) } icon: { Image(systemName: cat.iconName) }
                                 .foregroundColor(cat.color)
                             Spacer()
                             Text(String(format: "+%.2f%%", rate * 100))
@@ -187,7 +187,7 @@ struct CardDetailView: View {
                     Text("支付方式加成").font(.caption).foregroundColor(.secondary)
                     ForEach(Array(card.paymentMethodRates.sorted { $0.key.rawValue < $1.key.rawValue }), id: \.key) { method, rate in
                         HStack {
-                            Label(method.displayName, systemImage: method.iconName)
+                            Label { Text(LocalizedStringKey(method.displayName)) } icon: { Image(systemName: method.iconName) }
                                 .foregroundColor(method.color)
                             Spacer()
                             Text(String(format: "+%.2f%%", rate * 100))

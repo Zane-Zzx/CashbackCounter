@@ -75,7 +75,7 @@ struct BestCardView: View {
                 HStack(spacing: 8) {
                     ForEach(Category.allCases, id: \.self) { cat in
                         Button { selectedCategory = cat } label: {
-                            Label(cat.displayName, systemImage: cat.iconName)
+                            Label { Text(LocalizedStringKey(cat.displayName)) } icon: { Image(systemName: cat.iconName) }
                                 .font(.caption)
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 6)
@@ -93,13 +93,13 @@ struct BestCardView: View {
                 HStack(spacing: 8) {
                     ForEach(visibleRegions, id: \.self) { region in
                         Button { selectedRegion = region } label: {
-                            Text("\(region.icon) \(region.displayName)")
+                            (Text(region.icon + " ") + Text(LocalizedStringKey(region.displayName)))
                                 .font(.caption)
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 6)
                                 .background(selectedRegion == region ? Color.accentColor.opacity(0.15) : Color(uiColor: .secondarySystemGroupedBackground))
                                 .foregroundColor(selectedRegion == region ? .accentColor : .secondary)
-                                .cornerRadius(16)
+                                .clipShape(Capsule())
                         }
                         .buttonStyle(.plain)
                     }
@@ -111,7 +111,7 @@ struct BestCardView: View {
                 HStack(spacing: 8) {
                     ForEach(PaymentMethod.allCases.filter(\.isGeneral), id: \.self) { method in
                         Button { selectedPayment = method } label: {
-                            Label(method.displayName, systemImage: method.iconName)
+                            Label { Text(LocalizedStringKey(method.displayName)) } icon: { Image(systemName: method.iconName) }
                                 .font(.caption)
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 6)
