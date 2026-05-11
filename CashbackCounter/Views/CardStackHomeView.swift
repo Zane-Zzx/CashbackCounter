@@ -71,17 +71,17 @@ struct CardStackHomeView: View {
                         filterChips
                         if filteredCards.isEmpty {
                             ContentUnavailableView {
-                                Label("没有\(filterKind?.displayName ?? "卡片")", systemImage: "creditcard")
+                                Label("没有\(filterKind?.displayName ?? String(localized: "卡片"))", systemImage: "creditcard")
                             } description: {
-                                Text("试试其他筛选条件或添加新卡片")
+                                Text(String(localized: "试试其他筛选条件或添加新卡片"))
                             }
                         } else {
                             cardStack
                         }
                     }
                     .navigationTitle(isDetailMode
-                        ? (filteredCards.first(where: { $0.id == selectedCardID })?.bankName ?? "我的卡包")
-                        : "我的卡包")
+                        ? (filteredCards.first(where: { $0.id == selectedCardID })?.bankName ?? String(localized: "我的卡包"))
+                        : String(localized: "我的卡包"))
                 }
             }
             .toolbar {
@@ -97,14 +97,14 @@ struct CardStackHomeView: View {
                     if isDetailMode, let card = filteredCards.first(where: { $0.id == selectedCardID }) {
                         Menu {
                             Button { cardToEdit = card } label: {
-                                Label("编辑", systemImage: "pencil")
+                                Label(String(localized: "编辑"), systemImage: "pencil")
                             }
                             Button(role: .destructive) {
                                 NotificationManager.shared.cancelNotification(for: card)
                                 context.delete(card)
                                 withAnimation(springAnimation) { selectedCardID = nil }
                             } label: {
-                                Label("删除", systemImage: "trash")
+                                Label(String(localized: "删除"), systemImage: "trash")
                             }
                         } label: {
                             Image(systemName: "ellipsis.circle")
@@ -112,15 +112,15 @@ struct CardStackHomeView: View {
                     } else {
                         Menu {
                             Button { activeSheet = .template } label: {
-                                Label("从模板添加", systemImage: "doc.on.doc")
+                                Label(String(localized: "从模板添加"), systemImage: "doc.on.doc")
                             }
                             Button { activeSheet = .custom } label: {
-                                Label("自定义添加", systemImage: "square.and.pencil")
+                                Label(String(localized: "自定义添加"), systemImage: "square.and.pencil")
                             }
                             Divider()
                             if !cards.isEmpty, let csvURL = cards.exportCSVFile() {
                                 ShareLink(item: csvURL) {
-                                    Label("导出卡片", systemImage: "square.and.arrow.up")
+                                    Label(String(localized: "导出卡片"), systemImage: "square.and.arrow.up")
                                 }
                             }
                         } label: {
@@ -159,21 +159,21 @@ struct CardStackHomeView: View {
                             try CardCSVHelper.parsePointsCSV(content: content, into: context)
                             importError = nil
                         case .unknown:
-                            importError = "导入失败：无法识别的 CSV 格式。请使用应用导出的卡片或积分 CSV 文件。"
+                            importError = String(localized: "导入失败：无法识别的 CSV 格式。请使用应用导出的卡片或积分 CSV 文件。")
                             showImportAlert = true
                         }
                     } catch {
-                        importError = "导入失败：格式错误或文件损坏。\n\(error.localizedDescription)"
+                        importError = String(localized: "导入失败：格式错误或文件损坏。\n\(error.localizedDescription)")
                         showImportAlert = true
                     }
                 case .failure(let error):
                     print("选择文件失败: \(error.localizedDescription)")
                 }
             }
-            .alert("导入结果", isPresented: $showImportAlert) {
-                Button("确定", role: .cancel) {}
+            .alert(String(localized: "导入结果"), isPresented: $showImportAlert) {
+                Button(String(localized: "确定"), role: .cancel) {}
             } message: {
-                Text(importError ?? "未知错误")
+                Text(importError ?? String(localized: "未知错误"))
             }
             .onAppear {
                 do {
@@ -195,9 +195,9 @@ struct CardStackHomeView: View {
 
     private var emptyState: some View {
         ContentUnavailableView {
-            Label("还没有卡片", systemImage: "creditcard")
+            Label(String(localized: "还没有卡片"), systemImage: "creditcard")
         } description: {
-            Text("点击右上角 + 添加你的第一张银行卡")
+            Text(String(localized: "点击右上角 + 添加你的第一张银行卡"))
         }
     }
 
@@ -287,10 +287,10 @@ struct CardStackHomeView: View {
             // 操作按钮行
             HStack(spacing: 16) {
                 Button { cardToEdit = card } label: {
-                    Label("编辑", systemImage: "pencil.circle.fill")
+                    Label(String(localized: "编辑"), systemImage: "pencil.circle.fill")
                 }
                 NavigationLink { CardDetailView(card: card) } label: {
-                    Label("详情", systemImage: "info.circle.fill")
+                    Label(String(localized: "详情"), systemImage: "info.circle.fill")
                 }
                 Spacer()
                 Button(role: .destructive) {
@@ -298,7 +298,7 @@ struct CardStackHomeView: View {
                     context.delete(card)
                     withAnimation(springAnimation) { selectedCardID = nil }
                 } label: {
-                    Label("删除", systemImage: "trash")
+                    Label(String(localized: "删除"), systemImage: "trash")
                 }
             }
 
@@ -314,7 +314,7 @@ struct CardStackHomeView: View {
                 }
                 Spacer()
                 if !card.endNum.isEmpty {
-                    Text("尾号\(card.endNum)")
+                    Text("\(String(localized: "尾号"))\(card.endNum)")
                         .foregroundStyle(.secondary)
                 }
             }
@@ -322,7 +322,7 @@ struct CardStackHomeView: View {
             // 返现信息
             if card.cardKind.supportsSimpleRewards {
                 HStack {
-                    Text("基础费率")
+                    Text(String(localized: "基础费率"))
                         .foregroundStyle(.secondary)
                     Spacer()
                     Text(String(format: "%.2f%%", card.defaultRate * 100))
@@ -331,7 +331,7 @@ struct CardStackHomeView: View {
 
                 if let fr = card.foreignCurrencyRate, fr > 0 {
                     HStack {
-                        Text("外币费率")
+                        Text(String(localized: "外币费率"))
                             .foregroundStyle(.secondary)
                         Spacer()
                         Text(String(format: "%.2f%%", fr * 100))
@@ -354,7 +354,7 @@ struct CardStackHomeView: View {
                 }
 
                 HStack {
-                    Text("奖励类型")
+                    Text(String(localized: "奖励类型"))
                         .foregroundStyle(.secondary)
                     Spacer()
                     Text(card.rewardType.displayName)
@@ -367,12 +367,12 @@ struct CardStackHomeView: View {
                     Divider()
                     HStack {
                         if card.statementDay > 0 {
-                            Text("账单日 \(card.statementDay)日")
+                            Text("\(String(localized: "账单日")) \(card.statementDay)\(String(localized: "日"))")
                                 .foregroundStyle(.secondary)
                         }
                         Spacer()
                         if card.repaymentDay > 0 {
-                            Text("还款日 \(card.repaymentDay)日")
+                            Text("\(String(localized: "还款日")) \(card.repaymentDay)\(String(localized: "日"))")
                                 .foregroundStyle(.secondary)
                         }
                     }
@@ -382,7 +382,7 @@ struct CardStackHomeView: View {
             // 年费
             if card.cardKind.supportsAnnualFee && (card.annualFee > 0 || !card.annualFeeWaiver.isEmpty) {
                 HStack {
-                    Text("年费")
+                    Text(String(localized: "年费"))
                         .foregroundStyle(.secondary)
                     Spacer()
                     if card.annualFee > 0 {
@@ -390,7 +390,7 @@ struct CardStackHomeView: View {
                     }
                 }
                 if !card.annualFeeWaiver.isEmpty {
-                    Text("减免: \(card.annualFeeWaiver)")
+                    Text("\(String(localized: "减免: "))\(card.annualFeeWaiver)")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -426,7 +426,7 @@ struct CardStackHomeView: View {
     private var filterChips: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) {
-                filterChip(label: "全部", isSelected: filterKind == nil) {
+                filterChip(label: String(localized: "全部"), isSelected: filterKind == nil) {
                     filterKind = nil
                 }
                 ForEach(CardKind.allCases, id: \.self) { kind in

@@ -53,33 +53,33 @@ struct CardDetailView: View {
         .sheet(isPresented: $showEditSheet) {
             AddCardView(cardToEdit: card)
         }
-        .confirmationDialog("确定要删除这张卡片吗？", isPresented: $showDeleteConfirm, titleVisibility: .visible) {
-            Button("删除", role: .destructive) {
+        .confirmationDialog(String(localized: "确定要删除这张卡片吗？"), isPresented: $showDeleteConfirm, titleVisibility: .visible) {
+            Button(String(localized: "删除"), role: .destructive) {
                 NotificationManager.shared.cancelNotification(for: card)
                 modelContext.delete(card)
                 dismiss()
             }
-            Button("取消", role: .cancel) {}
+            Button(String(localized: "取消"), role: .cancel) {}
         }
     }
 
     private var basicInfoSection: some View {
         Section {
             VStack(spacing: 10) {
-                row("卡类型", value: card.cardKind.displayName)
-                row("银行", value: card.bankName)
-                row("卡种", value: card.type)
-                row("尾号", value: "**** \(card.endNum)")
+                row(String(localized: "卡类型"), value: card.cardKind.displayName)
+                row(String(localized: "银行"), value: card.bankName)
+                row(String(localized: "卡种"), value: card.type)
+                row(String(localized: "尾号"), value: "**** \(card.endNum)")
                 if !card.cardNetwork.isEmpty {
-                    row("卡组织", value: card.cardNetwork)
+                    row(String(localized: "卡组织"), value: card.cardNetwork)
                 }
-                row("发卡地区", value: "\(card.issueRegion.icon) \(card.issueRegion.rawValue)")
+                row(String(localized: "发卡地区"), value: "\(card.issueRegion.icon) \(card.issueRegion.rawValue)")
             }
             .padding()
             .background(Color(uiColor: .secondarySystemGroupedBackground))
             .cornerRadius(12)
         } header: {
-            sectionHeader("基本信息")
+            sectionHeader(String(localized: "基本信息"))
         }
     }
 
@@ -105,7 +105,7 @@ struct CardDetailView: View {
                     .background(Color(uiColor: .secondarySystemGroupedBackground))
                     .cornerRadius(12)
                 } header: {
-                    sectionHeader("标签")
+                    sectionHeader(String(localized: "标签"))
                 }
             }
         }
@@ -115,20 +115,20 @@ struct CardDetailView: View {
         Section {
             VStack(spacing: 10) {
                 if card.statementDay > 0 {
-                    row("账单日", value: "每月 \(card.statementDay) 日")
+                    row(String(localized: "账单日"), value: "\(String(localized: "每月")) \(card.statementDay) \(String(localized: "日"))")
                 }
                 if card.repaymentDay > 0 {
-                    row("还款日", value: "每月 \(card.repaymentDay) 日")
+                    row(String(localized: "还款日"), value: "\(String(localized: "每月")) \(card.repaymentDay) \(String(localized: "日"))")
                 }
                 if let expiry = card.benefitExpiryDate {
-                    row("权益到期", value: expiry.formatted(date: .abbreviated, time: .omitted))
+                    row(String(localized: "权益到期"), value: expiry.formatted(date: .abbreviated, time: .omitted))
                 }
             }
             .padding()
             .background(Color(uiColor: .secondarySystemGroupedBackground))
             .cornerRadius(12)
         } header: {
-            sectionHeader("关键日期")
+            sectionHeader(String(localized: "关键日期"))
         }
     }
 
@@ -138,17 +138,17 @@ struct CardDetailView: View {
                 Section {
                     VStack(spacing: 10) {
                         if card.annualFee > 0 {
-                            row("年费", value: String(format: "%@%.0f", card.issueRegion.currencySymbol, card.annualFee))
+                            row(String(localized: "年费"), value: String(format: "%@%.0f", card.issueRegion.currencySymbol, card.annualFee))
                         }
                         if !card.annualFeeWaiver.isEmpty {
-                            row("减免条件", value: card.annualFeeWaiver)
+                            row(String(localized: "减免条件"), value: card.annualFeeWaiver)
                         }
                     }
                     .padding()
                     .background(Color(uiColor: .secondarySystemGroupedBackground))
                     .cornerRadius(12)
                 } header: {
-                    sectionHeader("年费")
+                    sectionHeader(String(localized: "年费"))
                 }
             }
         }
@@ -157,15 +157,15 @@ struct CardDetailView: View {
     private var rulesSection: some View {
         Section {
             VStack(spacing: 10) {
-                row("基础费率", value: String(format: "%.2f%%", card.defaultRate * 100))
+                row(String(localized: "基础费率"), value: String(format: "%.2f%%", card.defaultRate * 100))
 
                 if let fr = card.foreignCurrencyRate, fr > 0 {
-                    row("外币费率", value: String(format: "%.2f%%", fr * 100))
+                    row(String(localized: "外币费率"), value: String(format: "%.2f%%", fr * 100))
                 }
 
                 if !card.specialRates.isEmpty {
                     Divider()
-                    Text("类别加成").font(.caption).foregroundColor(.secondary)
+                    Text(String(localized: "类别加成")).font(.caption).foregroundColor(.secondary)
                     ForEach(Array(card.specialRates.sorted { $0.key.rawValue < $1.key.rawValue }), id: \.key) { cat, rate in
                         HStack {
                             Label(cat.displayName, systemImage: cat.iconName)
@@ -175,7 +175,7 @@ struct CardDetailView: View {
                                 .foregroundColor(.green)
                         }
                         if let cap = card.categoryCaps[cat], cap > 0 {
-                            Text("上限: \(String(format: "%.0f", cap))")
+                            Text("\(String(localized: "上限: "))\(String(format: "%.0f", cap))")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -184,7 +184,7 @@ struct CardDetailView: View {
 
                 if !card.paymentMethodRates.isEmpty {
                     Divider()
-                    Text("支付方式加成").font(.caption).foregroundColor(.secondary)
+                    Text(String(localized: "支付方式加成")).font(.caption).foregroundColor(.secondary)
                     ForEach(Array(card.paymentMethodRates.sorted { $0.key.rawValue < $1.key.rawValue }), id: \.key) { method, rate in
                         HStack {
                             Label(method.displayName, systemImage: method.iconName)
@@ -194,7 +194,7 @@ struct CardDetailView: View {
                                 .foregroundColor(.green)
                         }
                         if let cap = card.paymentCaps[method], cap > 0 {
-                            Text("上限: \(String(format: "%.0f", cap))")
+                            Text("\(String(localized: "上限: "))\(String(format: "%.0f", cap))")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -204,20 +204,20 @@ struct CardDetailView: View {
                 if card.localBaseCap > 0 || card.foreignBaseCap > 0 {
                     Divider()
                     if card.localBaseCap > 0 {
-                        row("本币上限", value: String(format: "%.0f", card.localBaseCap))
+                        row(String(localized: "本币上限"), value: String(format: "%.0f", card.localBaseCap))
                     }
                     if card.foreignBaseCap > 0 {
-                        row("外币上限", value: String(format: "%.0f", card.foreignBaseCap))
+                        row(String(localized: "外币上限"), value: String(format: "%.0f", card.foreignBaseCap))
                     }
                 }
 
-                row("返现类型", value: card.rewardType.displayName)
+                row(String(localized: "返现类型"), value: card.rewardType.displayName)
             }
             .padding()
             .background(Color(uiColor: .secondarySystemGroupedBackground))
             .cornerRadius(12)
         } header: {
-            sectionHeader("权益规则")
+            sectionHeader(String(localized: "权益规则"))
         }
     }
 
@@ -226,15 +226,15 @@ struct CardDetailView: View {
         if card.rewardType == .points, let point = card.pointProgram {
             Section {
                 VStack(spacing: 10) {
-                    row("积分名称", value: point.pointName)
-                    row("积分银行", value: point.bankName)
-                    row("积分价值", value: String(format: "%.6f", point.pointValue))
+                    row(String(localized: "积分名称"), value: point.pointName)
+                    row(String(localized: "积分银行"), value: point.bankName)
+                    row(String(localized: "积分价值"), value: String(format: "%.6f", point.pointValue))
                 }
                 .padding()
                 .background(Color(uiColor: .secondarySystemGroupedBackground))
                 .cornerRadius(12)
             } header: {
-                sectionHeader("积分计划")
+                sectionHeader(String(localized: "积分计划"))
             }
         }
     }
@@ -245,17 +245,17 @@ struct CardDetailView: View {
                 Section {
                     VStack(spacing: 10) {
                         if card.balance > 0 {
-                            row("余额", value: String(format: "%@%.2f", card.issueRegion.currencySymbol, card.balance))
+                            row(String(localized: "余额"), value: String(format: "%@%.2f", card.issueRegion.currencySymbol, card.balance))
                         }
                         if let expiry = card.cardExpiryDate {
-                            row("到期日", value: expiry.formatted(date: .abbreviated, time: .omitted))
+                            row(String(localized: "到期日"), value: expiry.formatted(date: .abbreviated, time: .omitted))
                         }
                     }
                     .padding()
                     .background(Color(uiColor: .secondarySystemGroupedBackground))
                     .cornerRadius(12)
                 } header: {
-                    sectionHeader("卡片信息")
+                    sectionHeader(String(localized: "卡片信息"))
                 }
             }
         }
@@ -272,7 +272,7 @@ struct CardDetailView: View {
                         .background(Color(uiColor: .secondarySystemGroupedBackground))
                         .cornerRadius(12)
                 } header: {
-                    sectionHeader("备注")
+                    sectionHeader(String(localized: "备注"))
                 }
             }
         }

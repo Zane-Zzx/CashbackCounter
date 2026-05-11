@@ -64,7 +64,7 @@ struct SettingsView: View {
                         }
                         .padding(.bottom, 4)
                         
-                        Text("Cashback Counter")
+                        Text(String(localized: "卡择"))
                             .font(.headline)
                             .fontWeight(.bold)
                         
@@ -78,42 +78,42 @@ struct SettingsView: View {
                 .listRowBackground(Color.clear)
                 
                 // Appearance Section
-                Section(header: Text("外观与语言")) {
-                    Picker(selection: $userTheme, label: Label("主题模式", systemImage: "paintpalette")) {
-                        Text("跟随系统").tag(0)
-                        Text("浅色模式").tag(1)
-                        Text("深色模式").tag(2)
+                Section(header: Text(String(localized: "外观与语言"))) {
+                    Picker(selection: $userTheme, label: Label(String(localized: "主题模式"), systemImage: "paintpalette")) {
+                        Text(String(localized: "跟随系统")).tag(0)
+                        Text(String(localized: "浅色模式")).tag(1)
+                        Text(String(localized: "深色模式")).tag(2)
                     }
-                    
-                    Picker(selection: $userLanguage, label: Label("语言设置", systemImage: "globe")) {
-                        Text("跟随系统").tag("system")
+
+                    Picker(selection: $userLanguage, label: Label(String(localized: "语言设置"), systemImage: "globe")) {
+                        Text(String(localized: "跟随系统")).tag("system")
                         Text("简体中文").tag("zh-Hans")
                         Text("繁體中文").tag("zh-Hant")
                         Text("English").tag("en")
                     }
                 }
-                
+
                 // General Section
-                Section(header: Text("常规")) {
-                    Picker(selection: $mainCurrencyCode, label: Label("主货币", systemImage: "banknote")) {
+                Section(header: Text(String(localized: "常规"))) {
+                    Picker(selection: $mainCurrencyCode, label: Label(String(localized: "主货币"), systemImage: "banknote")) {
                         Text("人民币 (CNY)").tag("CNY")
                         Text("美元 (USD)").tag("USD")
                         Text("港币 (HKD)").tag("HKD")
                         Text("日元 (JPY)").tag("JPY")
                     }
-                    
+
                     NavigationLink(destination: NotificationSettingsView()) {
-                        Label("通知提醒", systemImage: "bell")
+                        Label(String(localized: "通知提醒"), systemImage: "bell")
                     }
                 }
-                
+
                 // Data Management Section
-                Section(header: Text("数据管理")) {
+                Section(header: Text(String(localized: "数据管理"))) {
                     Button {
                         startExportProcess()
                     } label: {
                         HStack {
-                            Label("导出卡片与积分数据", systemImage: "square.and.arrow.up")
+                            Label(String(localized: "导出卡片与积分数据"), systemImage: "square.and.arrow.up")
                             Spacer()
 
                             if isExporting {
@@ -125,51 +125,51 @@ struct SettingsView: View {
                     .disabled(isExporting)
 
                     NavigationLink(destination: PrivacyPolicyView()) {
-                        Label("隐私政策", systemImage: "hand.raised")
+                        Label(String(localized: "隐私政策"), systemImage: "hand.raised")
                     }
                 }
-                
+
                 // About Section
-                Section(header: Text("关于 Cashback Counter")) {
+                Section(header: Text(String(localized: "关于 卡择"))) {
                     HStack {
-                        Label("版本", systemImage: "info.circle")
+                        Label(String(localized: "版本"), systemImage: "info.circle")
                         Spacer()
                         Text("v\(appVersion)")
                             .foregroundColor(.secondary)
                     }
-                    
+
                     NavigationLink(destination: DeveloperView()) {
-                        Label("开发者/贡献者", systemImage: "person.crop.circle")
+                        Label(String(localized: "开发者/贡献者"), systemImage: "person.crop.circle")
                     }
                 }
 
-                Section(header: Text("更新说明")) {
+                Section(header: Text(String(localized: "更新说明"))) {
                     NavigationLink(destination: UpdateNotesView(appVersion: appVersion)) {
-                        Label("更新版本注意事项", systemImage: "exclamationmark.triangle")
+                        Label(String(localized: "更新版本注意事项"), systemImage: "exclamationmark.triangle")
                     }
                 }
-                
+
                 // Reset Section
                 Section {
                     Button(role: .destructive) {
                         showConfirmClear = true
                     } label: {
-                        Label("重置所有数据 (慎用)", systemImage: "trash")
+                        Label(String(localized: "重置所有数据 (慎用)"), systemImage: "trash")
                             .foregroundColor(.red)
                     }
                     .confirmationDialog(
-                        "确定要清除所有数据吗？",
+                        String(localized: "确定要清除所有数据吗？"),
                         isPresented: $showConfirmClear,
                         titleVisibility: .visible
                     ) {
-                        Button("清除", role: .destructive) {
+                        Button(String(localized: "清除"), role: .destructive) {
                             clearAllData()
                         }
-                        Button("取消", role: .cancel) {}
+                        Button(String(localized: "取消"), role: .cancel) {}
                     }
                 }
             }
-            .navigationTitle("设置")
+            .navigationTitle(String(localized: "设置"))
             .listStyle(.insetGrouped)
             // 4. 关键修复：使用 item: $shareData 绑定
             // 只有当 shareData 有值时，才会初始化并显示 ActivityViewController
@@ -273,26 +273,26 @@ private struct PrivacyPolicyView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
-                Text("隐私政策")
+                Text(String(localized: "隐私政策"))
                     .font(.title2.weight(.semibold))
                     .padding(.bottom, 4)
 
-                Text("我们重视你的隐私。以下为应用当前版本的隐私说明：")
+                Text(String(localized: "我们重视你的隐私。以下为应用当前版本的隐私说明："))
                     .foregroundColor(.secondary)
 
-                Text("• 数据存储：账单、卡片、积分等数据全部保存在你的设备本地，我们不上传任何个人数据。")
-                Text("• 网络请求：应用可能会为获取汇率、下载卡面等功能访问网络，仅下载必要参数。")
-                Text("• 权限使用：相机、相册、通知等权限仅在对应功能使用时申请，可在系统设置中随时关闭。")
-                Text("• 分享导出：仅当你主动使用“导出”功能时，数据才会通过系统导出面板离开应用。")
+                Text(String(localized: "• 数据存储：账单、卡片、积分等数据全部保存在你的设备本地，我们不上传任何个人数据。"))
+                Text(String(localized: "• 网络请求：应用可能会为获取汇率、下载卡面等功能访问网络，仅下载必要参数。"))
+                Text(String(localized: "• 权限使用：相机、相册、通知等权限仅在对应功能使用时申请，可在系统设置中随时关闭。"))
+                Text(String(localized: "• 分享导出：仅当你主动使用\u{201C}导出\u{201D}功能时，数据才会通过系统导出面板离开应用。"))
 
-                Text("若你对隐私相关内容有疑问，请联系开发者。")
+                Text(String(localized: "若你对隐私相关内容有疑问，请联系开发者。"))
                     .foregroundColor(.secondary)
                     .padding(.top, 4)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
         }
-        .navigationTitle("隐私政策")
+        .navigationTitle(String(localized: "隐私政策"))
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -303,22 +303,22 @@ private struct UpdateNotesView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
-                Text("更新版本注意事项")
+                Text(String(localized: "更新版本注意事项"))
                     .font(.title2.weight(.semibold))
                     .padding(.bottom, 4)
 
-                Text("当前版本：v\(appVersion)")
+                Text(String(localized: "当前版本：v\(appVersion)"))
                     .foregroundColor(.secondary)
 
-                Text("• 更新前建议使用“导出卡片与积分数据”进行备份！！！（重要）。")
-                Text("• 更新后首次打开可能需要短暂时间完成数据整理。")
-                Text("• 若更新后出现应用闪退或异常的情况请删除应用，重新下载并导入之前备份的数据")
-                Text("• 若问题仍存在，请联系开发者协助排查。")
+                Text(String(localized: "• 更新前建议使用\u{201C}导出卡片与积分数据\u{201D}进行备份！！！（重要）。"))
+                Text(String(localized: "• 更新后首次打开可能需要短暂时间完成数据整理。"))
+                Text(String(localized: "• 若更新后出现应用闪退或异常的情况请删除应用，重新下载并导入之前备份的数据"))
+                Text(String(localized: "• 若问题仍存在，请联系开发者协助排查。"))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
         }
-        .navigationTitle("更新注意事项")
+        .navigationTitle(String(localized: "更新注意事项"))
         .navigationBarTitleDisplayMode(.inline)
     }
 }

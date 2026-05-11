@@ -31,8 +31,8 @@ class NotificationManager {
             return
         }
         let content = UNMutableNotificationContent()
-        content.title = "还款提醒: \(card.bankName) \(card.type)"
-        content.body = "今天是这张卡的还款日，别忘了处理账单哦！"
+        content.title = "\(String(localized: "还款提醒")): \(card.bankName) \(card.type)"
+        content.body = String(localized: "今天是这张卡的还款日，别忘了处理账单哦！")
         content.sound = .default
         
         // 设置触发时间：每月的这一天，早上 9:00
@@ -75,8 +75,8 @@ class NotificationManager {
         guard card.statementDay > 0, card.statementDay <= 31 else { return }
 
         let content = UNMutableNotificationContent()
-        content.title = "账单日提醒: \(card.bankName) \(card.type)"
-        content.body = "今天是这张卡的账单日，请查看账单明细。"
+        content.title = "\(String(localized: "账单日提醒")): \(card.bankName) \(card.type)"
+        content.body = String(localized: "今天是这张卡的账单日，请查看账单明细。")
         content.sound = .default
 
         var dateComponents = DateComponents()
@@ -120,11 +120,11 @@ class NotificationManager {
         }
 
         let content = UNMutableNotificationContent()
-        content.title = "年费提醒: \(card.bankName) \(card.type)"
+        content.title = "\(String(localized: "年费提醒")): \(card.bankName) \(card.type)"
         if cal.isDate(fireDate, inSameDayAs: expiry) || isUrgent {
-            content.body = "这张卡的权益即将到期，年费 \(String(format: "%.0f", card.annualFee)) 元。"
+            content.body = String(localized: "这张卡的权益即将到期，年费 \(String(format: "%.0f", card.annualFee)) 元。")
         } else {
-            content.body = "这张卡的权益将在 7 天后到期，年费 \(String(format: "%.0f", card.annualFee)) 元。"
+            content.body = String(localized: "这张卡的权益将在 7 天后到期，年费 \(String(format: "%.0f", card.annualFee)) 元。")
         }
         content.sound = .default
 
@@ -173,11 +173,11 @@ class NotificationManager {
         }
 
         let content = UNMutableNotificationContent()
-        content.title = "卡片到期提醒: \(card.bankName) \(card.type)"
+        content.title = "\(String(localized: "卡片到期提醒")): \(card.bankName) \(card.type)"
         if cal.isDate(fireDate, inSameDayAs: expiry) || isUrgent {
-            content.body = "这张预付卡即将到期，请及时处理余额。"
+            content.body = String(localized: "这张预付卡即将到期，请及时处理余额。")
         } else {
-            content.body = "这张预付卡将在 7 天后到期，请及时处理余额。"
+            content.body = String(localized: "这张预付卡将在 7 天后到期，请及时处理余额。")
         }
         content.sound = .default
 

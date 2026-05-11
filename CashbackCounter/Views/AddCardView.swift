@@ -253,15 +253,15 @@ struct AddCardView: View {
                 Section {
                     VStack(spacing: 12) {
                         CreditCardView(
-                            bankName: bankName.isEmpty ? "银行名称" : bankName,
-                            type: cardType.isEmpty ? "卡种" : cardType,
+                            bankName: bankName.isEmpty ? String(localized: "银行名称") : bankName,
+                            type: cardType.isEmpty ? String(localized: "卡种") : cardType,
                             endNum: endNum.isEmpty ? "8888" : endNum,
                             colors: [color1, color2],
                             cardImageData: cardImageData
                         )
                         
                         if imageManager.isDownloading {
-                            ProgressView("正在下载卡面...", value: imageManager.downloadProgress, total: 1.0)
+                            ProgressView(String(localized: "正在下载卡面..."), value: imageManager.downloadProgress, total: 1.0)
                                 .padding(.top, 5)
                         }
                         
@@ -277,16 +277,16 @@ struct AddCardView: View {
                 }
                 
                 // 2. 基本信息
-                Section(header: Text("基本信息")) {
-                    Picker("卡类型", selection: $cardKind) {
+                Section(header: Text(String(localized: "基本信息"))) {
+                    Picker(String(localized: "卡类型"), selection: $cardKind) {
                         ForEach(CardKind.allCases, id: \.self) { kind in
                             Label(kind.displayName, systemImage: kind.iconName).tag(kind)
                         }
                     }
                     .pickerStyle(.segmented)
-                    TextField("银行 (如: 招商银行)", text: $bankName)
-                    TextField("卡种 (如: 运通白金)", text: $cardType)
-                    TextField("尾号 (后四位)", text: $endNum)
+                    TextField(String(localized: "银行 (如: 招商银行)"), text: $bankName)
+                    TextField(String(localized: "卡种 (如: 运通白金)"), text: $cardType)
+                    TextField(String(localized: "尾号 (后四位)"), text: $endNum)
                         .keyboardType(.numberPad)
                         .onChange(of: endNum) { oldValue, newValue in
                             if newValue.count > 4 { endNum = String(newValue.prefix(4)) }
@@ -295,44 +295,44 @@ struct AddCardView: View {
                 
                 if cardKind.supportsBillingCycle {
                     HStack {
-                        Text("还款日提醒 (每月)")
+                        Text(String(localized: "还款日提醒 (每月)"))
                         Spacer()
-                        TextField("无", text: $repaymentDayStr)
+                        TextField(String(localized: "无"), text: $repaymentDayStr)
                             .keyboardType(.numberPad)
                             .multilineTextAlignment(.trailing)
                             .frame(width: 50)
-                        Text("日")
+                        Text(String(localized: "日"))
                             .foregroundColor(.secondary)
                     }
                 }
 
-                Section(header: Text("扩展信息")) {
-                    Picker("卡组织", selection: $cardNetwork) {
-                        Text("未选择").tag("")
+                Section(header: Text(String(localized: "扩展信息"))) {
+                    Picker(String(localized: "卡组织"), selection: $cardNetwork) {
+                        Text(String(localized: "未选择")).tag("")
                         Text("Visa").tag("Visa")
                         Text("Mastercard").tag("Mastercard")
-                        Text("银联").tag("银联")
+                        Text(String(localized: "银联")).tag("银联")
                         Text("Amex").tag("Amex")
                         Text("JCB").tag("JCB")
-                        Text("其他").tag("其他")
+                        Text(String(localized: "其他")).tag("其他")
                     }
 
                     if cardKind.supportsBillingCycle {
                         HStack {
-                            Text("账单日")
+                            Text(String(localized: "账单日"))
                             Spacer()
-                            TextField("无", text: $statementDayStr)
+                            TextField(String(localized: "无"), text: $statementDayStr)
                                 .keyboardType(.numberPad)
                                 .multilineTextAlignment(.trailing)
                                 .frame(width: 50)
-                            Text("日")
+                            Text(String(localized: "日"))
                                 .foregroundColor(.secondary)
                         }
                     }
 
                     if cardKind.supportsAnnualFee {
                         HStack {
-                            Text("年费")
+                            Text(String(localized: "年费"))
                             Spacer()
                             TextField("0", text: $annualFeeStr)
                                 .keyboardType(.decimalPad)
@@ -340,10 +340,10 @@ struct AddCardView: View {
                                 .frame(width: 80)
                         }
 
-                        TextField("年费减免条件（选填）", text: $annualFeeWaiver)
+                        TextField(String(localized: "年费减免条件（选填）"), text: $annualFeeWaiver)
 
                         HStack {
-                            DatePicker("权益到期日", selection: Binding(
+                            DatePicker(String(localized: "权益到期日"), selection: Binding(
                                 get: { benefitExpiryDate ?? Date() },
                                 set: { benefitExpiryDate = $0 }
                             ), displayedComponents: .date)
@@ -358,17 +358,17 @@ struct AddCardView: View {
                         }
                     }
 
-                    TextField("标签（逗号分隔）", text: $tagsStr)
+                    TextField(String(localized: "标签（逗号分隔）"), text: $tagsStr)
                 }
 
-                Section(header: Text("备注")) {
+                Section(header: Text(String(localized: "备注"))) {
                     TextEditor(text: $notesText)
                         .frame(height: 60)
                 }
 
                 if cardKind.supportsFullRewards {
-                    Section(header: Text("奖励类型")) {
-                        Picker("奖励类型", selection: $rewardType) {
+                    Section(header: Text(String(localized: "奖励类型"))) {
+                        Picker(String(localized: "奖励类型"), selection: $rewardType) {
                             ForEach(RewardType.allCases, id: \.self) { type in
                                 Text(type.displayName).tag(type)
                             }
@@ -377,41 +377,41 @@ struct AddCardView: View {
                     }
 
                     if rewardType == .points {
-                        Section(header: Text("积分库")) {
+                        Section(header: Text(String(localized: "积分库"))) {
                             if points.isEmpty {
-                                Text("暂无积分库，请先创建")
+                                Text(String(localized: "暂无积分库，请先创建"))
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
-                            Picker("选择积分计划", selection: $selectedPointID) {
-                                Text("未选择").tag(UUID?.none)
+                            Picker(String(localized: "选择积分计划"), selection: $selectedPointID) {
+                                Text(String(localized: "未选择")).tag(UUID?.none)
                                 ForEach(points) { point in
                                     Text(point.displayName).tag(Optional(point.id))
                                 }
                             }
-                            Button("管理积分库") { showPointLibrary = true }
+                            Button(String(localized: "管理积分库")) { showPointLibrary = true }
                         }
                     }
                 }
 
                 // 3. 颜色设置
-                Section(header: Text("卡面风格")) {
-                    ColorPicker("渐变色 1", selection: $color1)
-                    ColorPicker("渐变色 2", selection: $color2)
+                Section(header: Text(String(localized: "卡面风格"))) {
+                    ColorPicker(String(localized: "渐变色 1"), selection: $color1)
+                    ColorPicker(String(localized: "渐变色 2"), selection: $color2)
                 }
 
                 if cardKind.supportsSimpleRewards {
                     Section(header: Text(capPeriodTitle)){
                         Picker(capPeriodTitle, selection: $capPeriod) {
-                            Text("按月").tag(CapPeriod.monthly)
-                            Text("按年").tag(CapPeriod.yearly)
+                            Text(String(localized: "按月")).tag(CapPeriod.monthly)
+                            Text(String(localized: "按年")).tag(CapPeriod.yearly)
                         }
                     }
                     .pickerStyle(.segmented)
 
                     // 4. 规则设置 - 基础
                     Section(header: Text(baseSectionTitle)) {
-                        Picker("发行地区", selection: $region) {
+                        Picker(String(localized: "发行地区"), selection: $region) {
                             ForEach(Region.allCases, id: \.self) { r in
                                 Text("\(r.icon) \(r.rawValue)").tag(r)
                             }
@@ -429,7 +429,7 @@ struct AddCardView: View {
                             Text(localCapTitle)
                                 .font(.caption).foregroundColor(.secondary)
                             Spacer()
-                            TextField("无上限", text: $localBaseCapStr)
+                            TextField(String(localized: "无上限"), text: $localBaseCapStr)
                                 .keyboardType(.numberPad)
                                 .multilineTextAlignment(.trailing)
                                 .frame(width: 80)
@@ -438,7 +438,7 @@ struct AddCardView: View {
                         HStack {
                             Text(foreignRateTitle)
                             Spacer()
-                            TextField("同本币", text: $foreignRateStr)
+                            TextField(String(localized: "同本币"), text: $foreignRateStr)
                                 .keyboardType(.decimalPad)
                                 .multilineTextAlignment(.trailing)
                                 .frame(width: 50)
@@ -456,19 +456,19 @@ struct AddCardView: View {
 
                     // 5. 规则设置 - 类别
                     if cardKind.supportsFullRewards {
-                        Section(header: Text("类别加成 (额外叠加)")) {
-                            CategoryInputRow(name: "餐饮", rate: $diningRateStr, cap: $diningCapStr, capUnit: rewardLabel)
-                            CategoryInputRow(name: "超市", rate: $groceryRateStr, cap: $groceryCapStr, capUnit: rewardLabel)
-                            CategoryInputRow(name: "出行", rate: $travelRateStr, cap: $travelCapStr, capUnit: rewardLabel)
-                            CategoryInputRow(name: "数码", rate: $digitalRateStr, cap: $digitalCapStr, capUnit: rewardLabel)
-                            CategoryInputRow(name: "二次元", rate: $animeRateStr, cap: $animeCapStr, capUnit: rewardLabel)
-                            CategoryInputRow(name: "其他", rate: $otherRateStr, cap: $otherCapStr, capUnit: rewardLabel)
+                        Section(header: Text(String(localized: "类别加成 (额外叠加)"))) {
+                            CategoryInputRow(name: String(localized: "餐饮"), rate: $diningRateStr, cap: $diningCapStr, capUnit: rewardLabel)
+                            CategoryInputRow(name: String(localized: "超市"), rate: $groceryRateStr, cap: $groceryCapStr, capUnit: rewardLabel)
+                            CategoryInputRow(name: String(localized: "出行"), rate: $travelRateStr, cap: $travelCapStr, capUnit: rewardLabel)
+                            CategoryInputRow(name: String(localized: "数码"), rate: $digitalRateStr, cap: $digitalCapStr, capUnit: rewardLabel)
+                            CategoryInputRow(name: String(localized: "二次元"), rate: $animeRateStr, cap: $animeCapStr, capUnit: rewardLabel)
+                            CategoryInputRow(name: String(localized: "其他"), rate: $otherRateStr, cap: $otherCapStr, capUnit: rewardLabel)
                         }
                     }
 
                     // 6. 规则设置 - 支付方式
                     if cardKind.supportsFullRewards {
-                        Section(header: Text("支付方式规则 (可选)")) {
+                        Section(header: Text(String(localized: "支付方式规则 (可选)"))) {
                             ForEach(PaymentMethod.allCases, id: \.self) { method in
                                 VStack(alignment: .leading, spacing: 6) {
                                     HStack {
@@ -478,7 +478,7 @@ struct AddCardView: View {
                                     }
 
                                     HStack {
-                                        Text("加成:")
+                                        Text(String(localized: "加成:"))
                                             .font(.caption)
                                             .foregroundColor(.secondary)
 
@@ -495,7 +495,7 @@ struct AddCardView: View {
 
                                         Spacer()
 
-                                        Text(rewardType == .points ? "积分上限:" : "上限:")
+                                        Text(rewardType == .points ? String(localized: "积分上限:") : String(localized: "上限:"))
                                             .font(.caption)
                                             .foregroundColor(.secondary)
 
@@ -515,9 +515,9 @@ struct AddCardView: View {
                 }
 
                 if cardKind.supportsBalance {
-                    Section(header: Text("预付卡信息")) {
+                    Section(header: Text(String(localized: "预付卡信息"))) {
                         HStack {
-                            Text("当前余额")
+                            Text(String(localized: "当前余额"))
                             Spacer()
                             TextField("0", text: $balanceStr)
                                 .keyboardType(.decimalPad)
@@ -525,7 +525,7 @@ struct AddCardView: View {
                                 .frame(width: 100)
                         }
                         HStack {
-                            DatePicker("到期日", selection: Binding(
+                            DatePicker(String(localized: "到期日"), selection: Binding(
                                 get: { cardExpiryDate ?? Date() },
                                 set: { cardExpiryDate = $0 }
                             ), displayedComponents: .date)
@@ -542,14 +542,14 @@ struct AddCardView: View {
                 }
                 
             }
-            .navigationTitle(cardToEdit == nil ? "添加\(cardKind.displayName)" : "编辑卡片")
+            .navigationTitle(cardToEdit == nil ? "\(String(localized: "添加"))\(cardKind.displayName)" : String(localized: "编辑卡片"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("取消") { dismiss() }
+                    Button(String(localized: "取消")) { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("保存") { saveCard() }
+                    Button(String(localized: "保存")) { saveCard() }
                         .disabled(bankName.isEmpty || cardType.isEmpty)
                 }
             }
@@ -733,37 +733,37 @@ struct AddCardView: View {
     }
 
     private var rewardLabel: String {
-        rewardType == .points ? "积分" : "返现"
+        rewardType == .points ? String(localized: "积分") : String(localized: "返现")
     }
 
     private var capPeriodTitle: String {
-        rewardType == .points ? "积分上限周期" : "返现上限周期"
+        rewardType == .points ? String(localized: "积分上限周期") : String(localized: "返现上限周期")
     }
 
     private var baseSectionTitle: String {
-        rewardType == .points ? "基础积分 (所有消费)" : "基础返现 (所有消费)"
+        rewardType == .points ? String(localized: "基础积分 (所有消费)") : String(localized: "基础返现 (所有消费)")
     }
 
     private var localRateTitle: String {
-        rewardType == .points ? "本币积分率 (%)" : "本币返现率 (%)"
+        rewardType == .points ? String(localized: "本币积分率 (%)") : String(localized: "本币返现率 (%)")
     }
 
     private var foreignRateTitle: String {
-        rewardType == .points ? "外币积分率 (%)" : "外币返现率 (%)"
+        rewardType == .points ? String(localized: "外币积分率 (%)") : String(localized: "外币返现率 (%)")
     }
 
     private var localCapTitle: String {
         if rewardType == .points {
-            return capPeriod == .monthly ? "本币月积分上限" : "本币年积分上限"
+            return capPeriod == .monthly ? String(localized: "本币月积分上限") : String(localized: "本币年积分上限")
         }
-        return capPeriod == .monthly ? "本币月上限" : "本币年上限"
+        return capPeriod == .monthly ? String(localized: "本币月上限") : String(localized: "本币年上限")
     }
 
     private var foreignCapTitle: String {
         if rewardType == .points {
-            return capPeriod == .monthly ? "外币月积分上限" : "外币年积分上限"
+            return capPeriod == .monthly ? String(localized: "外币月积分上限") : String(localized: "外币年积分上限")
         }
-        return capPeriod == .monthly ? "外币月上限" : "外币年上限"
+        return capPeriod == .monthly ? String(localized: "外币月上限") : String(localized: "外币年上限")
     }
     
     struct CategoryInputRow: View {
@@ -778,7 +778,7 @@ struct AddCardView: View {
                     Text(name)
                         .fontWeight(.medium)
                     Spacer()
-                    Text("加成%")
+                    Text(String(localized: "加成%"))
                         .font(.caption).foregroundColor(.gray)
                     TextField("0", text: $rate)
                         .keyboardType(.decimalPad)
@@ -788,9 +788,9 @@ struct AddCardView: View {
                         .background(Color(uiColor: .secondarySystemBackground))
                         .cornerRadius(5)
                     
-                    Text(capUnit == "积分" ? "积分上限" : "上限")
+                    Text(capUnit == String(localized: "积分") ? String(localized: "积分上限") : String(localized: "上限"))
                         .font(.caption).foregroundColor(.gray)
-                    TextField("无", text: $cap)
+                    TextField(String(localized: "无"), text: $cap)
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                         .frame(width: 60)

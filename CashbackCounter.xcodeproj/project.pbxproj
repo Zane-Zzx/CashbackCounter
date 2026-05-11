@@ -276,7 +276,8 @@
 				DEVELOPMENT_TEAM = 66233X8P8H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = CashbackCounter;
+				INFOPLIST_KEY_CFBundleDisplayName = "卡择";
+				INFOPLIST_KEY_CFBundleName = "卡择";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Use camera to take photo of invoice";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Access library to upload invoice";
@@ -290,7 +291,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.junhaohuang.CashbackCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -316,7 +317,8 @@
 				DEVELOPMENT_TEAM = 66233X8P8H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = CashbackCounter;
+				INFOPLIST_KEY_CFBundleDisplayName = "卡择";
+				INFOPLIST_KEY_CFBundleName = "卡择";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Use camera to take photo of invoice";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Access library to upload invoice";
@@ -330,7 +332,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.junhaohuang.CashbackCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -7,6 +7,15 @@ enum ReminderEventType: String {
     case annualFee = "年费到期"
     case prepaidExpiry = "卡片到期"
 
+    var localizedRawValue: String {
+        switch self {
+        case .repayment: return String(localized: "还款日")
+        case .statement: return String(localized: "账单日")
+        case .annualFee: return String(localized: "年费到期")
+        case .prepaidExpiry: return String(localized: "卡片到期")
+        }
+    }
+
     var icon: String {
         switch self {
         case .repayment: return "clock.fill"
@@ -61,7 +70,7 @@ struct ReminderEvent: Identifiable {
             return date.formatted(.dateTime.year().month().day())
         }
         if let day = dayOfMonth {
-            return "每月 \(day) 日"
+            return "\(String(localized: "每月")) \(day) \(String(localized: "日"))"
         }
         return ""
     }
@@ -118,21 +127,21 @@ struct ReminderCenterView: View {
             Group {
                 if cards.isEmpty {
                     ContentUnavailableView(
-                        "暂无卡片",
+                        String(localized: "暂无卡片"),
                         systemImage: "creditcard",
-                        description: Text("添加卡片后即可管理提醒")
+                        description: Text(String(localized: "添加卡片后即可管理提醒"))
                     )
                 } else if activeEvents.isEmpty && disabledEvents.isEmpty {
                     ContentUnavailableView(
-                        "暂无提醒",
+                        String(localized: "暂无提醒"),
                         systemImage: "bell.slash",
-                        description: Text("为卡片设置还款日、账单日等信息后，提醒将自动出现")
+                        description: Text(String(localized: "为卡片设置还款日、账单日等信息后，提醒将自动出现"))
                     )
                 } else {
                     listContent
                 }
             }
-            .navigationTitle("提醒")
+            .navigationTitle(String(localized: "提醒"))
         }
     }
 
@@ -160,7 +169,7 @@ struct ReminderCenterView: View {
                         disabledEventRow(event)
                     }
                 } header: {
-                    Text("已关闭提醒")
+                    Text(String(localized: "已关闭提醒"))
                 }
             }
         }
@@ -216,7 +225,7 @@ struct ReminderCenterView: View {
                 }
             }
         } header: {
-            Text("卡片提醒总览")
+            Text(String(localized: "卡片提醒总览"))
         }
     }
 
@@ -228,7 +237,7 @@ struct ReminderCenterView: View {
                 .frame(width: 28)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text("\(event.card.bankName) \(event.card.type) \(event.type.rawValue)")
+                Text("\(event.card.bankName) \(event.card.type) \(event.type.localizedRawValue)")
                     .font(.subheadline)
                 Text(event.dateLabel)
                     .font(.caption)
@@ -258,7 +267,7 @@ struct ReminderCenterView: View {
                 .frame(width: 28)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text("\(event.card.bankName) \(event.card.type) \(event.type.rawValue)")
+                Text("\(event.card.bankName) \(event.card.type) \(event.type.localizedRawValue)")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 Text(event.dateLabel)
@@ -284,8 +293,8 @@ struct ReminderCenterView: View {
     private func sectionHeader(for date: Date) -> String {
         let cal = Calendar.current
         let now = cal.startOfDay(for: Date())
-        if date == now { return "今天" }
-        if let tomorrow = cal.date(byAdding: .day, value: 1, to: now), date == tomorrow { return "明天" }
+        if date == now { return String(localized: "今天") }
+        if let tomorrow = cal.date(byAdding: .day, value: 1, to: now), date == tomorrow { return String(localized: "明天") }
         return date.formatted(.dateTime.month().day())
     }
 
