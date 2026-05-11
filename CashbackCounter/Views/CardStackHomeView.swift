@@ -80,8 +80,8 @@ struct CardStackHomeView: View {
                         }
                     }
                     .navigationTitle(isDetailMode
-                        ? (filteredCards.first(where: { $0.id == selectedCardID })?.bankName ?? String(localized: "我的卡包"))
-                        : String(localized: "我的卡包"))
+                        ? (filteredCards.first(where: { $0.id == selectedCardID })?.bankName ?? "我的卡包")
+                        : "我的卡包")
                 }
             }
             .toolbar {

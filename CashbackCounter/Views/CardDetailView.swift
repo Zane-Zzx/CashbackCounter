@@ -66,14 +66,14 @@ struct CardDetailView: View {
     private var basicInfoSection: some View {
         Section {
             VStack(spacing: 10) {
-                row(String(localized: "卡类型"), value: card.cardKind.displayName)
-                row(String(localized: "银行"), value: card.bankName)
-                row(String(localized: "卡种"), value: card.type)
-                row(String(localized: "尾号"), value: "**** \(card.endNum)")
+                row("卡类型", value: card.cardKind.displayName)
+                row("银行", value: card.bankName)
+                row("卡种", value: card.type)
+                row("尾号", value: "**** \(card.endNum)")
                 if !card.cardNetwork.isEmpty {
-                    row(String(localized: "卡组织"), value: String(localized: LocalizedStringResource(stringLiteral: card.cardNetwork)))
+                    row("卡组织", value: String(localized: LocalizedStringResource(stringLiteral: card.cardNetwork)))
                 }
-                row(String(localized: "发卡地区"), value: "\(card.issueRegion.icon) \(card.issueRegion.displayName)")
+                row("发卡地区", value: "\(card.issueRegion.icon) \(card.issueRegion.displayName)")
             }
             .padding()
             .background(Color(uiColor: .secondarySystemGroupedBackground))
@@ -115,13 +115,13 @@ struct CardDetailView: View {
         Section {
             VStack(spacing: 10) {
                 if card.statementDay > 0 {
-                    row(String(localized: "账单日"), value: "\(String(localized: "每月")) \(card.statementDay) \(String(localized: "日"))")
+                    row("账单日", value: "\(String(localized: "每月")) \(card.statementDay) \(String(localized: "日"))")
                 }
                 if card.repaymentDay > 0 {
-                    row(String(localized: "还款日"), value: "\(String(localized: "每月")) \(card.repaymentDay) \(String(localized: "日"))")
+                    row("还款日", value: "\(String(localized: "每月")) \(card.repaymentDay) \(String(localized: "日"))")
                 }
                 if let expiry = card.benefitExpiryDate {
-                    row(String(localized: "权益到期"), value: expiry.formatted(date: .abbreviated, time: .omitted))
+                    row("权益到期", value: expiry.formatted(date: .abbreviated, time: .omitted))
                 }
             }
             .padding()
@@ -138,10 +138,10 @@ struct CardDetailView: View {
                 Section {
                     VStack(spacing: 10) {
                         if card.annualFee > 0 {
-                            row(String(localized: "年费"), value: String(format: "%@%.0f", card.issueRegion.currencySymbol, card.annualFee))
+                            row("年费", value: String(format: "%@%.0f", card.issueRegion.currencySymbol, card.annualFee))
                         }
                         if !card.annualFeeWaiver.isEmpty {
-                            row(String(localized: "减免条件"), value: card.annualFeeWaiver)
+                            row("减免条件", value: card.annualFeeWaiver)
                         }
                     }
                     .padding()
@@ -157,10 +157,10 @@ struct CardDetailView: View {
     private var rulesSection: some View {
         Section {
             VStack(spacing: 10) {
-                row(String(localized: "基础费率"), value: String(format: "%.2f%%", card.defaultRate * 100))
+                row("基础费率", value: String(format: "%.2f%%", card.defaultRate * 100))
 
                 if let fr = card.foreignCurrencyRate, fr > 0 {
-                    row(String(localized: "外币费率"), value: String(format: "%.2f%%", fr * 100))
+                    row("外币费率", value: String(format: "%.2f%%", fr * 100))
                 }
 
                 if !card.specialRates.isEmpty {
@@ -204,14 +204,14 @@ struct CardDetailView: View {
                 if card.localBaseCap > 0 || card.foreignBaseCap > 0 {
                     Divider()
                     if card.localBaseCap > 0 {
-                        row(String(localized: "本币上限"), value: String(format: "%.0f", card.localBaseCap))
+                        row("本币上限", value: String(format: "%.0f", card.localBaseCap))
                     }
                     if card.foreignBaseCap > 0 {
-                        row(String(localized: "外币上限"), value: String(format: "%.0f", card.foreignBaseCap))
+                        row("外币上限", value: String(format: "%.0f", card.foreignBaseCap))
                     }
                 }
 
-                row(String(localized: "返现类型"), value: card.rewardType.displayName)
+                row("返现类型", value: card.rewardType.displayName)
             }
             .padding()
             .background(Color(uiColor: .secondarySystemGroupedBackground))
@@ -226,9 +226,9 @@ struct CardDetailView: View {
         if card.rewardType == .points, let point = card.pointProgram {
             Section {
                 VStack(spacing: 10) {
-                    row(String(localized: "积分名称"), value: point.pointName)
-                    row(String(localized: "积分银行"), value: point.bankName)
-                    row(String(localized: "积分价值"), value: String(format: "%.6f", point.pointValue))
+                    row("积分名称", value: point.pointName)
+                    row("积分银行", value: point.bankName)
+                    row("积分价值", value: String(format: "%.6f", point.pointValue))
                 }
                 .padding()
                 .background(Color(uiColor: .secondarySystemGroupedBackground))
@@ -245,10 +245,10 @@ struct CardDetailView: View {
                 Section {
                     VStack(spacing: 10) {
                         if card.balance > 0 {
-                            row(String(localized: "余额"), value: String(format: "%@%.2f", card.issueRegion.currencySymbol, card.balance))
+                            row("余额", value: String(format: "%@%.2f", card.issueRegion.currencySymbol, card.balance))
                         }
                         if let expiry = card.cardExpiryDate {
-                            row(String(localized: "到期日"), value: expiry.formatted(date: .abbreviated, time: .omitted))
+                            row("到期日", value: expiry.formatted(date: .abbreviated, time: .omitted))
                         }
                     }
                     .padding()
@@ -278,7 +278,7 @@ struct CardDetailView: View {
         }
     }
 
-    private func row(_ label: String, value: String) -> some View {
+    private func row(_ label: LocalizedStringKey, value: String) -> some View {
         HStack {
             Text(label).foregroundColor(.secondary)
             Spacer()
